@@ -17,7 +17,7 @@ use const T_WHITESPACE;
 class TraitUseDeclarationSniff implements Sniff
 {
 
-	public const CODE_MULTIPLE_TRAITS_PER_DECLARATION = 'MultipleTraitsPerDeclaration';
+	const CODE_MULTIPLE_TRAITS_PER_DECLARATION = 'MultipleTraitsPerDeclaration';
 
 	/**
 	 * @return mixed[]

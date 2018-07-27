@@ -55,7 +55,7 @@ use function substr;
 class UnusedVariableSniff implements Sniff
 {
 
-	public const CODE_UNUSED_VARIABLE = 'UnusedVariable';
+	const CODE_UNUSED_VARIABLE = 'UnusedVariable';
 
 	/**
 	 * @return mixed[]

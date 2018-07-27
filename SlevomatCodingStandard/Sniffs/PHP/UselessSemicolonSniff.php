@@ -20,7 +20,7 @@ use function in_array;
 class UselessSemicolonSniff implements Sniff
 {
 
-	public const CODE_USELESS_SEMICOLON = 'UselessSemicolon';
+	const CODE_USELESS_SEMICOLON = 'UselessSemicolon';
 
 	/**
 	 * @return mixed[]

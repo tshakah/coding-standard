@@ -26,9 +26,9 @@ use function substr;
 class UnusedParameterSniff implements Sniff
 {
 
-	private const NAME = 'SlevomatCodingStandard.Functions.UnusedParameter';
+	const NAME = 'SlevomatCodingStandard.Functions.UnusedParameter';
 
-	public const CODE_UNUSED_PARAMETER = 'UnusedParameter';
+	const CODE_UNUSED_PARAMETER = 'UnusedParameter';
 
 	/**
 	 * @return mixed[]

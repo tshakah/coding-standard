@@ -17,7 +17,7 @@ use function sprintf;
 class UselessAliasSniff implements Sniff
 {
 
-	public const CODE_USELESS_ALIAS = 'UselessAlias';
+	const CODE_USELESS_ALIAS = 'UselessAlias';
 
 	/**
 	 * @return mixed[]
