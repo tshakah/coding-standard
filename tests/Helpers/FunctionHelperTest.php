@@ -2,7 +2,10 @@
 
 namespace SlevomatCodingStandard\Helpers;
 
-class FunctionHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
+use const T_CLOSURE;
+use function array_map;
+
+class FunctionHelperTest extends TestCase
 {
 
 	public function testNameWithNamespace()
@@ -275,13 +278,14 @@ class FunctionHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 	/**
 	 * @return mixed[][]
 	 */
-	public function dataReturnsValueOrNot(): array
+	public function dataFunctionReturnsValueOrNot(): array
 	{
 		return [
 			['returnsValue', true],
 			['returnsVariable', true],
 			['returnsValueInCondition', true],
 			['returnsGenerator', true],
+			['returnsGeneratorFrom', true],
 			['returnsGeneratorWithEarlyTermination', true],
 			['returnsGeneratorWithVeryEarlyTermination', true],
 			['generatorIsInClosure', false],
@@ -293,17 +297,44 @@ class FunctionHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 	}
 
 	/**
-	 * @dataProvider dataReturnsValueOrNot
+	 * @dataProvider dataFunctionReturnsValueOrNot
 	 * @param string $functionName
 	 * @param bool $returnsValue
 	 */
-	public function testReturnsValueOrNot(
+	public function testFunctionReturnsValueOrNot(
 		string $functionName,
 		bool $returnsValue
 	)
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(__DIR__ . '/data/functionReturnsValueOrNot.php');
 		self::assertSame($returnsValue, FunctionHelper::returnsValue($codeSnifferFile, $this->findFunctionPointerByName($codeSnifferFile, $functionName)));
+	}
+
+	/**
+	 * @return mixed[][]
+	 */
+	public function dataClosureReturnsValueOrNot(): array
+	{
+		return [
+			[3, true],
+			[7, false],
+			[11, true],
+			[15, true],
+		];
+	}
+
+	/**
+	 * @dataProvider dataClosureReturnsValueOrNot
+	 * @param int $line
+	 * @param bool $returnsValue
+	 */
+	public function testClosureReturnsValueOrNot(
+		int $line,
+		bool $returnsValue
+	)
+	{
+		$codeSnifferFile = $this->getCodeSnifferFile(__DIR__ . '/data/closureReturnsValueOrNot.php');
+		self::assertSame($returnsValue, FunctionHelper::returnsValue($codeSnifferFile, $this->findPointerByLineAndType($codeSnifferFile, $line, T_CLOSURE)));
 	}
 
 	public function testReturnTypeHint()
@@ -315,6 +346,8 @@ class FunctionHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		$returnTypeHint = FunctionHelper::findReturnTypeHint($codeSnifferFile, $functionPointer);
 		self::assertSame('\FooNamespace\FooInterface', $returnTypeHint->getTypeHint());
 		self::assertFalse($returnTypeHint->isNullable());
+		self::assertSame($functionPointer + 7, $returnTypeHint->getStartPointer());
+		self::assertSame($functionPointer + 10, $returnTypeHint->getEndPointer());
 
 		$functionPointer = $this->findFunctionPointerByName($codeSnifferFile, 'withoutReturnTypeHint');
 		self::assertFalse(FunctionHelper::hasReturnTypeHint($codeSnifferFile, $functionPointer));
@@ -325,6 +358,8 @@ class FunctionHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		$returnTypeHint = FunctionHelper::findReturnTypeHint($codeSnifferFile, $functionPointer);
 		self::assertSame('bool', $returnTypeHint->getTypeHint());
 		self::assertFalse($returnTypeHint->isNullable());
+		self::assertSame($functionPointer + 7, $returnTypeHint->getStartPointer());
+		self::assertSame($functionPointer + 7, $returnTypeHint->getEndPointer());
 
 		$functionPointer = $this->findFunctionPointerByName($codeSnifferFile, 'abstractWithoutReturnTypeHint');
 		self::assertFalse(FunctionHelper::hasReturnTypeHint($codeSnifferFile, $functionPointer));

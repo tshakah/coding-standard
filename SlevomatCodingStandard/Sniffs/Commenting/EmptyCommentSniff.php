@@ -2,9 +2,20 @@
 
 namespace SlevomatCodingStandard\Sniffs\Commenting;
 
+use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Sniffs\Sniff;
 use SlevomatCodingStandard\Helpers\TokenHelper;
+use const T_COMMENT;
+use const T_DOC_COMMENT_OPEN_TAG;
+use const T_WHITESPACE;
+use function array_key_exists;
+use function preg_match;
+use function preg_replace;
+use function strlen;
+use function strpos;
+use function substr;
 
-class EmptyCommentSniff implements \PHP_CodeSniffer\Sniffs\Sniff
+class EmptyCommentSniff implements Sniff
 {
 
 	const CODE_EMPTY_COMMENT = 'EmptyComment';
@@ -25,7 +36,7 @@ class EmptyCommentSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
 	 * @param int $commentStartPointer
 	 */
-	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $commentStartPointer)
+	public function process(File $phpcsFile, $commentStartPointer)
 	{
 		$commentEndPointer = $this->getCommentEndPointer($phpcsFile, $commentStartPointer);
 
@@ -94,7 +105,7 @@ class EmptyCommentSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 		$phpcsFile->fixer->endChangeset();
 	}
 
-	private function isLineComment(\PHP_CodeSniffer\Files\File $phpcsFile, int $commentPointer): bool
+	private function isLineComment(File $phpcsFile, int $commentPointer): bool
 	{
 		return (bool) preg_match('~^(?://|#)(.*)~', $phpcsFile->getTokens()[$commentPointer]['content']);
 	}
@@ -106,7 +117,7 @@ class EmptyCommentSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 			: (bool) preg_match('~^[\\s\*]*$~', $comment);
 	}
 
-	private function getCommentEndPointer(\PHP_CodeSniffer\Files\File $phpcsFile, int $commentStartPointer)
+	private function getCommentEndPointer(File $phpcsFile, int $commentStartPointer)
 	{
 		$tokens = $phpcsFile->getTokens();
 
@@ -127,7 +138,7 @@ class EmptyCommentSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 		return $nextPointerAfterComment - 1;
 	}
 
-	private function getCommentContent(\PHP_CodeSniffer\Files\File $phpcsFile, int $commentStartPointer, int $commentEndPointer): string
+	private function getCommentContent(File $phpcsFile, int $commentStartPointer, int $commentEndPointer): string
 	{
 		$tokens = $phpcsFile->getTokens();
 
@@ -142,20 +153,20 @@ class EmptyCommentSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 		return substr(TokenHelper::getContent($phpcsFile, $commentStartPointer, $commentEndPointer), 2, -2);
 	}
 
-	private function isPartOfMultilineInlineComments(\PHP_CodeSniffer\Files\File $phpcsFile, int $commentStartPointer, int $commentEndPointer): bool
+	private function isPartOfMultilineInlineComments(File $phpcsFile, int $commentStartPointer, int $commentEndPointer): bool
 	{
 		if (!$this->isNonEmptyLineCommentBefore($phpcsFile, $commentStartPointer)) {
 			return false;
 		}
 
-		if (!$this->isNonEmptyLineCommentAfter($phpcsFile, $commentStartPointer, $commentEndPointer)) {
+		if (!$this->isNonEmptyLineCommentAfter($phpcsFile, $commentEndPointer)) {
 			return false;
 		}
 
 		return true;
 	}
 
-	private function isNonEmptyLineCommentBefore(\PHP_CodeSniffer\Files\File $phpcsFile, int $commentStartPointer): bool
+	private function isNonEmptyLineCommentBefore(File $phpcsFile, int $commentStartPointer): bool
 	{
 		$tokens = $phpcsFile->getTokens();
 
@@ -183,7 +194,7 @@ class EmptyCommentSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 		return $this->isNonEmptyLineCommentBefore($phpcsFile, $beforeCommentStartPointer);
 	}
 
-	private function isNonEmptyLineCommentAfter(\PHP_CodeSniffer\Files\File $phpcsFile, int $commentStartPointer, int $commentEndPointer): bool
+	private function isNonEmptyLineCommentAfter(File $phpcsFile, int $commentEndPointer): bool
 	{
 		$tokens = $phpcsFile->getTokens();
 
@@ -211,7 +222,7 @@ class EmptyCommentSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 			return true;
 		}
 
-		return $this->isNonEmptyLineCommentAfter($phpcsFile, $afterCommentStartPointer, $afterCommentEndPointer);
+		return $this->isNonEmptyLineCommentAfter($phpcsFile, $afterCommentEndPointer);
 	}
 
 }

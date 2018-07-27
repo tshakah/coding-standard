@@ -2,7 +2,9 @@
 
 namespace SlevomatCodingStandard\Helpers;
 
-class ClassHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
+use const T_ANON_CLASS;
+
+class ClassHelperTest extends TestCase
 {
 
 	public function testNameWithNamespace()
@@ -14,6 +16,8 @@ class ClassHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertSame('FooInterface', ClassHelper::getName($codeSnifferFile, $this->findClassPointerByName($codeSnifferFile, 'FooInterface')));
 		self::assertSame('\FooNamespace\FooTrait', ClassHelper::getFullyQualifiedName($codeSnifferFile, $this->findClassPointerByName($codeSnifferFile, 'FooTrait')));
 		self::assertSame('FooTrait', ClassHelper::getName($codeSnifferFile, $this->findClassPointerByName($codeSnifferFile, 'FooTrait')));
+		self::assertSame('class@anonymous', ClassHelper::getFullyQualifiedName($codeSnifferFile, $this->findPointerByLineAndType($codeSnifferFile, 20, T_ANON_CLASS)));
+		self::assertSame('class@anonymous', ClassHelper::getName($codeSnifferFile, $this->findPointerByLineAndType($codeSnifferFile, 20, T_ANON_CLASS)));
 	}
 
 	public function testNameWithoutNamespace()
@@ -25,6 +29,8 @@ class ClassHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertSame('FooInterface', ClassHelper::getName($codeSnifferFile, $this->findClassPointerByName($codeSnifferFile, 'FooInterface')));
 		self::assertSame('\FooTrait', ClassHelper::getFullyQualifiedName($codeSnifferFile, $this->findClassPointerByName($codeSnifferFile, 'FooTrait')));
 		self::assertSame('FooTrait', ClassHelper::getName($codeSnifferFile, $this->findClassPointerByName($codeSnifferFile, 'FooTrait')));
+		self::assertSame('class@anonymous', ClassHelper::getFullyQualifiedName($codeSnifferFile, $this->findPointerByLineAndType($codeSnifferFile, 18, T_ANON_CLASS)));
+		self::assertSame('class@anonymous', ClassHelper::getName($codeSnifferFile, $this->findPointerByLineAndType($codeSnifferFile, 18, T_ANON_CLASS)));
 	}
 
 	public function testGetAllNamesWithNamespace()

@@ -2,19 +2,40 @@
 
 namespace SlevomatCodingStandard\Helpers;
 
+use Generator;
+use PHP_CodeSniffer\Files\File;
+use const T_ANON_CLASS;
+use const T_STRING;
+use const T_USE;
+use function array_map;
+use function iterator_to_array;
+use function sprintf;
+
 class ClassHelper
 {
 
-	public static function getFullyQualifiedName(\PHP_CodeSniffer\Files\File $codeSnifferFile, int $classPointer): string
+	public static function getFullyQualifiedName(File $codeSnifferFile, int $classPointer): string
 	{
-		$name = sprintf('%s%s', NamespaceHelper::NAMESPACE_SEPARATOR, self::getName($codeSnifferFile, $classPointer));
+		$className = self::getName($codeSnifferFile, $classPointer);
+
+		$tokens = $codeSnifferFile->getTokens();
+		if ($tokens[$classPointer]['code'] === T_ANON_CLASS) {
+			return $className;
+		}
+
+		$name = sprintf('%s%s', NamespaceHelper::NAMESPACE_SEPARATOR, $className);
 		$namespace = NamespaceHelper::findCurrentNamespaceName($codeSnifferFile, $classPointer);
 		return $namespace !== null ? sprintf('%s%s%s', NamespaceHelper::NAMESPACE_SEPARATOR, $namespace, $name) : $name;
 	}
 
-	public static function getName(\PHP_CodeSniffer\Files\File $codeSnifferFile, int $classPointer): string
+	public static function getName(File $codeSnifferFile, int $classPointer): string
 	{
 		$tokens = $codeSnifferFile->getTokens();
+
+		if ($tokens[$classPointer]['code'] === T_ANON_CLASS) {
+			return 'class@anonymous';
+		}
+
 		return $tokens[TokenHelper::findNext($codeSnifferFile, T_STRING, $classPointer + 1, $tokens[$classPointer]['scope_opener'])]['content'];
 	}
 
@@ -22,7 +43,7 @@ class ClassHelper
 	 * @param \PHP_CodeSniffer\Files\File $codeSnifferFile
 	 * @return string[]
 	 */
-	public static function getAllNames(\PHP_CodeSniffer\Files\File $codeSnifferFile): array
+	public static function getAllNames(File $codeSnifferFile): array
 	{
 		$previousClassPointer = 0;
 
@@ -34,7 +55,7 @@ class ClassHelper
 		);
 	}
 
-	private static function getAllClassPointers(\PHP_CodeSniffer\Files\File $codeSnifferFile, int &$previousClassPointer): \Generator
+	private static function getAllClassPointers(File $codeSnifferFile, int &$previousClassPointer): Generator
 	{
 		do {
 			$nextClassPointer = TokenHelper::findNext($codeSnifferFile, TokenHelper::$typeKeywordTokenCodes, $previousClassPointer + 1);
@@ -45,6 +66,33 @@ class ClassHelper
 			$previousClassPointer = $nextClassPointer;
 			yield $nextClassPointer;
 		} while (true);
+	}
+
+	/**
+	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
+	 * @param int $classPointer
+	 * @return int[]
+	 */
+	public static function getTraitUsePointers(File $phpcsFile, int $classPointer): array
+	{
+		$useStatements = [];
+
+		$tokens = $phpcsFile->getTokens();
+
+		$scopeLevel = $tokens[$classPointer]['level'] + 1;
+		for ($i = $tokens[$classPointer]['scope_opener'] + 1; $i < $tokens[$classPointer]['scope_closer']; $i++) {
+			if ($tokens[$i]['code'] !== T_USE) {
+				continue;
+			}
+
+			if ($tokens[$i]['level'] !== $scopeLevel) {
+				continue;
+			}
+
+			$useStatements[] = $i;
+		}
+
+		return $useStatements;
 	}
 
 }

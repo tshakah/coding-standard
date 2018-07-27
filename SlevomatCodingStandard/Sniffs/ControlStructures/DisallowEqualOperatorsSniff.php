@@ -2,7 +2,13 @@
 
 namespace SlevomatCodingStandard\Sniffs\ControlStructures;
 
-class DisallowEqualOperatorsSniff implements \PHP_CodeSniffer\Sniffs\Sniff
+use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Sniffs\Sniff;
+use const T_IS_EQUAL;
+use const T_IS_NOT_EQUAL;
+use function sprintf;
+
+class DisallowEqualOperatorsSniff implements Sniff
 {
 
 	const CODE_DISALLOWED_EQUAL_OPERATOR = 'DisallowedEqualOperator';
@@ -24,7 +30,7 @@ class DisallowEqualOperatorsSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
 	 * @param int $operatorPointer
 	 */
-	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $operatorPointer)
+	public function process(File $phpcsFile, $operatorPointer)
 	{
 		$tokens = $phpcsFile->getTokens();
 
@@ -36,7 +42,10 @@ class DisallowEqualOperatorsSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 				$phpcsFile->fixer->endChangeset();
 			}
 		} else {
-			$fix = $phpcsFile->addFixableError('Operator != is disallowed, use !== instead.', $operatorPointer, self::CODE_DISALLOWED_NOT_EQUAL_OPERATOR);
+			$fix = $phpcsFile->addFixableError(sprintf(
+				'Operator %s is disallowed, use !== instead.',
+				$tokens[$operatorPointer]['content']
+			), $operatorPointer, self::CODE_DISALLOWED_NOT_EQUAL_OPERATOR);
 			if ($fix) {
 				$phpcsFile->fixer->beginChangeset();
 				$phpcsFile->fixer->replaceToken($operatorPointer, '!==');

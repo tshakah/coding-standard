@@ -2,7 +2,9 @@
 
 namespace SlevomatCodingStandard\Sniffs\Classes;
 
-class ClassConstantVisibilitySniffTest extends \SlevomatCodingStandard\Sniffs\TestCase
+use SlevomatCodingStandard\Sniffs\TestCase;
+
+class ClassConstantVisibilitySniffTest extends TestCase
 {
 
 	public function testErrors()
@@ -11,7 +13,7 @@ class ClassConstantVisibilitySniffTest extends \SlevomatCodingStandard\Sniffs\Te
 			'enabled' => true,
 		]);
 
-		self::assertSame(1, $report->getErrorCount());
+		self::assertSame(2, $report->getErrorCount());
 
 		self::assertNoSniffError($report, 7);
 		self::assertNoSniffError($report, 9);
@@ -22,6 +24,13 @@ class ClassConstantVisibilitySniffTest extends \SlevomatCodingStandard\Sniffs\Te
 			6,
 			ClassConstantVisibilitySniff::CODE_MISSING_CONSTANT_VISIBILITY,
 			'Constant \ClassWithConstants::PUBLIC_FOO visibility missing.'
+		);
+
+		self::assertSniffError(
+			$report,
+			23,
+			ClassConstantVisibilitySniff::CODE_MISSING_CONSTANT_VISIBILITY,
+			'Constant class@anonymous::PUBLIC_FOO visibility missing.'
 		);
 	}
 

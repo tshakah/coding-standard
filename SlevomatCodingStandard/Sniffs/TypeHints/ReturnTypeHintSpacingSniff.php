@@ -2,10 +2,21 @@
 
 namespace SlevomatCodingStandard\Sniffs\TypeHints;
 
+use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Sniffs\Sniff;
+use SlevomatCodingStandard\Helpers\FunctionHelper;
 use SlevomatCodingStandard\Helpers\SniffSettingsHelper;
 use SlevomatCodingStandard\Helpers\TokenHelper;
+use const T_CLOSE_PARENTHESIS;
+use const T_CLOSURE;
+use const T_FUNCTION;
+use const T_NULLABLE;
+use const T_WHITESPACE;
+use function array_merge;
+use function sprintf;
+use function str_repeat;
 
-class ReturnTypeHintSpacingSniff implements \PHP_CodeSniffer\Sniffs\Sniff
+class ReturnTypeHintSpacingSniff implements Sniff
 {
 
 	const CODE_NO_SPACE_BETWEEN_COLON_AND_TYPE_HINT = 'NoSpaceBetweenColonAndTypeHint';
@@ -31,21 +42,28 @@ class ReturnTypeHintSpacingSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 	public function register(): array
 	{
 		return [
-			T_RETURN_TYPE,
+			T_FUNCTION,
+			T_CLOSURE,
 		];
 	}
 
 	/**
 	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
 	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
-	 * @param int $typeHintPointer
+	 * @param int $functionPointer
 	 */
-	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $typeHintPointer)
+	public function process(File $phpcsFile, $functionPointer)
 	{
+		$typeHint = FunctionHelper::findReturnTypeHint($phpcsFile, $functionPointer);
+
+		if ($typeHint === null) {
+			return;
+		}
+
 		$tokens = $phpcsFile->getTokens();
 
-		/** @var int $typeHintPointer */
-		$typeHintPointer = TokenHelper::findPreviousExcluding($phpcsFile, [T_NS_SEPARATOR, T_STRING], $typeHintPointer - 1) + 1;
+		$typeHintPointer = $typeHint->getStartPointer();
+
 		/** @var int $colonPointer */
 		$colonPointer = TokenHelper::findPreviousExcluding($phpcsFile, array_merge([T_NULLABLE], TokenHelper::$ineffectiveTokenCodes), $typeHintPointer - 1);
 

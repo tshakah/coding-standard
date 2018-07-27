@@ -174,4 +174,17 @@ CODE;
 		new $this->propertyUsedToCreateNewInstanceWithParentheses();
 	}
 
+	/**
+	 * @AssertX\Whatever()
+	 */
+	private $propertyWithPrefixUnsetAnnotation;
+
+	private const USED_CONSTANT_IN_STRING = false;
+
+	public function usedConstantInString()
+	{
+		echo "{$this->whatever(self::USED_CONSTANT_IN_STRING)}";
+		echo "{$this->whatever(self::USED_CONSTANT_FROM_PARENT_IN_STRING)}";
+	}
+
 }

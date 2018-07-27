@@ -2,9 +2,22 @@
 
 namespace SlevomatCodingStandard\Sniffs\TypeHints;
 
+use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Sniffs\Sniff;
 use SlevomatCodingStandard\Helpers\TokenHelper;
+use const T_BITWISE_AND;
+use const T_CLOSURE;
+use const T_ELLIPSIS;
+use const T_EQUAL;
+use const T_FUNCTION;
+use const T_NULL;
+use const T_NULLABLE;
+use const T_VARIABLE;
+use function array_merge;
+use function in_array;
+use function sprintf;
 
-class NullableTypeForNullDefaultValueSniff implements \PHP_CodeSniffer\Sniffs\Sniff
+class NullableTypeForNullDefaultValueSniff implements Sniff
 {
 
 	const CODE_NULLABILITY_SYMBOL_REQUIRED = 'NullabilitySymbolRequired';
@@ -35,7 +48,7 @@ class NullableTypeForNullDefaultValueSniff implements \PHP_CodeSniffer\Sniffs\Sn
 	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
 	 * @param int $functionPointer
 	 */
-	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $functionPointer)
+	public function process(File $phpcsFile, $functionPointer)
 	{
 		$tokens = $phpcsFile->getTokens();
 		$startPointer = $tokens[$functionPointer]['parenthesis_opener'] + 1;
@@ -63,7 +76,7 @@ class NullableTypeForNullDefaultValueSniff implements \PHP_CodeSniffer\Sniffs\Sn
 
 			if ($typeHintPointer === null || !in_array($tokens[$typeHintPointer]['code'], TokenHelper::$typeHintTokenCodes, true)) {
 				continue;
-			};
+			}
 
 			$ignoreTokensToSkipTypeHint = array_merge(TokenHelper::$ineffectiveTokenCodes, TokenHelper::$typeHintTokenCodes);
 			$beforeTypeHintPointer = TokenHelper::findPreviousExcluding($phpcsFile, $ignoreTokensToSkipTypeHint, $typeHintPointer - 1, $startPointer);

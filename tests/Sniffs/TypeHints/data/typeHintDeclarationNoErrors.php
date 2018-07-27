@@ -650,7 +650,7 @@ abstract class FooClass
 	/**
 	 * @param bool $foo describes something about $anything
 	 */
-	public function parameterHasDescriptionContainingVariable(bool $foo, int $bar) : void
+	public function parameterHasDescriptionContainingVariable(bool $foo, int $bar) 
 	{
 	}
 
@@ -661,5 +661,10 @@ abstract class FooClass
 	{
 
 	}
+
+	/**
+	 * {@inheritdoc}
+	 */
+	public $inheritdoc;
 
 }

@@ -2,10 +2,17 @@
 
 namespace SlevomatCodingStandard\Sniffs\Classes;
 
+use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Sniffs\Sniff;
 use SlevomatCodingStandard\Helpers\ClassHelper;
 use SlevomatCodingStandard\Helpers\TokenHelper;
+use const T_ABSTRACT;
+use const T_CLASS;
+use function sprintf;
+use function strtolower;
+use function substr;
 
-class SuperfluousAbstractClassNamingSniff implements \PHP_CodeSniffer\Sniffs\Sniff
+class SuperfluousAbstractClassNamingSniff implements Sniff
 {
 
 	const CODE_SUPERFLUOUS_PREFIX = 'SuperfluousPrefix';
@@ -26,7 +33,7 @@ class SuperfluousAbstractClassNamingSniff implements \PHP_CodeSniffer\Sniffs\Sni
 	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
 	 * @param int $classPointer
 	 */
-	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $classPointer)
+	public function process(File $phpcsFile, $classPointer)
 	{
 		$className = ClassHelper::getName($phpcsFile, $classPointer);
 
@@ -39,7 +46,7 @@ class SuperfluousAbstractClassNamingSniff implements \PHP_CodeSniffer\Sniffs\Sni
 		$this->checkSuffix($phpcsFile, $classPointer, $className);
 	}
 
-	private function checkPrefix(\PHP_CodeSniffer\Files\File $phpcsFile, int $classPointer, string $className)
+	private function checkPrefix(File $phpcsFile, int $classPointer, string $className)
 	{
 		$prefix = substr($className, 0, 8);
 
@@ -50,7 +57,7 @@ class SuperfluousAbstractClassNamingSniff implements \PHP_CodeSniffer\Sniffs\Sni
 		$phpcsFile->addError(sprintf('Superfluous prefix "%s".', $prefix), $classPointer, self::CODE_SUPERFLUOUS_PREFIX);
 	}
 
-	private function checkSuffix(\PHP_CodeSniffer\Files\File $phpcsFile, int $classPointer, string $className)
+	private function checkSuffix(File $phpcsFile, int $classPointer, string $className)
 	{
 		$suffix = substr($className, -8);
 

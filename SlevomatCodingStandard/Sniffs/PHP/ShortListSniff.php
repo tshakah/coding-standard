@@ -2,9 +2,13 @@
 
 namespace SlevomatCodingStandard\Sniffs\PHP;
 
+use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Sniffs\Sniff;
 use SlevomatCodingStandard\Helpers\TokenHelper;
+use const T_LIST;
+use const T_OPEN_PARENTHESIS;
 
-class ShortListSniff implements \PHP_CodeSniffer\Sniffs\Sniff
+class ShortListSniff implements Sniff
 {
 
 	const CODE_LONG_LIST_USED = 'LongListUsed';
@@ -22,7 +26,7 @@ class ShortListSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
 	 * @param int $pointer
 	 */
-	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $pointer)
+	public function process(File $phpcsFile, $pointer)
 	{
 		$fix = $phpcsFile->addFixableError('list(...) is forbidden, use [...] instead.', $pointer, self::CODE_LONG_LIST_USED);
 

@@ -2,6 +2,9 @@
 
 namespace SlevomatCodingStandard\Helpers;
 
+/**
+ * @internal
+ */
 class ReturnTypeHint
 {
 
@@ -11,13 +14,23 @@ class ReturnTypeHint
 	/** @var bool */
 	private $nullable;
 
+	/** @var int */
+	private $startPointer;
+
+	/** @var int */
+	private $endPointer;
+
 	public function __construct(
 		string $typeHint,
-		bool $nullable
+		bool $nullable,
+		int $startPointer,
+		int $endPointer
 	)
 	{
 		$this->typeHint = $typeHint;
 		$this->nullable = $nullable;
+		$this->startPointer = $startPointer;
+		$this->endPointer = $endPointer;
 	}
 
 	public function getTypeHint(): string
@@ -28,6 +41,16 @@ class ReturnTypeHint
 	public function isNullable(): bool
 	{
 		return $this->nullable;
+	}
+
+	public function getStartPointer(): int
+	{
+		return $this->startPointer;
+	}
+
+	public function getEndPointer(): int
+	{
+		return $this->endPointer;
 	}
 
 }

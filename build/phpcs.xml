@@ -9,14 +9,19 @@
 		<exclude name="Generic.CodeAnalysis.EmptyStatement.DetectedIf"/><!-- Allow empty if statements - usually with a comment -->
 		<exclude name="Generic.CodeAnalysis.EmptyStatement.DetectedElseif"/><!-- Allow empty elseif statements - usually with a comment -->
 		<exclude name="Squiz.Commenting.FunctionComment.IncorrectParamVarName"/><!-- Throws error with short type hint for integer and boolean -->
+		<exclude name="SlevomatCodingStandard.Namespaces.FullyQualifiedExceptions"/>
+		<exclude name="SlevomatCodingStandard.Namespaces.FullyQualifiedClassNameAfterKeyword"/>
 	</rule>
 
 	<rule ref="Generic.Commenting.Todo"/>
 
+	<rule ref="SlevomatCodingStandard.Classes.ModernClassNameReference"/>
 	<rule ref="SlevomatCodingStandard.Classes.SuperfluousAbstractClassNaming">
 		<exclude-pattern>SlevomatCodingStandard/Sniffs/Namespaces/AbstractFullyQualifiedGlobalReference.php</exclude-pattern>
 	</rule>
 	<rule ref="SlevomatCodingStandard.Classes.SuperfluousInterfaceNaming"/>
+	<rule ref="SlevomatCodingStandard.Classes.TraitUseDeclaration"/>
+	<rule ref="SlevomatCodingStandard.Classes.TraitUseSpacing"/>
 	<rule ref="SlevomatCodingStandard.Commenting.DocCommentSpacing"/>
 	<rule ref="SlevomatCodingStandard.Commenting.ForbiddenAnnotations">
 		<properties>
@@ -33,7 +38,6 @@
 	</rule>
 	<rule ref="SlevomatCodingStandard.Commenting.ForbiddenComments"/>
 	<rule ref="SlevomatCodingStandard.ControlStructures.AssignmentInCondition"/>
-	<rule ref="SlevomatCodingStandard.ControlStructures.DisallowEmpty"/>
 	<rule ref="SlevomatCodingStandard.ControlStructures.DisallowEqualOperators"/>
 	<rule ref="SlevomatCodingStandard.ControlStructures.EarlyExit"/>
 	<rule ref="SlevomatCodingStandard.ControlStructures.RequireNullCoalesceOperator"/>
@@ -46,47 +50,36 @@
 			<property name="rootNamespaces" type="array" value="SlevomatCodingStandard=>SlevomatCodingStandard,tests=>SlevomatCodingStandard"/>
 		</properties>
 	</rule>
+	<rule ref="SlevomatCodingStandard.Functions.UnusedInheritedVariablePassedToClosure"/>
+	<rule ref="SlevomatCodingStandard.Functions.UnusedParameter"/>
 	<rule ref="SlevomatCodingStandard.Namespaces.AlphabeticallySortedUses">
 		<properties>
 			<property name="caseSensitive" value="false"/>
 		</properties>
 	</rule>
-	<rule ref="SlevomatCodingStandard.Namespaces.FullyQualifiedClassNameAfterKeyword">
-		<properties>
-			<property name="keywordsToCheck" type="array" value="T_EXTENDS,T_IMPLEMENTS"/>
-		</properties>
-	</rule>
-	<rule ref="SlevomatCodingStandard.Namespaces.NamespaceDeclaration"/>
-	<rule ref="SlevomatCodingStandard.Namespaces.NamespaceSpacing"/>
 	<rule ref="SlevomatCodingStandard.Namespaces.ReferenceUsedNamesOnly">
 		<properties>
-			<property name="namespacesRequiredToUse" type="array" value="SlevomatCodingStandard"/>
-			<property name="fullyQualifiedKeywords" type="array" value="T_EXTENDS,T_IMPLEMENTS"/>
-			<property name="allowFullyQualifiedExceptions" value="true"/>
-			<property name="allowFullyQualifiedGlobalFunctions" value="true"/>
-			<property name="allowFullyQualifiedGlobalConstants" value="true"/>
+			<property name="fullyQualifiedKeywords" type="array" value=""/>
+			<property name="allowFallbackGlobalFunctions" value="false"/>
+			<property name="allowFallbackGlobalConstants" value="false"/>
+			<property name="allowFullyQualifiedExceptions" value="false"/>
+			<property name="allowFullyQualifiedNameForCollidingClasses" value="true"/>
+			<property name="allowFullyQualifiedNameForCollidingFunctions" value="true"/>
+			<property name="allowFullyQualifiedNameForCollidingConstants" value="true"/>
 			<property name="allowPartialUses" value="false"/>
 		</properties>
 	</rule>
-	<rule ref="SlevomatCodingStandard.Namespaces.RequireOneNamespaceInFile"/>
 	<rule ref="SlevomatCodingStandard.Namespaces.UnusedUses">
 		<properties>
 			<property name="searchAnnotations" value="false"/>
 		</properties>
 	</rule>
-	<rule ref="SlevomatCodingStandard.Namespaces.UseOnlyWhitelistedNamespaces">
-		<properties>
-			<property name="namespacesRequiredToUse" type="array" value="SlevomatCodingStandard"/>
-		</properties>
-	</rule>
+	<rule ref="SlevomatCodingStandard.Namespaces.UselessAlias"/>
 	<rule ref="SlevomatCodingStandard.Namespaces.UseSpacing"/>
-	<rule ref="SlevomatCodingStandard.PHP.ShortList"/>
+	<rule ref="SlevomatCodingStandard.PHP.UselessSemicolon"/>
 	<rule ref="SlevomatCodingStandard.TypeHints.TypeHintDeclaration">
 		<properties>
 			<property name="enableObjectTypeHint" value="false"/>
-			<property name="usefulAnnotations" type="array" value="
-				@dataProvider
-			"/>
 		</properties>
 	</rule>
 	<rule ref="SlevomatCodingStandard.TypeHints.DeclareStrictTypes">
@@ -94,4 +87,5 @@
 			<property name="newlinesCountBetweenOpenTagAndDeclare" value="0"/>
 		</properties>
 	</rule>
+	<rule ref="SlevomatCodingStandard.Variables.UnusedVariable"/>
 </ruleset>

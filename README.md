@@ -117,6 +117,14 @@ Sniff provides the following settings:
 * `alwaysUsedPropertiesAnnotations`: mark certain properties as always used, for example the ones with `@ORM\Column`
 * `alwaysUsedPropertiesSuffixes`: mark properties with name ending with a certain string to be always marked as used
 
+#### SlevomatCodingStandard.Functions.UnusedInheritedVariablePassedToClosure 🔧
+
+Looks for unused inherited variables passed to closure via `use`.  
+
+#### SlevomatCodingStandard.Functions.UnusedParameter 🚧
+
+Looks for unused parameters.
+
 #### SlevomatCodingStandard.Namespaces.UnusedUses 🔧
 
 Looks for unused imports from other namespaces.
@@ -136,6 +144,18 @@ namespace Foo;
 
 use Foo\Bar;
 ```
+
+#### SlevomatCodingStandard.Namespaces.UselessAlias 🔧
+
+Looks for `use` alias that is same as unqualified name.
+
+#### SlevomatCodingStandard.PHP.UselessSemicolon 🔧
+
+Looks for useless semicolons.
+
+#### SlevomatCodingStandard.Variables.UnusedVariable
+
+Looks for unused variables.
 
 #### SlevomatCodingStandard.Exceptions.DeadCatch
 
@@ -159,6 +179,11 @@ Commas after last element in an array make adding a new element easier and resul
 
 This sniff enforces trailing commas in multi-line arrays and requires short array syntax `[]`.
 
+#### SlevomatCodingStandard.Classes.ModernClassNameReferenceSniff 🔧
+
+Reports use of `__CLASS__`, `get_parent_class()`, `get_called_class()`, `get_class()` and `get_class($this)`.
+Class names should be referenced via `::class` contant when possible. 
+
 #### SlevomatCodingStandard.Classes.SuperfluousAbstractClassNaming
 
 Reports use of superfluous prefix or suffix "Abstract" for abstract classes.
@@ -170,6 +195,20 @@ Reports use of superfluous prefix or suffix "Interface" for interfaces.
 #### SlevomatCodingStandard.Classes.SuperfluousExceptionNaming
 
 Reports use of superfluous suffix "Exception" for exceptions.
+
+#### SlevomatCodingStandard.Classes.TraitUseDeclaration 🔧
+
+Prohibits multiple traits separated by commas in one `use` statement.
+
+#### SlevomatCodingStandard.Classes.TraitUseSpacing 🔧
+
+Enforces configurable number of lines before first `use`, after last `use` and between two `use` statements.
+
+Sniff provides the following settings:
+
+* `linesCountBeforeFirstUse`: allows to configure the number of lines before first `use`.
+* `linesCountBetweenUses`: allows to configure the number of lines between two `use` statements.
+* `linesCountAfterLastUse`: allows to configure the number of lines after last `use`.
 
 #### SlevomatCodingStandard.ControlStructures.LanguageConstructWithParentheses 🔧
 

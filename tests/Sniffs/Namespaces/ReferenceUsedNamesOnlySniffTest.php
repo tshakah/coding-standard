@@ -2,7 +2,9 @@
 
 namespace SlevomatCodingStandard\Sniffs\Namespaces;
 
-class ReferenceUsedNamesOnlySniffTest extends \SlevomatCodingStandard\Sniffs\TestCase
+use SlevomatCodingStandard\Sniffs\TestCase;
+
+class ReferenceUsedNamesOnlySniffTest extends TestCase
 {
 
 	/**
@@ -579,7 +581,7 @@ class ReferenceUsedNamesOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 
 	public function testThrowExceptionForUndefinedKeyword()
 	{
-		$this->expectException(\SlevomatCodingStandard\Sniffs\Namespaces\UndefinedKeywordTokenException::class);
+		$this->expectException(UndefinedKeywordTokenException::class);
 		$this->expectExceptionMessage('Value for keyword token not found, constant "T_FOO" is not defined');
 
 		self::checkFile(
@@ -731,6 +733,22 @@ class ReferenceUsedNamesOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 		self::assertSniffError($report, 9, ReferenceUsedNamesOnlySniff::CODE_REFERENCE_VIA_FULLY_QUALIFIED_NAME);
 		self::assertSniffError($report, 12, ReferenceUsedNamesOnlySniff::CODE_REFERENCE_VIA_FULLY_QUALIFIED_NAME);
 		self::assertSniffError($report, 14, ReferenceUsedNamesOnlySniff::CODE_REFERENCE_VIA_FULLY_QUALIFIED_NAME);
+	}
+
+	public function testFixableWhenCollidingClassNames()
+	{
+		$report = self::checkFile(
+			__DIR__ . '/data/fixableWhenCollidingClassNames.php',
+			[
+				'searchAnnotations' => true,
+				'allowFullyQualifiedNameForCollidingClasses' => true,
+				'allowFullyQualifiedGlobalClasses' => true,
+				'allowFullyQualifiedGlobalFunctions' => true,
+				'allowFullyQualifiedGlobalConstants' => true,
+			]
+		);
+
+		self::assertAllFixedInFile($report);
 	}
 
 	public function testCollidingClassNameExtendsAllowed()

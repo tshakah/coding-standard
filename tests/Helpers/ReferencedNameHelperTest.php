@@ -2,7 +2,11 @@
 
 namespace SlevomatCodingStandard\Helpers;
 
-class ReferencedNameHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
+use const T_NS_SEPARATOR;
+use const T_STRING;
+use function count;
+
+class ReferencedNameHelperTest extends TestCase
 {
 
 	public function testGetAllReferencedNames()
@@ -46,6 +50,7 @@ class ReferencedNameHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 			['SomeTrait', false, false],
 			['OPENSSL_ALGO_SHA256', false, true],
 			['OPENSSL_ALGO_SHA512', false, true],
+			['SomeTrait', false, false],
 		];
 
 		$names = ReferencedNameHelper::getAllReferencedNames($codeSnifferFile, 0);

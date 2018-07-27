@@ -2,7 +2,11 @@
 
 namespace SlevomatCodingStandard\Sniffs\ControlStructures;
 
-class DisallowEmptySniff implements \PHP_CodeSniffer\Sniffs\Sniff
+use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Sniffs\Sniff;
+use const T_EMPTY;
+
+class DisallowEmptySniff implements Sniff
 {
 
 	const CODE_DISALLOWED_EMPTY = 'DisallowedEmpty';
@@ -22,7 +26,7 @@ class DisallowEmptySniff implements \PHP_CodeSniffer\Sniffs\Sniff
 	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
 	 * @param int $emptyPointer
 	 */
-	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $emptyPointer)
+	public function process(File $phpcsFile, $emptyPointer)
 	{
 		$phpcsFile->addError('Use of empty() is disallowed.', $emptyPointer, self::CODE_DISALLOWED_EMPTY);
 	}

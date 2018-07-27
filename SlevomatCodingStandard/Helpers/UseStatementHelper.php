@@ -2,13 +2,26 @@
 
 namespace SlevomatCodingStandard\Helpers;
 
+use PHP_CodeSniffer\Files\File;
+use const T_ANON_CLASS;
+use const T_AS;
+use const T_COMMA;
+use const T_OPEN_PARENTHESIS;
+use const T_SEMICOLON;
+use const T_STRING;
+use const T_USE;
+use function array_key_exists;
+use function array_merge;
+use function in_array;
+use function sprintf;
+
 class UseStatementHelper
 {
 
 	/** @var \SlevomatCodingStandard\Helpers\UseStatement[][] Cached data for method getUseStatements() */
 	private static $allUseStatements = [];
 
-	public static function isAnonymousFunctionUse(\PHP_CodeSniffer\Files\File $phpcsFile, int $usePointer): bool
+	public static function isAnonymousFunctionUse(File $phpcsFile, int $usePointer): bool
 	{
 		$tokens = $phpcsFile->getTokens();
 		$nextPointer = TokenHelper::findNextEffective($phpcsFile, $usePointer + 1);
@@ -17,7 +30,7 @@ class UseStatementHelper
 		return $nextToken['code'] === T_OPEN_PARENTHESIS;
 	}
 
-	public static function isTraitUse(\PHP_CodeSniffer\Files\File $phpcsFile, int $usePointer): bool
+	public static function isTraitUse(File $phpcsFile, int $usePointer): bool
 	{
 		$typePointer = TokenHelper::findPrevious($phpcsFile, array_merge(TokenHelper::$typeKeywordTokenCodes, [T_ANON_CLASS]), $usePointer);
 		if ($typePointer !== null) {
@@ -33,20 +46,31 @@ class UseStatementHelper
 		return false;
 	}
 
-	public static function getNameAsReferencedInClassFromUse(\PHP_CodeSniffer\Files\File $phpcsFile, int $usePointer): string
+	public static function getAlias(File $phpcsFile, int $usePointer): ?string
 	{
 		$endPointer = TokenHelper::findNext($phpcsFile, [T_SEMICOLON, T_COMMA], $usePointer + 1);
 		$asPointer = TokenHelper::findNext($phpcsFile, T_AS, $usePointer + 1, $endPointer);
-		if ($asPointer !== null) {
-			$tokens = $phpcsFile->getTokens();
-			return $tokens[TokenHelper::findNext($phpcsFile, T_STRING, $asPointer + 1)]['content'];
-		}
-		$name = self::getFullyQualifiedTypeNameFromUse($phpcsFile, $usePointer);
 
+		if ($asPointer === null) {
+			return null;
+		}
+
+		$tokens = $phpcsFile->getTokens();
+		return $tokens[TokenHelper::findNext($phpcsFile, T_STRING, $asPointer + 1)]['content'];
+	}
+
+	public static function getNameAsReferencedInClassFromUse(File $phpcsFile, int $usePointer): string
+	{
+		$alias = self::getAlias($phpcsFile, $usePointer);
+		if ($alias !== null) {
+			return $alias;
+		}
+
+		$name = self::getFullyQualifiedTypeNameFromUse($phpcsFile, $usePointer);
 		return NamespaceHelper::getUnqualifiedNameFromFullyQualifiedName($name);
 	}
 
-	public static function getFullyQualifiedTypeNameFromUse(\PHP_CodeSniffer\Files\File $phpcsFile, int $usePointer): string
+	public static function getFullyQualifiedTypeNameFromUse(File $phpcsFile, int $usePointer): string
 	{
 		$tokens = $phpcsFile->getTokens();
 
@@ -66,7 +90,7 @@ class UseStatementHelper
 	 * @param int $openTagPointer
 	 * @return \SlevomatCodingStandard\Helpers\UseStatement[] canonicalName(string) => useStatement(\SlevomatCodingStandard\Helpers\UseStatement)
 	 */
-	public static function getUseStatements(\PHP_CodeSniffer\Files\File $phpcsFile, int $openTagPointer): array
+	public static function getUseStatements(File $phpcsFile, int $openTagPointer): array
 	{
 		$cacheKey = sprintf('%s-%s', $phpcsFile->getFilename(), $openTagPointer);
 
@@ -96,7 +120,8 @@ class UseStatementHelper
 					$name,
 					self::getFullyQualifiedTypeNameFromUse($phpcsFile, $usePointer),
 					$usePointer,
-					$type
+					$type,
+					self::getAlias($phpcsFile, $usePointer)
 				);
 				$useStatements[UseStatement::getUniqueId($type, $name)] = $useStatement;
 			}
@@ -114,7 +139,7 @@ class UseStatementHelper
 	 * @param int $openTagPointer
 	 * @return int[]
 	 */
-	private static function getUseStatementPointers(\PHP_CodeSniffer\Files\File $phpcsFile, int $openTagPointer): array
+	private static function getUseStatementPointers(File $phpcsFile, int $openTagPointer): array
 	{
 		$tokens = $phpcsFile->getTokens();
 		$pointer = $openTagPointer + 1;

@@ -2,6 +2,12 @@
 
 namespace SlevomatCodingStandard\Helpers;
 
+use function sprintf;
+use function strtolower;
+
+/**
+ * @internal
+ */
 class UseStatement
 {
 
@@ -24,11 +30,15 @@ class UseStatement
 	/** @var string */
 	private $type;
 
+	/** @var string|null */
+	private $alias;
+
 	public function __construct(
 		string $nameAsReferencedInFile,
 		string $fullyQualifiedClassName,
 		int $usePointer,
-		string $type
+		string $type,
+		?string $alias
 	)
 	{
 		$this->nameAsReferencedInFile = $nameAsReferencedInFile;
@@ -36,6 +46,7 @@ class UseStatement
 		$this->fullyQualifiedTypeName = $fullyQualifiedClassName;
 		$this->usePointer = $usePointer;
 		$this->type = $type;
+		$this->alias = $alias;
 	}
 
 	public static function getUniqueId(string $type, string $name): string
@@ -81,6 +92,11 @@ class UseStatement
 	public function getType(): string
 	{
 		return $this->type;
+	}
+
+	public function getAlias(): ?string
+	{
+		return $this->alias;
 	}
 
 	public function isConstant(): bool
