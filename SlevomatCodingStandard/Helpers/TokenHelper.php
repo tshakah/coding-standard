@@ -238,7 +238,7 @@ class TokenHelper
 	 * @param int|null $endPointer
 	 * @return int|null
 	 */
-	public static function findPreviousContent(File $phpcsFile, $types, string $content, int $startPointer, ?int $endPointer = null): ?int
+	public static function findPreviousContent(File $phpcsFile, $types, string $content, int $startPointer, int $endPointer = null)
 	{
 		/** @var int|false $token */
 		$token = $phpcsFile->findPrevious($types, $startPointer, $endPointer, false, $content);

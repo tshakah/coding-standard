@@ -38,7 +38,7 @@ class UseStatement
 		string $fullyQualifiedClassName,
 		int $usePointer,
 		string $type,
-		?string $alias
+		string $alias = null
 	)
 	{
 		$this->nameAsReferencedInFile = $nameAsReferencedInFile;
@@ -94,7 +94,7 @@ class UseStatement
 		return $this->type;
 	}
 
-	public function getAlias(): ?string
+	public function getAlias()
 	{
 		return $this->alias;
 	}

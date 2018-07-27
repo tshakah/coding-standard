@@ -46,7 +46,7 @@ class UseStatementHelper
 		return false;
 	}
 
-	public static function getAlias(File $phpcsFile, int $usePointer): ?string
+	public static function getAlias(File $phpcsFile, int $usePointer)
 	{
 		$endPointer = TokenHelper::findNext($phpcsFile, [T_SEMICOLON, T_COMMA], $usePointer + 1);
 		$asPointer = TokenHelper::findNext($phpcsFile, T_AS, $usePointer + 1, $endPointer);
