@@ -1,6 +1,6 @@
 <?php
 
-function func(): void
+function func()
 {
 	return;
 }
@@ -27,9 +27,9 @@ abstract class VoidClass
 
 	}
 
-	abstract public function abstractMethod(): void;
+	abstract public function abstractMethod();
 
-	public function method(): void
+	public function method()
 	{
 		return;
 	}
@@ -44,15 +44,15 @@ abstract class VoidClass
 
 }
 
-function (): void {
+function () {
 
 };
 
-function (): void {
+function () {
 	return;
 };
 
-function (): void {
+function () {
 	function (): bool {
 		return true;
 	};

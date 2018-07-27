@@ -15,15 +15,15 @@ use SlevomatCodingStandard\Helpers\UseStatementHelper;
 class UnusedPrivateElementsSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 {
 
-	private const NAME = 'SlevomatCodingStandard.Classes.UnusedPrivateElements';
+	const NAME = 'SlevomatCodingStandard.Classes.UnusedPrivateElements';
 
-	public const CODE_UNUSED_PROPERTY = 'UnusedProperty';
+	const CODE_UNUSED_PROPERTY = 'UnusedProperty';
 
-	public const CODE_WRITE_ONLY_PROPERTY = 'WriteOnlyProperty';
+	const CODE_WRITE_ONLY_PROPERTY = 'WriteOnlyProperty';
 
-	public const CODE_UNUSED_METHOD = 'UnusedMethod';
+	const CODE_UNUSED_METHOD = 'UnusedMethod';
 
-	public const CODE_UNUSED_CONSTANT = 'UnusedConstant';
+	const CODE_UNUSED_CONSTANT = 'UnusedConstant';
 
 	/** @var string[] */
 	public $alwaysUsedPropertiesAnnotations = [];
@@ -81,7 +81,7 @@ class UnusedPrivateElementsSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
 	 * @param int $classPointer
 	 */
-	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $classPointer): void
+	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $classPointer)
 	{
 		$tokens = $phpcsFile->getTokens();
 		$classToken = $tokens[$classPointer];
@@ -124,7 +124,7 @@ class UnusedPrivateElementsSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 			return false;
 		};
 
-		$checkPropertyUsage = function (int $propertyNameTokenPointer, int $thisOrSelfTokenPointer) use ($phpcsFile, $tokens, &$reportedProperties, &$writeOnlyProperties): void {
+		$checkPropertyUsage = function (int $propertyNameTokenPointer, int $thisOrSelfTokenPointer) use ($phpcsFile, $tokens, &$reportedProperties, &$writeOnlyProperties) {
 			$propertyName = $this->getNormalizedPropertyName($tokens[$propertyNameTokenPointer]['content']);
 
 			$possibleNewTokenPointer = TokenHelper::findPreviousEffective($phpcsFile, $thisOrSelfTokenPointer - 1);
@@ -497,7 +497,7 @@ class UnusedPrivateElementsSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 	 * @param int $methodTokenPointer
 	 * @return int|null
 	 */
-	private function findVisibilityModifierTokenPointer(\PHP_CodeSniffer\Files\File $phpcsFile, array $tokens, int $methodTokenPointer): ?int
+	private function findVisibilityModifierTokenPointer(\PHP_CodeSniffer\Files\File $phpcsFile, array $tokens, int $methodTokenPointer)
 	{
 		/** @var int $visibilityModifiedTokenPointer */
 		$visibilityModifiedTokenPointer = TokenHelper::findPreviousEffective($phpcsFile, $methodTokenPointer - 1);

@@ -5,25 +5,25 @@ namespace SlevomatCodingStandard\Sniffs\Namespaces;
 class NamespaceSpacingSniffTest extends \SlevomatCodingStandard\Sniffs\TestCase
 {
 
-	public function testNoNamespaceNoErrors(): void
+	public function testNoNamespaceNoErrors()
 	{
 		$report = self::checkFile(__DIR__ . '/data/namespaceSpacingNoNamespace.php');
 		self::assertNoSniffErrorInFile($report);
 	}
 
-	public function testNamespaceWithCurlyBraces(): void
+	public function testNamespaceWithCurlyBraces()
 	{
 		$report = self::checkFile(__DIR__ . '/data/namespaceSpacingNamespaceWithCurlyBraces.php');
 		self::assertNoSniffErrorInFile($report);
 	}
 
-	public function testDefaultSettingsNoErrors(): void
+	public function testDefaultSettingsNoErrors()
 	{
 		$report = self::checkFile(__DIR__ . '/data/namespaceSpacingWithDefaultSettingsNoErrors.php');
 		self::assertNoSniffErrorInFile($report);
 	}
 
-	public function testDefaultSettingsErrors(): void
+	public function testDefaultSettingsErrors()
 	{
 		$report = self::checkFile(__DIR__ . '/data/namespaceSpacingWithDefaultSettingsErrors.php');
 
@@ -35,13 +35,13 @@ class NamespaceSpacingSniffTest extends \SlevomatCodingStandard\Sniffs\TestCase
 		self::assertAllFixedInFile($report);
 	}
 
-	public function testAfterOpenTagNoErrors(): void
+	public function testAfterOpenTagNoErrors()
 	{
 		$report = self::checkFile(__DIR__ . '/data/namespaceSpacingAfterOpenTagNoErrors.php');
 		self::assertNoSniffErrorInFile($report);
 	}
 
-	public function testAfterOpenTagErrors(): void
+	public function testAfterOpenTagErrors()
 	{
 		$report = self::checkFile(__DIR__ . '/data/namespaceSpacingAfterOpenTagErrors.php');
 
@@ -52,7 +52,7 @@ class NamespaceSpacingSniffTest extends \SlevomatCodingStandard\Sniffs\TestCase
 		self::assertAllFixedInFile($report);
 	}
 
-	public function testModifiedSettingsNoErrors(): void
+	public function testModifiedSettingsNoErrors()
 	{
 		$report = self::checkFile(__DIR__ . '/data/namespaceSpacingWithModifiedSettingsNoErrors.php', [
 			'linesCountBeforeNamespace' => 0,
@@ -61,7 +61,7 @@ class NamespaceSpacingSniffTest extends \SlevomatCodingStandard\Sniffs\TestCase
 		self::assertNoSniffErrorInFile($report);
 	}
 
-	public function testModifiedSettingsErrors(): void
+	public function testModifiedSettingsErrors()
 	{
 		$report = self::checkFile(__DIR__ . '/data/namespaceSpacingWithModifiedSettingsErrors.php', [
 			'linesCountBeforeNamespace' => 0,
@@ -76,7 +76,7 @@ class NamespaceSpacingSniffTest extends \SlevomatCodingStandard\Sniffs\TestCase
 		self::assertAllFixedInFile($report);
 	}
 
-	public function testNoLineBeforeNamespace(): void
+	public function testNoLineBeforeNamespace()
 	{
 		$report = self::checkFile(__DIR__ . '/data/namespaceSpacingNoLineBeforeNamespace.php');
 
@@ -85,7 +85,7 @@ class NamespaceSpacingSniffTest extends \SlevomatCodingStandard\Sniffs\TestCase
 		self::assertSniffError($report, 3, NamespaceSpacingSniff::CODE_INCORRECT_LINES_COUNT_BEFORE_NAMESPACE);
 	}
 
-	public function testNoLineAfterNamespace(): void
+	public function testNoLineAfterNamespace()
 	{
 		$report = self::checkFile(__DIR__ . '/data/namespaceSpacingNoLineAfterNamespace.php');
 
@@ -94,7 +94,7 @@ class NamespaceSpacingSniffTest extends \SlevomatCodingStandard\Sniffs\TestCase
 		self::assertSniffError($report, 3, NamespaceSpacingSniff::CODE_INCORRECT_LINES_COUNT_AFTER_NAMESPACE);
 	}
 
-	public function testNoCodeAfterNamespace(): void
+	public function testNoCodeAfterNamespace()
 	{
 		$report = self::checkFile(__DIR__ . '/data/namespaceSpacingNoCodeAfterNamespace.php');
 		self::assertNoSniffErrorInFile($report);

@@ -5,9 +5,9 @@ namespace SlevomatCodingStandard\Helpers;
 class UseStatement
 {
 
-	public const TYPE_DEFAULT = ReferencedName::TYPE_DEFAULT;
-	public const TYPE_FUNCTION = ReferencedName::TYPE_FUNCTION;
-	public const TYPE_CONSTANT = ReferencedName::TYPE_CONSTANT;
+	const TYPE_DEFAULT = ReferencedName::TYPE_DEFAULT;
+	const TYPE_FUNCTION = ReferencedName::TYPE_FUNCTION;
+	const TYPE_CONSTANT = ReferencedName::TYPE_CONSTANT;
 
 	/** @var string */
 	private $nameAsReferencedInFile;
@@ -98,7 +98,7 @@ class UseStatement
 		return $this->type === $that->type;
 	}
 
-	public static function getTypeName(string $type): ?string
+	public static function getTypeName(string $type)
 	{
 		if ($type === self::TYPE_CONSTANT) {
 			return 'const';

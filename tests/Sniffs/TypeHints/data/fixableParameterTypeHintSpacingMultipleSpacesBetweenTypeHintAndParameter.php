@@ -1,6 +1,6 @@
 <?php
 
-$a = function (?bool   $a, ?string    &$b, ?int   ...$c)
+$a = function ($a, &$b, ...$c)
 {
 
 };

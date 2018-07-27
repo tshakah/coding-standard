@@ -6,7 +6,7 @@ namespace FooNamespace;
  * @param string $a
  * @return void
  */
-function useless(string $a): void
+function useless(string $a)
 {
 
 }
@@ -57,7 +57,7 @@ function usefulWithReturnDescription(): string
  * @param int    $b
  * @return void
  */
-function uselessAlignedParameters(string $a, int $b): void
+function uselessAlignedParameters(string $a, int $b)
 {
 
 }
@@ -96,7 +96,7 @@ abstract class FooClass
 	 * @param string $a
 	 * @return string|null
 	 */
-	abstract public function abstractMethod(string $a): ?string;
+	abstract public function abstractMethod(string $a)
 
 	/**
 	 * @param callable $a

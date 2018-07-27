@@ -21,7 +21,7 @@ class FullyQualifiedExceptionsSniffWithSpecialNamesTest extends \SlevomatCodingS
 		);
 	}
 
-	public function testThrowingUsedException(): void
+	public function testThrowingUsedException()
 	{
 		self::assertSniffError(
 			$this->getFileReport(),
@@ -31,7 +31,7 @@ class FullyQualifiedExceptionsSniffWithSpecialNamesTest extends \SlevomatCodingS
 		);
 	}
 
-	public function testCatchingPartiallyUsedException(): void
+	public function testCatchingPartiallyUsedException()
 	{
 		self::assertSniffError(
 			$this->getFileReport(),
@@ -41,7 +41,7 @@ class FullyQualifiedExceptionsSniffWithSpecialNamesTest extends \SlevomatCodingS
 		);
 	}
 
-	public function testThrowingExceptionFromSameNamespace(): void
+	public function testThrowingExceptionFromSameNamespace()
 	{
 		self::assertSniffError(
 			$this->getFileReport(),
@@ -51,13 +51,13 @@ class FullyQualifiedExceptionsSniffWithSpecialNamesTest extends \SlevomatCodingS
 		);
 	}
 
-	public function testCatchingFullyQualifiedException(): void
+	public function testCatchingFullyQualifiedException()
 	{
 		self::assertNoSniffError($this->getFileReport(), 15);
 	}
 
 
-	public function testCatchingFullyQualifiedExceptionFromSameNamespace(): void
+	public function testCatchingFullyQualifiedExceptionFromSameNamespace()
 	{
 		self::assertNoSniffError($this->getFileReport(), 17);
 	}

@@ -5,7 +5,7 @@ namespace SlevomatCodingStandard\Sniffs\Exceptions;
 class ReferenceThrowableOnlySniffTest extends \SlevomatCodingStandard\Sniffs\TestCase
 {
 
-	public function testExceptionReferences(): void
+	public function testExceptionReferences()
 	{
 		$report = self::checkFile(__DIR__ . '/data/exceptionReferences.php');
 		self::assertNoSniffError($report, 5);
@@ -24,7 +24,7 @@ class ReferenceThrowableOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 		self::assertSniffError($report, 37, ReferenceThrowableOnlySniff::CODE_REFERENCED_GENERAL_EXCEPTION);
 	}
 
-	public function testExceptionReferencesWithoutNamespace(): void
+	public function testExceptionReferencesWithoutNamespace()
 	{
 		$report = self::checkFile(__DIR__ . '/data/exceptionReferencesWithoutNamespace.php');
 		self::assertNoSniffError($report, 3);
@@ -41,7 +41,7 @@ class ReferenceThrowableOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 		self::assertSniffError($report, 32, ReferenceThrowableOnlySniff::CODE_REFERENCED_GENERAL_EXCEPTION);
 	}
 
-	public function testExceptionReferencesUnionTypes71(): void
+	public function testExceptionReferencesUnionTypes71()
 	{
 		$report = self::checkFile(__DIR__ . '/data/exceptionReferences71.php');
 		self::assertNoSniffError($report, 5);
@@ -54,25 +54,25 @@ class ReferenceThrowableOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 		self::assertSniffError($report, 27, ReferenceThrowableOnlySniff::CODE_REFERENCED_GENERAL_EXCEPTION);
 	}
 
-	public function testFixableExceptionReference(): void
+	public function testFixableExceptionReference()
 	{
 		$report = self::checkFile(__DIR__ . '/data/fixableExceptionReference.php', [], [ReferenceThrowableOnlySniff::CODE_REFERENCED_GENERAL_EXCEPTION]);
 		self::assertAllFixedInFile($report);
 	}
 
-	public function testFixableExceptionReferenceWithoutNamespace(): void
+	public function testFixableExceptionReferenceWithoutNamespace()
 	{
 		$report = self::checkFile(__DIR__ . '/data/fixableExceptionReferenceWithoutNamespace.php', [], [ReferenceThrowableOnlySniff::CODE_REFERENCED_GENERAL_EXCEPTION]);
 		self::assertAllFixedInFile($report);
 	}
 
-	public function testFixableExceptionReference71(): void
+	public function testFixableExceptionReference71()
 	{
 		$report = self::checkFile(__DIR__ . '/data/fixableExceptionReference71.php', [], [ReferenceThrowableOnlySniff::CODE_REFERENCED_GENERAL_EXCEPTION]);
 		self::assertAllFixedInFile($report);
 	}
 
-	public function testFixableExceptionReferenceWithoutNamespace71(): void
+	public function testFixableExceptionReferenceWithoutNamespace71()
 	{
 		$report = self::checkFile(__DIR__ . '/data/fixableExceptionReferenceWithoutNamespace71.php', [], [ReferenceThrowableOnlySniff::CODE_REFERENCED_GENERAL_EXCEPTION]);
 		self::assertAllFixedInFile($report);

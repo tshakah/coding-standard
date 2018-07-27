@@ -5,13 +5,13 @@ namespace SlevomatCodingStandard\Sniffs\Commenting;
 class InlineDocCommentDeclarationSniffTest extends \SlevomatCodingStandard\Sniffs\TestCase
 {
 
-	public function testNoInvalidInlineDocCommentDeclarations(): void
+	public function testNoInvalidInlineDocCommentDeclarations()
 	{
 		$report = self::checkFile(__DIR__ . '/data/noInvalidInlineDocCommentDeclarations.php');
 		self::assertNoSniffErrorInFile($report);
 	}
 
-	public function testInvalidInlineDocCommentDeclarations(): void
+	public function testInvalidInlineDocCommentDeclarations()
 	{
 		$report = self::checkFile(__DIR__ . '/data/invalidInlineDocCommentDeclarations.php');
 

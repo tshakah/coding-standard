@@ -5,9 +5,9 @@ namespace SlevomatCodingStandard\Helpers;
 class ReferencedName
 {
 
-	public const TYPE_DEFAULT = 'default';
-	public const TYPE_FUNCTION = 'function';
-	public const TYPE_CONSTANT = 'constant';
+	const TYPE_DEFAULT = 'default';
+	const TYPE_FUNCTION = 'function';
+	const TYPE_CONSTANT = 'constant';
 
 	/** @var string */
 	private $nameAsReferencedInFile;

@@ -7,7 +7,7 @@ use SlevomatCodingStandard\Helpers\TokenHelper;
 class NullableTypeForNullDefaultValueSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 {
 
-	public const CODE_NULLABILITY_SYMBOL_REQUIRED = 'NullabilitySymbolRequired';
+	const CODE_NULLABILITY_SYMBOL_REQUIRED = 'NullabilitySymbolRequired';
 
 	/**
 	 * @deprecated
@@ -35,7 +35,7 @@ class NullableTypeForNullDefaultValueSniff implements \PHP_CodeSniffer\Sniffs\Sn
 	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
 	 * @param int $functionPointer
 	 */
-	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $functionPointer): void
+	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $functionPointer)
 	{
 		$tokens = $phpcsFile->getTokens();
 		$startPointer = $tokens[$functionPointer]['parenthesis_opener'] + 1;

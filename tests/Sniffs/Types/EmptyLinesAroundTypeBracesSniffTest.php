@@ -5,12 +5,12 @@ namespace SlevomatCodingStandard\Sniffs\Types;
 class EmptyLinesAroundTypeBracesSniffTest extends \SlevomatCodingStandard\Sniffs\TestCase
 {
 
-	public function testCorrectCorrectEmptyLines(): void
+	public function testCorrectCorrectEmptyLines()
 	{
 		self::assertNoSniffErrorInFile(self::checkFile(__DIR__ . '/data/correctEmptyLines.php'));
 	}
 
-	public function testNoEmptyLineAfterOpeningBrace(): void
+	public function testNoEmptyLineAfterOpeningBrace()
 	{
 		$report = self::checkFile(__DIR__ . '/data/noEmptyLineAfterOpeningBrace.php', [], [EmptyLinesAroundTypeBracesSniff::CODE_NO_EMPTY_LINE_AFTER_OPENING_BRACE]);
 
@@ -21,7 +21,7 @@ class EmptyLinesAroundTypeBracesSniffTest extends \SlevomatCodingStandard\Sniffs
 		self::assertAllFixedInFile($report);
 	}
 
-	public function testMultipleEmptyLinesAfterOpeningBrace(): void
+	public function testMultipleEmptyLinesAfterOpeningBrace()
 	{
 		$report = self::checkFile(__DIR__ . '/data/multipleEmptyLinesAfterOpeningBrace.php', [], [EmptyLinesAroundTypeBracesSniff::CODE_MULTIPLE_EMPTY_LINES_AFTER_OPENING_BRACE]);
 
@@ -32,7 +32,7 @@ class EmptyLinesAroundTypeBracesSniffTest extends \SlevomatCodingStandard\Sniffs
 		self::assertAllFixedInFile($report);
 	}
 
-	public function testNoEmptyLineBeforeClosingBrace(): void
+	public function testNoEmptyLineBeforeClosingBrace()
 	{
 		$report = self::checkFile(__DIR__ . '/data/noEmptyLineBeforeClosingBrace.php', [], [EmptyLinesAroundTypeBracesSniff::CODE_NO_EMPTY_LINE_BEFORE_CLOSING_BRACE]);
 
@@ -43,7 +43,7 @@ class EmptyLinesAroundTypeBracesSniffTest extends \SlevomatCodingStandard\Sniffs
 		self::assertAllFixedInFile($report);
 	}
 
-	public function testMultipleEmptyLinesBeforeClosingBrace(): void
+	public function testMultipleEmptyLinesBeforeClosingBrace()
 	{
 		$report = self::checkFile(__DIR__ . '/data/multipleEmptyLinesBeforeClosingBrace.php', [], [EmptyLinesAroundTypeBracesSniff::CODE_MULTIPLE_EMPTY_LINES_BEFORE_CLOSING_BRACE]);
 
@@ -54,7 +54,7 @@ class EmptyLinesAroundTypeBracesSniffTest extends \SlevomatCodingStandard\Sniffs
 		self::assertAllFixedInFile($report);
 	}
 
-	public function testCorrectCorrectEmptyLinesWithZeroLines(): void
+	public function testCorrectCorrectEmptyLinesWithZeroLines()
 	{
 		$report = self::checkFile(__DIR__ . '/data/correctEmptyLinesZeroLines.php', [
 			'linesCountAfterOpeningBrace' => 0,
@@ -64,7 +64,7 @@ class EmptyLinesAroundTypeBracesSniffTest extends \SlevomatCodingStandard\Sniffs
 		self::assertNoSniffErrorInFile($report);
 	}
 
-	public function testOneLineAfterOpeningBraceWithZeroExpected(): void
+	public function testOneLineAfterOpeningBraceWithZeroExpected()
 	{
 		$report = self::checkFile(
 			__DIR__ . '/data/oneEmptyLineAfterOpeningBraceWithZeroExpected.php',
@@ -79,7 +79,7 @@ class EmptyLinesAroundTypeBracesSniffTest extends \SlevomatCodingStandard\Sniffs
 		self::assertAllFixedInFile($report);
 	}
 
-	public function testOneLineBeforeClosingBraceWithZeroExpected(): void
+	public function testOneLineBeforeClosingBraceWithZeroExpected()
 	{
 		$report = self::checkFile(
 			__DIR__ . '/data/oneEmptyLineBeforeClosingBraceWithZeroExpected.php',
@@ -94,7 +94,7 @@ class EmptyLinesAroundTypeBracesSniffTest extends \SlevomatCodingStandard\Sniffs
 		self::assertAllFixedInFile($report);
 	}
 
-	public function testCorrectCorrectEmptyLinesWithTwoLines(): void
+	public function testCorrectCorrectEmptyLinesWithTwoLines()
 	{
 		$report = self::checkFile(__DIR__ . '/data/correctEmptyLinesTwoLines.php', [
 			'linesCountAfterOpeningBrace' => 2,
@@ -104,7 +104,7 @@ class EmptyLinesAroundTypeBracesSniffTest extends \SlevomatCodingStandard\Sniffs
 		self::assertNoSniffErrorInFile($report);
 	}
 
-	public function testOneLineAfterOpeningBraceWithTwoExpected(): void
+	public function testOneLineAfterOpeningBraceWithTwoExpected()
 	{
 		$report = self::checkFile(
 			__DIR__ . '/data/oneEmptyLineAfterOpeningBraceWithTwoExpected.php',
@@ -119,7 +119,7 @@ class EmptyLinesAroundTypeBracesSniffTest extends \SlevomatCodingStandard\Sniffs
 		self::assertAllFixedInFile($report);
 	}
 
-	public function testOneLineBeforeClosingBraceWithTwoExpected(): void
+	public function testOneLineBeforeClosingBraceWithTwoExpected()
 	{
 		$report = self::checkFile(
 			__DIR__ . '/data/oneEmptyLineBeforeClosingBraceWithTwoExpected.php',

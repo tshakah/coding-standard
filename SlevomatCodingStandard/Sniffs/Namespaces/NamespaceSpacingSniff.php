@@ -8,8 +8,8 @@ use SlevomatCodingStandard\Helpers\TokenHelper;
 class NamespaceSpacingSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 {
 
-	public const CODE_INCORRECT_LINES_COUNT_BEFORE_NAMESPACE = 'IncorrectLinesCountBeforeNamespace';
-	public const CODE_INCORRECT_LINES_COUNT_AFTER_NAMESPACE = 'IncorrectLinesCountAfterNamespace';
+	const CODE_INCORRECT_LINES_COUNT_BEFORE_NAMESPACE = 'IncorrectLinesCountBeforeNamespace';
+	const CODE_INCORRECT_LINES_COUNT_AFTER_NAMESPACE = 'IncorrectLinesCountAfterNamespace';
 
 	/** @var int */
 	public $linesCountBeforeNamespace = 1;
@@ -32,13 +32,13 @@ class NamespaceSpacingSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
 	 * @param int $namespacePointer
 	 */
-	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $namespacePointer): void
+	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $namespacePointer)
 	{
 		$this->checkLinesBeforeNamespace($phpcsFile, $namespacePointer);
 		$this->checkLinesAfterNamespace($phpcsFile, $namespacePointer);
 	}
 
-	private function checkLinesBeforeNamespace(\PHP_CodeSniffer\Files\File $phpcsFile, int $namespacePointer): void
+	private function checkLinesBeforeNamespace(\PHP_CodeSniffer\Files\File $phpcsFile, int $namespacePointer)
 	{
 		$tokens = $phpcsFile->getTokens();
 
@@ -91,7 +91,7 @@ class NamespaceSpacingSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 		$phpcsFile->fixer->endChangeset();
 	}
 
-	private function checkLinesAfterNamespace(\PHP_CodeSniffer\Files\File $phpcsFile, int $namespacePointer): void
+	private function checkLinesAfterNamespace(\PHP_CodeSniffer\Files\File $phpcsFile, int $namespacePointer)
 	{
 		if (array_key_exists('scope_opener', $phpcsFile->getTokens()[$namespacePointer])) {
 			return;

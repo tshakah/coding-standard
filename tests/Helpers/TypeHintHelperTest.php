@@ -36,7 +36,7 @@ class TypeHintHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 	 * @param string $typeHint
 	 * @param bool $isSimple
 	 */
-	public function testIsSimpleTypeHint(string $typeHint, bool $isSimple): void
+	public function testIsSimpleTypeHint(string $typeHint, bool $isSimple)
 	{
 		self::assertSame($isSimple, TypeHintHelper::isSimpleTypeHint($typeHint));
 	}
@@ -60,7 +60,7 @@ class TypeHintHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 	 * @param string $typeHint
 	 * @param bool $isSimple
 	 */
-	public function testIsSimpleIterableTypeHint(string $typeHint, bool $isSimple): void
+	public function testIsSimpleIterableTypeHint(string $typeHint, bool $isSimple)
 	{
 		self::assertSame($isSimple, TypeHintHelper::isSimpleIterableTypeHint($typeHint));
 	}
@@ -92,7 +92,7 @@ class TypeHintHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 	 * @param string $typeHint
 	 * @param bool $isSimple
 	 */
-	public function testIsSimpleUnofficialTypeHint(string $typeHint, bool $isSimple): void
+	public function testIsSimpleUnofficialTypeHint(string $typeHint, bool $isSimple)
 	{
 		self::assertSame($isSimple, TypeHintHelper::isSimpleUnofficialTypeHints($typeHint));
 	}
@@ -118,12 +118,12 @@ class TypeHintHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 	 * @param string $long
 	 * @param string $short
 	 */
-	public function testConvertLongSimpleTypeHintToShort(string $long, string $short): void
+	public function testConvertLongSimpleTypeHintToShort(string $long, string $short)
 	{
 		self::assertSame($short, TypeHintHelper::convertLongSimpleTypeHintToShort($long));
 	}
 
-	public function testFunctionReturnAnnotationWithNamespace(): void
+	public function testFunctionReturnAnnotationWithNamespace()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(__DIR__ . '/data/typeHintWithNamespace.php');
 
@@ -132,7 +132,7 @@ class TypeHintHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertSame('void', TypeHintHelper::getFullyQualifiedTypeHint($codeSnifferFile, $functionPointer, $returnAnnotation->getContent()));
 	}
 
-	public function testFunctionReturnTypeHintWithNamespace(): void
+	public function testFunctionReturnTypeHintWithNamespace()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(__DIR__ . '/data/typeHintWithNamespace.php');
 
@@ -141,7 +141,7 @@ class TypeHintHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertSame('\FooNamespace\FooClass', TypeHintHelper::getFullyQualifiedTypeHint($codeSnifferFile, $functionPointer, $returnTypeHint->getTypeHint()));
 	}
 
-	public function testFunctionParameterAnnotationWithNamespace(): void
+	public function testFunctionParameterAnnotationWithNamespace()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(__DIR__ . '/data/typeHintWithNamespace.php');
 
@@ -151,7 +151,7 @@ class TypeHintHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertSame('\Doctrine\Common\Collections\ArrayCollection', TypeHintHelper::getFullyQualifiedTypeHint($codeSnifferFile, $functionPointer, $parameterTypeHint));
 	}
 
-	public function testFunctionParameterTypeHintWithNamespace(): void
+	public function testFunctionParameterTypeHintWithNamespace()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(__DIR__ . '/data/typeHintWithNamespace.php');
 
@@ -160,7 +160,7 @@ class TypeHintHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertSame('\Doctrine\Common\Collections\ArrayCollection', TypeHintHelper::getFullyQualifiedTypeHint($codeSnifferFile, $functionPointer, $parameterTypeHint->getTypeHint()));
 	}
 
-	public function testMethodReturnAnnotationWithNamespace(): void
+	public function testMethodReturnAnnotationWithNamespace()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(__DIR__ . '/data/typeHintWithNamespace.php');
 
@@ -169,7 +169,7 @@ class TypeHintHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertSame('\FooNamespace\FooClass', TypeHintHelper::getFullyQualifiedTypeHint($codeSnifferFile, $methodPointer, $returnAnnotation->getContent()));
 	}
 
-	public function testMethodReturnTypeHintWithNamespace(): void
+	public function testMethodReturnTypeHintWithNamespace()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(__DIR__ . '/data/typeHintWithNamespace.php');
 
@@ -178,7 +178,7 @@ class TypeHintHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertSame('bool', TypeHintHelper::getFullyQualifiedTypeHint($codeSnifferFile, $methodPointer, $returnTypeHint->getTypeHint()));
 	}
 
-	public function testMethodParameterAnnotationWithNamespace(): void
+	public function testMethodParameterAnnotationWithNamespace()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(__DIR__ . '/data/typeHintWithNamespace.php');
 
@@ -188,7 +188,7 @@ class TypeHintHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertSame('\Doctrine\ORM\Mapping\Id', TypeHintHelper::getFullyQualifiedTypeHint($codeSnifferFile, $methodPointer, $parameterTypeHint));
 	}
 
-	public function testMethodParameterTypeHintWithNamespace(): void
+	public function testMethodParameterTypeHintWithNamespace()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(__DIR__ . '/data/typeHintWithNamespace.php');
 
@@ -197,7 +197,7 @@ class TypeHintHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertSame('\Doctrine\ORM\Mapping\Id', TypeHintHelper::getFullyQualifiedTypeHint($codeSnifferFile, $methodPointer, $parameterTypeHint->getTypeHint()));
 	}
 
-	public function testFunctionReturnAnnotationWithoutNamespace(): void
+	public function testFunctionReturnAnnotationWithoutNamespace()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(__DIR__ . '/data/typeHintWithoutNamespace.php');
 
@@ -206,7 +206,7 @@ class TypeHintHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertSame('void', TypeHintHelper::getFullyQualifiedTypeHint($codeSnifferFile, $functionPointer, $returnAnnotation->getContent()));
 	}
 
-	public function testFunctionReturnTypeHintWithoutNamespace(): void
+	public function testFunctionReturnTypeHintWithoutNamespace()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(__DIR__ . '/data/typeHintWithoutNamespace.php');
 
@@ -215,7 +215,7 @@ class TypeHintHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertSame('\FooClass', TypeHintHelper::getFullyQualifiedTypeHint($codeSnifferFile, $functionPointer, $returnTypeHint->getTypeHint()));
 	}
 
-	public function testFunctionParameterAnnotationWithoutNamespace(): void
+	public function testFunctionParameterAnnotationWithoutNamespace()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(__DIR__ . '/data/typeHintWithoutNamespace.php');
 
@@ -225,7 +225,7 @@ class TypeHintHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertSame('\Doctrine\Common\Collections\ArrayCollection', TypeHintHelper::getFullyQualifiedTypeHint($codeSnifferFile, $functionPointer, $parameterTypeHint));
 	}
 
-	public function testFunctionParameterTypeHintWithoutNamespace(): void
+	public function testFunctionParameterTypeHintWithoutNamespace()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(__DIR__ . '/data/typeHintWithoutNamespace.php');
 
@@ -234,7 +234,7 @@ class TypeHintHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertSame('\Doctrine\Common\Collections\ArrayCollection', TypeHintHelper::getFullyQualifiedTypeHint($codeSnifferFile, $functionPointer, $parameterTypeHint->getTypeHint()));
 	}
 
-	public function testMethodReturnAnnotationWithoutNamespace(): void
+	public function testMethodReturnAnnotationWithoutNamespace()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(__DIR__ . '/data/typeHintWithoutNamespace.php');
 
@@ -243,7 +243,7 @@ class TypeHintHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertSame('\FooClass', TypeHintHelper::getFullyQualifiedTypeHint($codeSnifferFile, $methodPointer, $returnAnnotation->getContent()));
 	}
 
-	public function testMethodReturnTypeHintWithoutNamespace(): void
+	public function testMethodReturnTypeHintWithoutNamespace()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(__DIR__ . '/data/typeHintWithoutNamespace.php');
 
@@ -252,7 +252,7 @@ class TypeHintHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertSame('bool', TypeHintHelper::getFullyQualifiedTypeHint($codeSnifferFile, $methodPointer, $returnTypeHint->getTypeHint()));
 	}
 
-	public function testMethodParameterAnnotationWithoutNamespace(): void
+	public function testMethodParameterAnnotationWithoutNamespace()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(__DIR__ . '/data/typeHintWithoutNamespace.php');
 
@@ -262,7 +262,7 @@ class TypeHintHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertSame('\Doctrine\ORM\Mapping\Id', TypeHintHelper::getFullyQualifiedTypeHint($codeSnifferFile, $methodPointer, $parameterTypeHint));
 	}
 
-	public function testMethodParameterTypeHintWithoutNamespace(): void
+	public function testMethodParameterTypeHintWithoutNamespace()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(__DIR__ . '/data/typeHintWithoutNamespace.php');
 

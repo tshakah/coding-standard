@@ -5,13 +5,13 @@ namespace SlevomatCodingStandard\Sniffs\Namespaces;
 class NamespaceDeclarationSniffTest extends \SlevomatCodingStandard\Sniffs\TestCase
 {
 
-	public function testInvalidWhitespaceAfterNamespaceNoErrors(): void
+	public function testInvalidWhitespaceAfterNamespaceNoErrors()
 	{
 		$report = self::checkFile(__DIR__ . '/data/namespaceDeclarationInvalidWhitespaceAfterNamespaceNoErrors.php', [], [NamespaceDeclarationSniff::CODE_INVALID_WHITESPACE_AFTER_NAMESPACE]);
 		self::assertNoSniffErrorInFile($report);
 	}
 
-	public function testInvalidWhitespaceAfterNamespaceErrors(): void
+	public function testInvalidWhitespaceAfterNamespaceErrors()
 	{
 		$report = self::checkFile(__DIR__ . '/data/namespaceDeclarationInvalidWhitespaceAfterNamespaceErrors.php', [], [NamespaceDeclarationSniff::CODE_INVALID_WHITESPACE_AFTER_NAMESPACE]);
 
@@ -24,13 +24,13 @@ class NamespaceDeclarationSniffTest extends \SlevomatCodingStandard\Sniffs\TestC
 		self::assertAllFixedInFile($report);
 	}
 
-	public function testDisallowedContentBetweenNamespaceNameAndSemicolonNoErrors(): void
+	public function testDisallowedContentBetweenNamespaceNameAndSemicolonNoErrors()
 	{
 		$report = self::checkFile(__DIR__ . '/data/namespaceDeclarationDisallowedContentBetweenNamespaceNameAndSemicolonNoErrors.php', [], [NamespaceDeclarationSniff::CODE_DISALLOWED_CONTENT_BETWEEN_NAMESPACE_NAME_AND_SEMICOLON]);
 		self::assertNoSniffErrorInFile($report);
 	}
 
-	public function testDisallowedContentBetweenNamespaceNameAndSemicolonErrors(): void
+	public function testDisallowedContentBetweenNamespaceNameAndSemicolonErrors()
 	{
 		$report = self::checkFile(__DIR__ . '/data/namespaceDeclarationDisallowedContentBetweenNamespaceNameAndSemicolonErrors.php', [], [NamespaceDeclarationSniff::CODE_DISALLOWED_CONTENT_BETWEEN_NAMESPACE_NAME_AND_SEMICOLON]);
 
@@ -43,13 +43,13 @@ class NamespaceDeclarationSniffTest extends \SlevomatCodingStandard\Sniffs\TestC
 		self::assertAllFixedInFile($report);
 	}
 
-	public function testDisallowedBracketedSyntaxNoErrors(): void
+	public function testDisallowedBracketedSyntaxNoErrors()
 	{
 		$report = self::checkFile(__DIR__ . '/data/namespaceDeclarationDisallowedBracketedSyntaxNoErrors.php', [], [NamespaceDeclarationSniff::CODE_DISALLOWED_BRACKETED_SYNTAX]);
 		self::assertNoSniffErrorInFile($report);
 	}
 
-	public function testDisallowedBracketedSyntaxErrors(): void
+	public function testDisallowedBracketedSyntaxErrors()
 	{
 		$report = self::checkFile(__DIR__ . '/data/namespaceDeclarationDisallowedBracketedSyntaxErrors.php', [], [NamespaceDeclarationSniff::CODE_DISALLOWED_BRACKETED_SYNTAX]);
 

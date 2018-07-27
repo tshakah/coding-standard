@@ -34,7 +34,7 @@ class FilepathNamespaceExtractor
 		}, $extensions);
 	}
 
-	public function getTypeNameFromProjectPath(string $path): ?string
+	public function getTypeNameFromProjectPath(string $path)
 	{
 		$extension = strtolower(pathinfo($path, PATHINFO_EXTENSION));
 		if (!in_array($extension, $this->extensions, true)) {

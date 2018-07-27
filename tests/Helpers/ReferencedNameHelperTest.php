@@ -5,7 +5,7 @@ namespace SlevomatCodingStandard\Helpers;
 class ReferencedNameHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 {
 
-	public function testGetAllReferencedNames(): void
+	public function testGetAllReferencedNames()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(
 			__DIR__ . '/data/lotsOfReferencedNames.php'
@@ -59,7 +59,7 @@ class ReferencedNameHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		}
 	}
 
-	public function testGetAllReferencedNamesWithNullableTypehints(): void
+	public function testGetAllReferencedNamesWithNullableTypehints()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(
 			__DIR__ . '/data/referencedNamesWithNullableTypeHints.php'
@@ -81,7 +81,7 @@ class ReferencedNameHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		}
 	}
 
-	public function testGetAllReferencedNamesOnNonReferencedName(): void
+	public function testGetAllReferencedNamesOnNonReferencedName()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(
 			__DIR__ . '/data/fileWithoutReferencedName.php'
@@ -89,7 +89,7 @@ class ReferencedNameHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertCount(0, ReferencedNameHelper::getAllReferencedNames($codeSnifferFile, 0));
 	}
 
-	public function testMultipleExceptionsCatch(): void
+	public function testMultipleExceptionsCatch()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(
 			__DIR__ . '/data/multipleExceptionsCatch.php'
@@ -115,7 +115,7 @@ class ReferencedNameHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		}
 	}
 
-	public function testGetReferencedNameEndPointer(): void
+	public function testGetReferencedNameEndPointer()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(
 			__DIR__ . '/data/referencedName.php'
@@ -125,7 +125,7 @@ class ReferencedNameHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertTokenPointer(T_STRING, 3, $codeSnifferFile, $endTokenPointer);
 	}
 
-	public function testReturnTypeHint(): void
+	public function testReturnTypeHint()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(
 			__DIR__ . '/data/return-typehint.php'
@@ -136,7 +136,7 @@ class ReferencedNameHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertSame('\OtherNamespace\Lorem', $names[1]->getNameAsReferencedInFile());
 	}
 
-	public function testConstantIsNotReferencedName(): void
+	public function testConstantIsNotReferencedName()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(
 			__DIR__ . '/data/classConstant.php'
@@ -145,7 +145,7 @@ class ReferencedNameHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertCount(0, $names);
 	}
 
-	public function testMethodReturningReferenceIsNotReferencedName(): void
+	public function testMethodReturningReferenceIsNotReferencedName()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(
 			__DIR__ . '/data/methodReturnsReference.php'
@@ -154,7 +154,7 @@ class ReferencedNameHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertCount(0, $names);
 	}
 
-	public function testGotoLabelIsNotReferencedName(): void
+	public function testGotoLabelIsNotReferencedName()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(
 			__DIR__ . '/data/goto.php'

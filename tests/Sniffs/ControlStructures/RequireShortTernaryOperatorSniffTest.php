@@ -5,12 +5,12 @@ namespace SlevomatCodingStandard\Sniffs\ControlStructures;
 class RequireShortTernaryOperatorSniffTest extends \SlevomatCodingStandard\Sniffs\TestCase
 {
 
-	public function testNoErrors(): void
+	public function testNoErrors()
 	{
 		self::assertNoSniffErrorInFile(self::checkFile(__DIR__ . '/data/requireShortTernaryOperatorNoErrors.php'));
 	}
 
-	public function testErrors(): void
+	public function testErrors()
 	{
 		$report = self::checkFile(__DIR__ . '/data/requireShortTernaryOperatorErrors.php');
 

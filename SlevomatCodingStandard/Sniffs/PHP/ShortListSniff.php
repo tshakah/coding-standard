@@ -7,7 +7,7 @@ use SlevomatCodingStandard\Helpers\TokenHelper;
 class ShortListSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 {
 
-	public const CODE_LONG_LIST_USED = 'LongListUsed';
+	const CODE_LONG_LIST_USED = 'LongListUsed';
 
 	/**
 	 * @return mixed[]
@@ -22,7 +22,7 @@ class ShortListSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
 	 * @param int $pointer
 	 */
-	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $pointer): void
+	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $pointer)
 	{
 		$fix = $phpcsFile->addFixableError('list(...) is forbidden, use [...] instead.', $pointer, self::CODE_LONG_LIST_USED);
 

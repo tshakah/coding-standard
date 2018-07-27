@@ -5,7 +5,7 @@ namespace SlevomatCodingStandard\Sniffs\Classes;
 class UnusedPrivateElementsSniffTest extends \SlevomatCodingStandard\Sniffs\TestCase
 {
 
-	public function testErrors(): void
+	public function testErrors()
 	{
 		$resultFile = self::checkFile(__DIR__ . '/data/classWithSomeUnusedElements.php', [
 			'alwaysUsedPropertiesAnnotations' => [
@@ -110,46 +110,46 @@ class UnusedPrivateElementsSniffTest extends \SlevomatCodingStandard\Sniffs\Test
 		self::assertNoSniffError($resultFile, 169);
 	}
 
-	public function testOnlyPublicElements(): void
+	public function testOnlyPublicElements()
 	{
 		self::assertNoSniffErrorInFile(self::checkFile(__DIR__ . '/data/classWithOnlyPublicElements.php'));
 	}
 
-	public function testClassWithSpecialThis(): void
+	public function testClassWithSpecialThis()
 	{
 		self::assertNoSniffErrorInFile(self::checkFile(__DIR__ . '/data/classWithSpecialThis.php'));
 	}
 
-	public function testClassWithSpecialSelf(): void
+	public function testClassWithSpecialSelf()
 	{
 		self::assertNoSniffErrorInFile(self::checkFile(__DIR__ . '/data/classWithSpecialSelf.php'));
 	}
 
-	public function testClassWithPrivateElementsUsedOnSelfInstance(): void
+	public function testClassWithPrivateElementsUsedOnSelfInstance()
 	{
 		$report = self::checkFile(__DIR__ . '/data/classWithPrivateElementsUsedOnSelfInstance.php');
 		self::assertNoSniffErrorInFile($report);
 	}
 
-	public function testClassWithPrivateElementsUsedOnStaticInstance(): void
+	public function testClassWithPrivateElementsUsedOnStaticInstance()
 	{
 		$report = self::checkFile(__DIR__ . '/data/classWithPrivateElementsUsedOnStaticInstance.php');
 		self::assertNoSniffErrorInFile($report);
 	}
 
-	public function testClassWithPrivateElementsUsedOnSameClass(): void
+	public function testClassWithPrivateElementsUsedOnSameClass()
 	{
 		$report = self::checkFile(__DIR__ . '/data/classWithPrivateElementsUsedOnSameClass.php');
 		self::assertNoSniffErrorInFile($report);
 	}
 
-	public function testClassWithChainedPrivateMethods(): void
+	public function testClassWithChainedPrivateMethods()
 	{
 		$report = self::checkFile(__DIR__ . '/data/classWithChainedPrivateMethods.php');
 		self::assertNoSniffErrorInFile($report);
 	}
 
-	public function testClassWithConstants(): void
+	public function testClassWithConstants()
 	{
 		$resultFile = self::checkFile(__DIR__ . '/data/classWithConstants.php');
 
@@ -169,7 +169,7 @@ class UnusedPrivateElementsSniffTest extends \SlevomatCodingStandard\Sniffs\Test
 		);
 	}
 
-	public function testClassWithPropertyUsedInString(): void
+	public function testClassWithPropertyUsedInString()
 	{
 		$resultFile = self::checkFile(__DIR__ . '/data/classWithPropertyUsedInString.php');
 
@@ -183,7 +183,7 @@ class UnusedPrivateElementsSniffTest extends \SlevomatCodingStandard\Sniffs\Test
 		);
 	}
 
-	public function testClassWithMethodUsedInString(): void
+	public function testClassWithMethodUsedInString()
 	{
 		$resultFile = self::checkFile(__DIR__ . '/data/classWithMethodUsedInString.php');
 
@@ -197,7 +197,7 @@ class UnusedPrivateElementsSniffTest extends \SlevomatCodingStandard\Sniffs\Test
 		);
 	}
 
-	public function testClassWithWriteOnlyProperties(): void
+	public function testClassWithWriteOnlyProperties()
 	{
 		$resultFile = self::checkFile(__DIR__ . '/data/classWithWriteOnlyProperties.php');
 

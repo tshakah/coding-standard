@@ -31,7 +31,7 @@ class StringHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 	 * @param string $haystack
 	 * @param string $needle
 	 */
-	public function testStartsWith(string $haystack, string $needle): void
+	public function testStartsWith(string $haystack, string $needle)
 	{
 		self::assertTrue(StringHelper::startsWith($haystack, $needle));
 	}
@@ -66,7 +66,7 @@ class StringHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 	 * @param string $haystack
 	 * @param string $needle
 	 */
-	public function testNotStartsWith(string $haystack, string $needle): void
+	public function testNotStartsWith(string $haystack, string $needle)
 	{
 		self::assertFalse(StringHelper::startsWith($haystack, $needle));
 	}
@@ -97,7 +97,7 @@ class StringHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 	 * @param string $haystack
 	 * @param string $needle
 	 */
-	public function testEndsWith(string $haystack, string $needle): void
+	public function testEndsWith(string $haystack, string $needle)
 	{
 		self::assertTrue(StringHelper::endsWith($haystack, $needle));
 	}
@@ -132,7 +132,7 @@ class StringHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 	 * @param string $haystack
 	 * @param string $needle
 	 */
-	public function testNotEndsWith(string $haystack, string $needle): void
+	public function testNotEndsWith(string $haystack, string $needle)
 	{
 		self::assertFalse(StringHelper::endsWith($haystack, $needle));
 	}

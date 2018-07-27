@@ -5,7 +5,7 @@ namespace SlevomatCodingStandard\Sniffs\Commenting;
 class ForbiddenAnnotationsSniffTest extends \SlevomatCodingStandard\Sniffs\TestCase
 {
 
-	public function testNoForbiddenAnnotations(): void
+	public function testNoForbiddenAnnotations()
 	{
 		$report = self::checkFile(__DIR__ . '/data/noForbiddenAnnotations.php', [
 			'forbiddenAnnotations' => ['@see', '@throws'],
@@ -13,7 +13,7 @@ class ForbiddenAnnotationsSniffTest extends \SlevomatCodingStandard\Sniffs\TestC
 		self::assertNoSniffErrorInFile($report);
 	}
 
-	public function testForbiddenAnnotations(): void
+	public function testForbiddenAnnotations()
 	{
 		$report = self::checkFile(__DIR__ . '/data/forbiddenAnnotations.php', [
 			'forbiddenAnnotations' => ['@see', '@throws', '@Route'],

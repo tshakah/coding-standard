@@ -303,7 +303,7 @@ Sniff provides the following settings:
 
 ```php
 const FOO = 1; // visibility missing!
-public const BAR = 2; // correct
+const BAR = 2; // correct
 ```
 
 #### SlevomatCodingStandard.TypeHints.ReturnTypeHintSpacing 🔧
@@ -311,7 +311,7 @@ public const BAR = 2; // correct
 Enforces consistent formatting of return typehints, like this:
 
 ```php
-function foo(): ?int
+function foo()
 ```
 
 Sniff provides the following settings:
@@ -325,7 +325,7 @@ Checks whether the nullablity `?` symbol is present before each nullable and opt
 ```php
 function foo(
 	int $foo = null, // ? missing
-	?int $bar = null // correct
+	int $bar = null // correct
 ) {
 
 }

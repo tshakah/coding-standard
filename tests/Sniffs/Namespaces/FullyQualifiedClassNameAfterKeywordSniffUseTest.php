@@ -18,17 +18,17 @@ class FullyQualifiedClassNameAfterKeywordSniffUseTest extends \SlevomatCodingSta
 		);
 	}
 
-	public function testIgnoreUseInClosure(): void
+	public function testIgnoreUseInClosure()
 	{
 		self::assertNoSniffError($this->getFileReport(), 34);
 	}
 
-	public function testIgnoreUseInNamespace(): void
+	public function testIgnoreUseInNamespace()
 	{
 		self::assertNoSniffError($this->getFileReport(), 5);
 	}
 
-	public function testIgnoreUseInNamespaceWithParenthesis(): void
+	public function testIgnoreUseInNamespaceWithParenthesis()
 	{
 		self::assertNoSniffErrorInFile(self::checkFile(
 			__DIR__ . '/data/fullyQualifiedUseNamespaceWithParenthesis.php',
@@ -36,7 +36,7 @@ class FullyQualifiedClassNameAfterKeywordSniffUseTest extends \SlevomatCodingSta
 		));
 	}
 
-	public function testNonFullyQualifiedUse(): void
+	public function testNonFullyQualifiedUse()
 	{
 		self::assertSniffError(
 			$this->getFileReport(),
@@ -46,17 +46,17 @@ class FullyQualifiedClassNameAfterKeywordSniffUseTest extends \SlevomatCodingSta
 		);
 	}
 
-	public function testFullyQualifiedUse(): void
+	public function testFullyQualifiedUse()
 	{
 		self::assertNoSniffError($this->getFileReport(), 9);
 	}
 
-	public function testMultipleFullyQualifiedUse(): void
+	public function testMultipleFullyQualifiedUse()
 	{
 		self::assertNoSniffError($this->getFileReport(), 19);
 	}
 
-	public function testMultipleUseWithFirstWrong(): void
+	public function testMultipleUseWithFirstWrong()
 	{
 		self::assertSniffError(
 			$this->getFileReport(),
@@ -66,7 +66,7 @@ class FullyQualifiedClassNameAfterKeywordSniffUseTest extends \SlevomatCodingSta
 		);
 	}
 
-	public function testMultipleUseWithSecondAndThirdWrong(): void
+	public function testMultipleUseWithSecondAndThirdWrong()
 	{
 		$report = $this->getFileReport();
 		self::assertSniffError(

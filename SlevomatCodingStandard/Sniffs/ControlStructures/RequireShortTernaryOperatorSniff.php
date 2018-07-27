@@ -7,7 +7,7 @@ use SlevomatCodingStandard\Helpers\TokenHelper;
 class RequireShortTernaryOperatorSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 {
 
-	public const CODE_REQUIRED_SHORT_TERNARY_OPERATOR = 'RequiredShortTernaryOperator';
+	const CODE_REQUIRED_SHORT_TERNARY_OPERATOR = 'RequiredShortTernaryOperator';
 
 	/**
 	 * @return mixed[]
@@ -24,7 +24,7 @@ class RequireShortTernaryOperatorSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
 	 * @param int $inlineThenPointer
 	 */
-	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $inlineThenPointer): void
+	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $inlineThenPointer)
 	{
 		$tokens = $phpcsFile->getTokens();
 

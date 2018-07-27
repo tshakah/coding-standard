@@ -5,12 +5,12 @@ namespace SlevomatCodingStandard\Sniffs\Namespaces;
 class RequireOneNamespaceInFileSniffTest extends \SlevomatCodingStandard\Sniffs\TestCase
 {
 
-	public function testNoErrors(): void
+	public function testNoErrors()
 	{
 		self::assertNoSniffErrorInFile(self::checkFile(__DIR__ . '/data/requireOneNamespaceInFileNoErrors.php'));
 	}
 
-	public function testErrors(): void
+	public function testErrors()
 	{
 		$report = self::checkFile(__DIR__ . '/data/requireOneNamespaceInFileErrors.php');
 
@@ -20,7 +20,7 @@ class RequireOneNamespaceInFileSniffTest extends \SlevomatCodingStandard\Sniffs\
 		self::assertSniffError($report, 13, RequireOneNamespaceInFileSniff::CODE_MORE_NAMESPACES_IN_FILE);
 	}
 
-	public function testNoNamespaceNoError(): void
+	public function testNoNamespaceNoError()
 	{
 		self::assertNoSniffErrorInFile(self::checkFile(__DIR__ . '/data/requireOneNamespaceInFileNoNamespaceNoErrors.php'));
 	}

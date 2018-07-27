@@ -23,12 +23,12 @@ abstract class FooClass
 	/**
 	 * @return int|null
 	 */
-	abstract public function abstractWithNullableReturnTypeHintAndUselessDocComment(): ?int;
+	abstract public function abstractWithNullableReturnTypeHintAndUselessDocComment()
 
 	/**
 	 * @return string|null
 	 */
-	public function withNullableReturnTypeHintAndUselessDocComment(): ?string
+	public function withNullableReturnTypeHintAndUselessDocComment()
 	{
 		return 'string';
 	}
@@ -43,7 +43,7 @@ abstract class FooClass
 	/**
 	 * @param int|null $a
 	 */
-	public function withNullableParameterTypeHintAndUselessDocComment(?int $a)
+	public function withNullableParameterTypeHintAndUselessDocComment(int $a = null)
 	{
 	}
 

@@ -5,12 +5,12 @@ namespace SlevomatCodingStandard\Sniffs\ControlStructures;
 class DisallowShortTernaryOperatorSniffTest extends \SlevomatCodingStandard\Sniffs\TestCase
 {
 
-	public function testNoErrors(): void
+	public function testNoErrors()
 	{
 		self::assertNoSniffErrorInFile(self::checkFile(__DIR__ . '/data/disallowShortTernaryOperatorNoErrors.php'));
 	}
 
-	public function testErrors(): void
+	public function testErrors()
 	{
 		$report = self::checkFile(__DIR__ . '/data/disallowShortTernaryOperatorErrors.php');
 
@@ -23,7 +23,7 @@ class DisallowShortTernaryOperatorSniffTest extends \SlevomatCodingStandard\Snif
 		$this->assertAllFixedInFile($report);
 	}
 
-	public function testFixableDisabled(): void
+	public function testFixableDisabled()
 	{
 		$report = self::checkFile(__DIR__ . '/data/disallowShortTernaryOperatorErrorsFixableDisabled.php', ['fixable' => false]);
 

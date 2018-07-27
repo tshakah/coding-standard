@@ -5,25 +5,25 @@ namespace SlevomatCodingStandard\Sniffs\Namespaces;
 class UseSpacingSniffTest extends \SlevomatCodingStandard\Sniffs\TestCase
 {
 
-	public function testNoUseNoErrors(): void
+	public function testNoUseNoErrors()
 	{
 		$report = self::checkFile(__DIR__ . '/data/useSpacingNoUse.php');
 		self::assertNoSniffErrorInFile($report);
 	}
 
-	public function testOneUseNoErrors(): void
+	public function testOneUseNoErrors()
 	{
 		$report = self::checkFile(__DIR__ . '/data/useSpacingOneUse.php');
 		self::assertNoSniffErrorInFile($report);
 	}
 
-	public function testDefaultSettingsNoErrors(): void
+	public function testDefaultSettingsNoErrors()
 	{
 		$report = self::checkFile(__DIR__ . '/data/useSpacingWithDefaultSettingsNoErrors.php');
 		self::assertNoSniffErrorInFile($report);
 	}
 
-	public function testDefaultSettingsErrors(): void
+	public function testDefaultSettingsErrors()
 	{
 		$report = self::checkFile(__DIR__ . '/data/useSpacingWithDefaultSettingsErrors.php');
 
@@ -35,13 +35,13 @@ class UseSpacingSniffTest extends \SlevomatCodingStandard\Sniffs\TestCase
 		self::assertAllFixedInFile($report);
 	}
 
-	public function testAfterOpenTagNoErrors(): void
+	public function testAfterOpenTagNoErrors()
 	{
 		$report = self::checkFile(__DIR__ . '/data/useSpacingAfterOpenTagNoErrors.php');
 		self::assertNoSniffErrorInFile($report);
 	}
 
-	public function testAfterOpenTagErrors(): void
+	public function testAfterOpenTagErrors()
 	{
 		$report = self::checkFile(__DIR__ . '/data/useSpacingAfterOpenTagErrors.php');
 
@@ -52,7 +52,7 @@ class UseSpacingSniffTest extends \SlevomatCodingStandard\Sniffs\TestCase
 		self::assertAllFixedInFile($report);
 	}
 
-	public function testModifiedSettingsNoErrors(): void
+	public function testModifiedSettingsNoErrors()
 	{
 		$report = self::checkFile(__DIR__ . '/data/useSpacingWithModifiedSettingsNoErrors.php', [
 			'linesCountBeforeFirstUse' => 0,
@@ -62,7 +62,7 @@ class UseSpacingSniffTest extends \SlevomatCodingStandard\Sniffs\TestCase
 		self::assertNoSniffErrorInFile($report);
 	}
 
-	public function testModifiedSettingsErrors(): void
+	public function testModifiedSettingsErrors()
 	{
 		$report = self::checkFile(__DIR__ . '/data/useSpacingWithModifiedSettingsErrors.php', [
 			'linesCountBeforeFirstUse' => 0,
@@ -80,7 +80,7 @@ class UseSpacingSniffTest extends \SlevomatCodingStandard\Sniffs\TestCase
 		self::assertAllFixedInFile($report);
 	}
 
-	public function testMultipleUseTypesErrors(): void
+	public function testMultipleUseTypesErrors()
 	{
 		$report = self::checkFile(__DIR__ . '/data/useSpacingMultipleUseTypesErrors.php', [
 			'linesCountBeforeFirstUse' => 1,
@@ -98,7 +98,7 @@ class UseSpacingSniffTest extends \SlevomatCodingStandard\Sniffs\TestCase
 		self::assertAllFixedInFile($report);
 	}
 
-	public function testNoLineBeforeUse(): void
+	public function testNoLineBeforeUse()
 	{
 		$report = self::checkFile(__DIR__ . '/data/useSpacingNoLineBeforeUse.php');
 
@@ -107,7 +107,7 @@ class UseSpacingSniffTest extends \SlevomatCodingStandard\Sniffs\TestCase
 		self::assertSniffError($report, 3, UseSpacingSniff::CODE_INCORRECT_LINES_COUNT_BEFORE_FIRST_USE);
 	}
 
-	public function testNoLineAfterUse(): void
+	public function testNoLineAfterUse()
 	{
 		$report = self::checkFile(__DIR__ . '/data/useSpacingNoLineAfterUse.php');
 
@@ -116,13 +116,13 @@ class UseSpacingSniffTest extends \SlevomatCodingStandard\Sniffs\TestCase
 		self::assertSniffError($report, 3, UseSpacingSniff::CODE_INCORRECT_LINES_COUNT_AFTER_LAST_USE);
 	}
 
-	public function testNoCodeAfterUse(): void
+	public function testNoCodeAfterUse()
 	{
 		$report = self::checkFile(__DIR__ . '/data/useSpacingNoCodeAfterUse.php');
 		self::assertNoSniffErrorInFile($report);
 	}
 
-	public function testSameUseTypesErrors(): void
+	public function testSameUseTypesErrors()
 	{
 		$report = self::checkFile(__DIR__ . '/data/useSpacingSameUseTypesErrors.php', [], [UseSpacingSniff::CODE_INCORRECT_LINES_COUNT_BETWEEN_SAME_TYPES_OF_USE]);
 

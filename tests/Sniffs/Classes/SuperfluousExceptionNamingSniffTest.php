@@ -5,13 +5,13 @@ namespace SlevomatCodingStandard\Sniffs\Classes;
 class SuperfluousExceptionNamingSniffTest extends \SlevomatCodingStandard\Sniffs\TestCase
 {
 
-	public function testNoErrors(): void
+	public function testNoErrors()
 	{
 		$report = self::checkFile(__DIR__ . '/data/superfluousExceptionNamingNoErrors.php');
 		self::assertNoSniffErrorInFile($report);
 	}
 
-	public function testErrors(): void
+	public function testErrors()
 	{
 		$report = self::checkFile(__DIR__ . '/data/superfluousExceptionNamingErrors.php');
 

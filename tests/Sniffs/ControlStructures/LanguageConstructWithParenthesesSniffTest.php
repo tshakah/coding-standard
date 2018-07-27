@@ -5,12 +5,12 @@ namespace SlevomatCodingStandard\Sniffs\ControlStructures;
 class LanguageConstructWithParenthesesSniffTest extends \SlevomatCodingStandard\Sniffs\TestCase
 {
 
-	public function testNoErrors(): void
+	public function testNoErrors()
 	{
 		self::assertNoSniffErrorInFile(self::checkFile(__DIR__ . '/data/languageConstructWithParenthesesNoErrors.php'));
 	}
 
-	public function testErrors(): void
+	public function testErrors()
 	{
 		$report = self::checkFile(__DIR__ . '/data/languageConstructWithParenthesesErrors.php', [], [LanguageConstructWithParenthesesSniff::CODE_USED_WITH_PARENTHESES]);
 

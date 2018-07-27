@@ -5,13 +5,13 @@ namespace SlevomatCodingStandard\Sniffs\Namespaces;
 class FullyQualifiedGlobalFunctionsSniffTest extends \SlevomatCodingStandard\Sniffs\TestCase
 {
 
-	public function testNoErrors(): void
+	public function testNoErrors()
 	{
 		$report = self::checkFile(__DIR__ . '/data/fullyQualifiedGlobalFunctionsNoErrors.php');
 		self::assertNoSniffErrorInFile($report);
 	}
 
-	public function testErrors(): void
+	public function testErrors()
 	{
 		$report = self::checkFile(__DIR__ . '/data/fullyQualifiedGlobalFunctionsErrors.php');
 
@@ -23,7 +23,7 @@ class FullyQualifiedGlobalFunctionsSniffTest extends \SlevomatCodingStandard\Sni
 		self::assertAllFixedInFile($report);
 	}
 
-	public function testExcludeErrors(): void
+	public function testExcludeErrors()
 	{
 		$report = self::checkFile(__DIR__ . '/data/fullyQualifiedGlobalFunctionsExcludeErrors.php', [
 			'exclude' => ['min'],

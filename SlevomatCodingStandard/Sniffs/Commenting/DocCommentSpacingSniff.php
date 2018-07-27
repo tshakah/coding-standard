@@ -11,10 +11,10 @@ use SlevomatCodingStandard\Helpers\TokenHelper;
 class DocCommentSpacingSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 {
 
-	public const CODE_INCORRECT_LINES_COUNT_BEFORE_FIRST_CONTENT = 'IncorrectLinesCountBeforeFirstContent';
-	public const CODE_INCORRECT_LINES_COUNT_BETWEEN_DESCRIPTION_AND_ANNOTATIONS = 'IncorrectLinesCountBetweenDescriptionAndAnnotations';
-	public const CODE_INCORRECT_LINES_COUNT_BETWEEN_DIFFERENT_ANNOTATIONS_TYPES = 'IncorrectLinesCountBetweenDifferentAnnotationsTypes';
-	public const CODE_INCORRECT_LINES_COUNT_AFTER_LAST_CONTENT = 'IncorrectLinesCountAfterLastContent';
+	const CODE_INCORRECT_LINES_COUNT_BEFORE_FIRST_CONTENT = 'IncorrectLinesCountBeforeFirstContent';
+	const CODE_INCORRECT_LINES_COUNT_BETWEEN_DESCRIPTION_AND_ANNOTATIONS = 'IncorrectLinesCountBetweenDescriptionAndAnnotations';
+	const CODE_INCORRECT_LINES_COUNT_BETWEEN_DIFFERENT_ANNOTATIONS_TYPES = 'IncorrectLinesCountBetweenDifferentAnnotationsTypes';
+	const CODE_INCORRECT_LINES_COUNT_AFTER_LAST_CONTENT = 'IncorrectLinesCountAfterLastContent';
 
 	/** @var int */
 	public $linesCountBeforeFirstContent = 0;
@@ -43,7 +43,7 @@ class DocCommentSpacingSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
 	 * @param int $docCommentOpenPointer
 	 */
-	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $docCommentOpenPointer): void
+	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $docCommentOpenPointer)
 	{
 		if (DocCommentHelper::isInline($phpcsFile, $docCommentOpenPointer)) {
 			return;
@@ -100,7 +100,7 @@ class DocCommentSpacingSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 		\PHP_CodeSniffer\Files\File $phpcsFile,
 		int $docCommentOpenPointer,
 		int $firstContentStartPointer
-	): void
+	)
 	{
 		$tokens = $phpcsFile->getTokens();
 
@@ -147,7 +147,7 @@ class DocCommentSpacingSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 		int $firstContentStartPointer,
 		int $firstContentEndPointer,
 		?Annotation $firstAnnotation
-	): void
+	)
 	{
 		if ($firstAnnotation === null) {
 			return;
@@ -207,7 +207,7 @@ class DocCommentSpacingSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 		\PHP_CodeSniffer\Files\File $phpcsFile,
 		int $docCommentOpenPointer,
 		array $annotations
-	): void
+	)
 	{
 		if (count($annotations) <= 1) {
 			return;
@@ -280,7 +280,7 @@ class DocCommentSpacingSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 		int $docCommentOpenPointer,
 		int $docCommentClosePointer,
 		int $lastContentEndPointer
-	): void
+	)
 	{
 		$whitespaceAfterLastContent = TokenHelper::getContent($phpcsFile, $lastContentEndPointer + 1, $docCommentClosePointer);
 

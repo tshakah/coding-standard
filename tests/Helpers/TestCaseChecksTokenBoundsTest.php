@@ -5,7 +5,7 @@ namespace SlevomatCodingStandard\Helpers;
 class TestCaseChecksTokenBoundsTest extends \SlevomatCodingStandard\Helpers\TestCase
 {
 
-	public function testThrowsTokenPointerOutOfBoundsException(): void
+	public function testThrowsTokenPointerOutOfBoundsException()
 	{
 		try {
 			$codeSnifferFile = $this->getCodeSnifferFile(

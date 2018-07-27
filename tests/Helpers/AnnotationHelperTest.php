@@ -8,7 +8,7 @@ class AnnotationHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 	/** @var \PHP_CodeSniffer\Files\File */
 	private $testedCodeSnifferFile;
 
-	public function testClassWithAnnotation(): void
+	public function testClassWithAnnotation()
 	{
 		$annotations = AnnotationHelper::getAnnotationsByName($this->getTestedCodeSnifferFile(), $this->findClassPointerByName($this->getTestedCodeSnifferFile(), 'WithAnnotation'), '@see');
 		self::assertCount(1, $annotations);
@@ -17,12 +17,12 @@ class AnnotationHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertSame('https://www.slevomat.cz', $annotations[0]->getContent());
 	}
 
-	public function testClassWithoutAnnotation(): void
+	public function testClassWithoutAnnotation()
 	{
 		self::assertCount(0, AnnotationHelper::getAnnotationsByName($this->getTestedCodeSnifferFile(), $this->findClassPointerByName($this->getTestedCodeSnifferFile(), 'WithoutAnnotation'), '@see'));
 	}
 
-	public function testConstantWithAnnotation(): void
+	public function testConstantWithAnnotation()
 	{
 		$annotations = AnnotationHelper::getAnnotationsByName($this->getTestedCodeSnifferFile(), $this->findConstantPointerByName($this->getTestedCodeSnifferFile(), 'WITH_ANNOTATION'), '@var');
 		self::assertCount(1, $annotations);
@@ -31,12 +31,12 @@ class AnnotationHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertSame('bool', $annotations[0]->getContent());
 	}
 
-	public function testConstantWithoutAnnotation(): void
+	public function testConstantWithoutAnnotation()
 	{
 		self::assertCount(0, AnnotationHelper::getAnnotationsByName($this->getTestedCodeSnifferFile(), $this->findConstantPointerByName($this->getTestedCodeSnifferFile(), 'WITHOUT_ANNOTATION'), '@var'));
 	}
 
-	public function testPropertyWithAnnotation(): void
+	public function testPropertyWithAnnotation()
 	{
 		$annotations = AnnotationHelper::getAnnotationsByName($this->getTestedCodeSnifferFile(), $this->findPropertyPointerByName($this->getTestedCodeSnifferFile(), 'withAnnotation'), '@var');
 		self::assertCount(1, $annotations);
@@ -45,12 +45,12 @@ class AnnotationHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertSame('int', $annotations[0]->getContent());
 	}
 
-	public function testPropertyWithoutAnnotation(): void
+	public function testPropertyWithoutAnnotation()
 	{
 		self::assertCount(0, AnnotationHelper::getAnnotationsByName($this->getTestedCodeSnifferFile(), $this->findPropertyPointerByName($this->getTestedCodeSnifferFile(), 'withoutAnnotation'), '@var'));
 	}
 
-	public function testFunctionWithAnnotation(): void
+	public function testFunctionWithAnnotation()
 	{
 		$annotations = AnnotationHelper::getAnnotationsByName($this->getTestedCodeSnifferFile(), $this->findFunctionPointerByName($this->getTestedCodeSnifferFile(), 'withAnnotation'), '@param');
 		self::assertCount(2, $annotations);
@@ -62,7 +62,7 @@ class AnnotationHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertSame('string $b', $annotations[1]->getContent());
 	}
 
-	public function testFunctionWithParametrizedAnnotation(): void
+	public function testFunctionWithParametrizedAnnotation()
 	{
 		$annotations = AnnotationHelper::getAnnotationsByName($this->getTestedCodeSnifferFile(), $this->findFunctionPointerByName($this->getTestedCodeSnifferFile(), 'withParametrizedAnnotation'), '@Route');
 		self::assertCount(1, $annotations);
@@ -70,7 +70,7 @@ class AnnotationHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertNull($annotations[0]->getContent());
 	}
 
-	public function testFunctionWithParametrizedAnnotationContainingParenthesis(): void
+	public function testFunctionWithParametrizedAnnotationContainingParenthesis()
 	{
 		$annotations = AnnotationHelper::getAnnotationsByName($this->getTestedCodeSnifferFile(), $this->findFunctionPointerByName($this->getTestedCodeSnifferFile(), 'withParametrizedAnnotationContainingParenthesis'), '@Security');
 		self::assertCount(1, $annotations);
@@ -78,7 +78,7 @@ class AnnotationHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertNull($annotations[0]->getContent());
 	}
 
-	public function testFunctionWithMultilineParametrizedAnnotation(): void
+	public function testFunctionWithMultilineParametrizedAnnotation()
 	{
 		$annotations = AnnotationHelper::getAnnotationsByName($this->getTestedCodeSnifferFile(), $this->findFunctionPointerByName($this->getTestedCodeSnifferFile(), 'withMultilineParametrizedAnnotation'), '@Route');
 		self::assertCount(1, $annotations);
@@ -86,7 +86,7 @@ class AnnotationHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertNull($annotations[0]->getContent());
 	}
 
-	public function testFunctionWithParametrizedAnnotationWithoutParameters(): void
+	public function testFunctionWithParametrizedAnnotationWithoutParameters()
 	{
 		$annotations = AnnotationHelper::getAnnotationsByName($this->getTestedCodeSnifferFile(), $this->findFunctionPointerByName($this->getTestedCodeSnifferFile(), 'withParametrizedAnnotationWithoutParameters'), '@Assert\Callback');
 		self::assertCount(1, $annotations);
@@ -94,7 +94,7 @@ class AnnotationHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertNull($annotations[0]->getContent());
 	}
 
-	public function testInlineDocCommentWithParametrizedAnnotation(): void
+	public function testInlineDocCommentWithParametrizedAnnotation()
 	{
 		$annotations = AnnotationHelper::getAnnotationsByName($this->getTestedCodeSnifferFile(), $this->findPropertyPointerByName($this->getTestedCodeSnifferFile(), 'inlineDocComment'), '@ORM\OneToMany');
 		self::assertCount(1, $annotations);
@@ -102,12 +102,12 @@ class AnnotationHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertNull($annotations[0]->getContent());
 	}
 
-	public function testFunctionWithoutAnnotation(): void
+	public function testFunctionWithoutAnnotation()
 	{
 		self::assertCount(0, AnnotationHelper::getAnnotationsByName($this->getTestedCodeSnifferFile(), $this->findFunctionPointerByName($this->getTestedCodeSnifferFile(), 'withoutAnnotation'), '@param'));
 	}
 
-	public function testMultilineIndentedAnnotation(): void
+	public function testMultilineIndentedAnnotation()
 	{
 		$annotations = AnnotationHelper::getAnnotations($this->getTestedCodeSnifferFile(), $this->findPropertyPointerByName($this->getTestedCodeSnifferFile(), 'multilineIndentedAnnotation'));
 
@@ -123,7 +123,7 @@ class AnnotationHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertSame(71, $this->getLineByPointer($xAnnotations[0]->getEndPointer()));
 	}
 
-	public function testAnnotationWithDash(): void
+	public function testAnnotationWithDash()
 	{
 		$annotations = AnnotationHelper::getAnnotationsByName($this->getTestedCodeSnifferFile(), $this->findPropertyPointerByName($this->getTestedCodeSnifferFile(), 'annotationWithDash'), '@property-read');
 		self::assertCount(1, $annotations);

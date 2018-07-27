@@ -24,7 +24,7 @@ class ReferenceUsedNamesOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 	 * @dataProvider dataIgnoredNamesForIrrelevantTests
 	 * @param string[] $ignoredNames
 	 */
-	public function testDoNotReportNamespaceName(array $ignoredNames): void
+	public function testDoNotReportNamespaceName(array $ignoredNames)
 	{
 		$report = self::checkFile(__DIR__ . '/data/shouldBeInUseStatement.php', [
 			'ignoredNames' => $ignoredNames,
@@ -36,7 +36,7 @@ class ReferenceUsedNamesOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 	 * @dataProvider dataIgnoredNamesForIrrelevantTests
 	 * @param string[] $ignoredNames
 	 */
-	public function testCreatingNewObjectViaNonFullyQualifiedName(array $ignoredNames): void
+	public function testCreatingNewObjectViaNonFullyQualifiedName(array $ignoredNames)
 	{
 		$report = self::checkFile(__DIR__ . '/data/shouldBeInUseStatement.php', [
 			'ignoredNames' => $ignoredNames,
@@ -48,7 +48,7 @@ class ReferenceUsedNamesOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 	 * @dataProvider dataIgnoredNamesForIrrelevantTests
 	 * @param string[] $ignoredNames
 	 */
-	public function testCreatingNewObjectViaFullyQualifiedName(array $ignoredNames): void
+	public function testCreatingNewObjectViaFullyQualifiedName(array $ignoredNames)
 	{
 		$report = self::checkFile(__DIR__ . '/data/shouldBeInUseStatement.php', [
 			'ignoredNames' => $ignoredNames,
@@ -65,7 +65,7 @@ class ReferenceUsedNamesOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 	 * @dataProvider dataIgnoredNamesForIrrelevantTests
 	 * @param string[] $ignoredNames
 	 */
-	public function testReferencingClassConstantViaFullyQualifiedName(array $ignoredNames): void
+	public function testReferencingClassConstantViaFullyQualifiedName(array $ignoredNames)
 	{
 		$report = self::checkFile(__DIR__ . '/data/shouldBeInUseStatement.php', [
 			'ignoredNames' => $ignoredNames,
@@ -78,7 +78,7 @@ class ReferenceUsedNamesOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 		);
 	}
 
-	public function testReferencingConstantViaFullyQualifiedName(): void
+	public function testReferencingConstantViaFullyQualifiedName()
 	{
 		$report = self::checkFile(__DIR__ . '/data/shouldBeInUseStatement.php');
 		self::assertSniffError(
@@ -89,7 +89,7 @@ class ReferenceUsedNamesOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 		);
 	}
 
-	public function testReferencingFunctionViaFullyQualifiedName(): void
+	public function testReferencingFunctionViaFullyQualifiedName()
 	{
 		$report = self::checkFile(__DIR__ . '/data/shouldBeInUseStatement.php');
 		self::assertSniffError(
@@ -100,7 +100,7 @@ class ReferenceUsedNamesOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 		);
 	}
 
-	public function testReferencingGlobalFunctionViaFallback(): void
+	public function testReferencingGlobalFunctionViaFallback()
 	{
 		$report = self::checkFile(__DIR__ . '/data/shouldBeInUseStatement.php', [
 			'allowFallbackGlobalFunctions' => false,
@@ -113,7 +113,7 @@ class ReferenceUsedNamesOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 		);
 	}
 
-	public function testReferencingGlobalConstantViaFallback(): void
+	public function testReferencingGlobalConstantViaFallback()
 	{
 		$report = self::checkFile(__DIR__ . '/data/shouldBeInUseStatement.php', [
 			'allowFallbackGlobalConstants' => false,
@@ -130,7 +130,7 @@ class ReferenceUsedNamesOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 	 * @dataProvider dataIgnoredNamesForIrrelevantTests
 	 * @param string[] $ignoredNames
 	 */
-	public function testCreatingObjectFromSpecialExceptionName(array $ignoredNames): void
+	public function testCreatingObjectFromSpecialExceptionName(array $ignoredNames)
 	{
 		$report = self::checkFile(
 			__DIR__ . '/data/shouldBeInUseStatement.php',
@@ -149,7 +149,7 @@ class ReferenceUsedNamesOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 	 * @dataProvider dataIgnoredNamesForIrrelevantTests
 	 * @param string[] $ignoredNames
 	 */
-	public function testReportFullyQualifiedInFileWithNamespace(array $ignoredNames): void
+	public function testReportFullyQualifiedInFileWithNamespace(array $ignoredNames)
 	{
 		$report = self::checkFile(
 			__DIR__ . '/data/shouldBeInUseStatement.php',
@@ -181,7 +181,7 @@ class ReferenceUsedNamesOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 	 * @dataProvider dataIgnoredNamesForIrrelevantTests
 	 * @param string[] $ignoredNames
 	 */
-	public function testDoNotAllowFullyQualifiedExtends(array $ignoredNames): void
+	public function testDoNotAllowFullyQualifiedExtends(array $ignoredNames)
 	{
 		$report = self::checkFile(
 			__DIR__ . '/data/fullyQualifiedExtends.php',
@@ -202,7 +202,7 @@ class ReferenceUsedNamesOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 	 * @dataProvider dataIgnoredNamesForIrrelevantTests
 	 * @param string[] $ignoredNames
 	 */
-	public function testDoNotAllowFullyQualifiedImplements(array $ignoredNames): void
+	public function testDoNotAllowFullyQualifiedImplements(array $ignoredNames)
 	{
 		$report = self::checkFile(
 			__DIR__ . '/data/fullyQualifiedImplements.php',
@@ -229,7 +229,7 @@ class ReferenceUsedNamesOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 	 * @dataProvider dataIgnoredNamesForIrrelevantTests
 	 * @param string[] $ignoredNames
 	 */
-	public function testAllowFullyQualifiedExceptions(array $ignoredNames): void
+	public function testAllowFullyQualifiedExceptions(array $ignoredNames)
 	{
 		$report = self::checkFile(
 			__DIR__ . '/data/fullyQualifiedExceptionNames.php',
@@ -251,7 +251,7 @@ class ReferenceUsedNamesOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 	 * @dataProvider dataIgnoredNamesForIrrelevantTests
 	 * @param string[] $ignoredNames
 	 */
-	public function testDoNotAllowFullyQualifiedExceptionsInTypeHint(array $ignoredNames): void
+	public function testDoNotAllowFullyQualifiedExceptionsInTypeHint(array $ignoredNames)
 	{
 		$report = self::checkFile(
 			__DIR__ . '/data/fullyQualifiedExceptionNames.php',
@@ -273,7 +273,7 @@ class ReferenceUsedNamesOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 	 * @dataProvider dataIgnoredNamesForIrrelevantTests
 	 * @param string[] $ignoredNames
 	 */
-	public function testDoNotAllowFullyQualifiedExceptionsInThrow(array $ignoredNames): void
+	public function testDoNotAllowFullyQualifiedExceptionsInThrow(array $ignoredNames)
 	{
 		$report = self::checkFile(
 			__DIR__ . '/data/fullyQualifiedExceptionNames.php',
@@ -295,7 +295,7 @@ class ReferenceUsedNamesOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 	 * @dataProvider dataIgnoredNamesForIrrelevantTests
 	 * @param string[] $ignoredNames
 	 */
-	public function testDoNotAllowFullyQualifiedExceptionsInCatch(array $ignoredNames): void
+	public function testDoNotAllowFullyQualifiedExceptionsInCatch(array $ignoredNames)
 	{
 		$report = self::checkFile(
 			__DIR__ . '/data/fullyQualifiedExceptionNames.php',
@@ -343,7 +343,7 @@ class ReferenceUsedNamesOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 	 * @dataProvider dataIgnoredNamesForIrrelevantTests
 	 * @param string[] $ignoredNames
 	 */
-	public function testDoNotAllowPartialUses(array $ignoredNames): void
+	public function testDoNotAllowPartialUses(array $ignoredNames)
 	{
 		$report = self::checkFile(
 			__DIR__ . '/data/partialUses.php',
@@ -365,7 +365,7 @@ class ReferenceUsedNamesOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 	 * @dataProvider dataIgnoredNamesForIrrelevantTests
 	 * @param string[] $ignoredNames
 	 */
-	public function testAllowPartialUses(array $ignoredNames): void
+	public function testAllowPartialUses(array $ignoredNames)
 	{
 		$report = self::checkFile(
 			__DIR__ . '/data/partialUses.php',
@@ -382,7 +382,7 @@ class ReferenceUsedNamesOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 	 * @dataProvider dataIgnoredNamesForIrrelevantTests
 	 * @param string[] $ignoredNames
 	 */
-	public function testUseOnlyWhitelistedNamespaces(array $ignoredNames): void
+	public function testUseOnlyWhitelistedNamespaces(array $ignoredNames)
 	{
 		$report = self::checkFile(
 			__DIR__ . '/data/whitelistedNamespaces.php',
@@ -408,7 +408,7 @@ class ReferenceUsedNamesOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 	 * @dataProvider dataIgnoredNamesForIrrelevantTests
 	 * @param string[] $ignoredNames
 	 */
-	public function testAllowFullyQualifiedImplementsWithMultipleInterfaces(array $ignoredNames): void
+	public function testAllowFullyQualifiedImplementsWithMultipleInterfaces(array $ignoredNames)
 	{
 		$report = self::checkFile(
 			__DIR__ . '/data/multipleFullyQualifiedImplements.php',
@@ -424,7 +424,7 @@ class ReferenceUsedNamesOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 	 * @dataProvider dataIgnoredNamesForIrrelevantTests
 	 * @param string[] $ignoredNames
 	 */
-	public function testDisallowFullyQualifiedImplementsWithMultipleInterfaces(array $ignoredNames): void
+	public function testDisallowFullyQualifiedImplementsWithMultipleInterfaces(array $ignoredNames)
 	{
 		$report = self::checkFile(
 			__DIR__ . '/data/multipleFullyQualifiedImplements.php',
@@ -456,7 +456,7 @@ class ReferenceUsedNamesOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 	 * @dataProvider dataIgnoredNamesForIrrelevantTests
 	 * @param string[] $ignoredNames
 	 */
-	public function testDoNotUseTypeInRootNamespaceInFileWithoutNamespace(array $ignoredNames): void
+	public function testDoNotUseTypeInRootNamespaceInFileWithoutNamespace(array $ignoredNames)
 	{
 		$report = self::checkFile(
 			__DIR__ . '/data/referencingFullyQualifiedNameInFileWithoutNamespace.php',
@@ -504,7 +504,7 @@ class ReferenceUsedNamesOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 	 * @param bool $allowFullyQualifiedExceptions
 	 * @param string[] $ignoredNames
 	 */
-	public function testIgnoredNames(bool $allowFullyQualifiedExceptions, array $ignoredNames): void
+	public function testIgnoredNames(bool $allowFullyQualifiedExceptions, array $ignoredNames)
 	{
 		$report = self::checkFile(
 			__DIR__ . '/data/ignoredNames.php',
@@ -519,7 +519,7 @@ class ReferenceUsedNamesOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 		self::assertSniffError($report, 15, ReferenceUsedNamesOnlySniff::CODE_REFERENCE_VIA_FULLY_QUALIFIED_NAME_WITHOUT_NAMESPACE);
 	}
 
-	public function testIgnoredNamesWithAllowFullyQualifiedExceptions(): void
+	public function testIgnoredNamesWithAllowFullyQualifiedExceptions()
 	{
 		$report = self::checkFile(
 			__DIR__ . '/data/ignoredNames.php',
@@ -553,7 +553,7 @@ class ReferenceUsedNamesOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 	 * @param bool $allowFullyQualifiedExceptions
 	 * @param string[] $ignoredNames
 	 */
-	public function testIgnoredNamesInNamespace(bool $allowFullyQualifiedExceptions, array $ignoredNames): void
+	public function testIgnoredNamesInNamespace(bool $allowFullyQualifiedExceptions, array $ignoredNames)
 	{
 		$report = self::checkFile(
 			__DIR__ . '/data/ignoredNamesInNamespace.php',
@@ -568,7 +568,7 @@ class ReferenceUsedNamesOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 		self::assertSniffError($report, 17, ReferenceUsedNamesOnlySniff::CODE_REFERENCE_VIA_FULLY_QUALIFIED_NAME);
 	}
 
-	public function testIgnoredNamesWithAllowFullyQualifiedExceptionsInNamespace(): void
+	public function testIgnoredNamesWithAllowFullyQualifiedExceptionsInNamespace()
 	{
 		$report = self::checkFile(
 			__DIR__ . '/data/ignoredNamesInNamespace.php',
@@ -577,7 +577,7 @@ class ReferenceUsedNamesOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 		self::assertNoSniffErrorInFile($report);
 	}
 
-	public function testThrowExceptionForUndefinedKeyword(): void
+	public function testThrowExceptionForUndefinedKeyword()
 	{
 		$this->expectException(\SlevomatCodingStandard\Sniffs\Namespaces\UndefinedKeywordTokenException::class);
 		$this->expectExceptionMessage('Value for keyword token not found, constant "T_FOO" is not defined');
@@ -588,7 +588,7 @@ class ReferenceUsedNamesOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 		);
 	}
 
-	public function testAllowingFullyQualifiedGlobalClasses(): void
+	public function testAllowingFullyQualifiedGlobalClasses()
 	{
 		$report = self::checkFile(
 			__DIR__ . '/data/fullyQualifiedGlobalClassesInNamespace.php',
@@ -601,7 +601,7 @@ class ReferenceUsedNamesOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 		self::assertNoSniffErrorInFile($report);
 	}
 
-	public function testAllowingFullyQualifiedGlobalFunctions(): void
+	public function testAllowingFullyQualifiedGlobalFunctions()
 	{
 		$report = self::checkFile(
 			__DIR__ . '/data/fullyQualifiedGlobalFunctionsInNamespace.php',
@@ -614,7 +614,7 @@ class ReferenceUsedNamesOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 		self::assertNoSniffErrorInFile($report);
 	}
 
-	public function testAllowingFullyQualifiedGlobalConstants(): void
+	public function testAllowingFullyQualifiedGlobalConstants()
 	{
 		$report = self::checkFile(
 			__DIR__ . '/data/fullyQualifiedGlobalConstantsInNamespace.php',
@@ -627,7 +627,7 @@ class ReferenceUsedNamesOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 		self::assertNoSniffErrorInFile($report);
 	}
 
-	public function testFixableReferenceViaFullyQualifiedOrGlobalFallbackName(): void
+	public function testFixableReferenceViaFullyQualifiedOrGlobalFallbackName()
 	{
 		$report = self::checkFile(__DIR__ . '/data/fixableReferenceViaFullyQualifiedName.php', [
 			'fullyQualifiedKeywords' => ['T_EXTENDS'],
@@ -638,19 +638,19 @@ class ReferenceUsedNamesOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 		self::assertAllFixedInFile($report);
 	}
 
-	public function testNotFixableReferenceViaFullyQualifiedName(): void
+	public function testNotFixableReferenceViaFullyQualifiedName()
 	{
 		$report = self::checkFile(__DIR__ . '/data/notFixableReferenceViaFullyQualifiedName.php', [], [ReferenceUsedNamesOnlySniff::CODE_REFERENCE_VIA_FULLY_QUALIFIED_NAME]);
 		self::assertAllFixedInFile($report);
 	}
 
-	public function testPartlyFixableReferenceViaFullyQualifiedName(): void
+	public function testPartlyFixableReferenceViaFullyQualifiedName()
 	{
 		$report = self::checkFile(__DIR__ . '/data/partlyFixableReferenceViaFullyQualifiedName.php', [], [ReferenceUsedNamesOnlySniff::CODE_REFERENCE_VIA_FULLY_QUALIFIED_NAME]);
 		self::assertAllFixedInFile($report);
 	}
 
-	public function testFixableReferenceViaFullyQualifiedNameNoUseStatements(): void
+	public function testFixableReferenceViaFullyQualifiedNameNoUseStatements()
 	{
 		$report = self::checkFile(__DIR__ . '/data/fixableReferenceViaFullyQualifiedNameNoUseStatements.php', [
 			'fullyQualifiedKeywords' => ['T_EXTENDS', 'T_IMPLEMENTS'],
@@ -658,7 +658,7 @@ class ReferenceUsedNamesOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 		self::assertAllFixedInFile($report);
 	}
 
-	public function testFixableReferenceViaFullyQualifiedNameNoUseStatementsAndNoNamespace(): void
+	public function testFixableReferenceViaFullyQualifiedNameNoUseStatementsAndNoNamespace()
 	{
 		$report = self::checkFile(__DIR__ . '/data/fixableReferenceViaFullyQualifiedNameNoUseStatementsAndNoNamespace.php', [
 			'fullyQualifiedKeywords' => ['T_EXTENDS', 'T_IMPLEMENTS'],
@@ -666,7 +666,7 @@ class ReferenceUsedNamesOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 		self::assertAllFixedInFile($report);
 	}
 
-	public function testFixableReferenceViaFullyQualifiedNameNoUseStatementsAndNoNamespaceAndDeclare(): void
+	public function testFixableReferenceViaFullyQualifiedNameNoUseStatementsAndNoNamespaceAndDeclare()
 	{
 		$report = self::checkFile(__DIR__ . '/data/fixableReferenceViaFullyQualifiedNameNoUseStatementsAndNoNamespaceAndDeclare.php', [
 			'fullyQualifiedKeywords' => ['T_EXTENDS', 'T_IMPLEMENTS'],
@@ -674,7 +674,7 @@ class ReferenceUsedNamesOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 		self::assertAllFixedInFile($report);
 	}
 
-	public function testFixableReferenceViaFullyQualifiedNameWithoutNamespace(): void
+	public function testFixableReferenceViaFullyQualifiedNameWithoutNamespace()
 	{
 		$report = self::checkFile(__DIR__ . '/data/fixableReferenceViaFullyQualifiedNameWithoutNamespace.php', [
 			'fullyQualifiedKeywords' => ['T_IMPLEMENTS'],
@@ -687,7 +687,7 @@ class ReferenceUsedNamesOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 		self::assertAllFixedInFile($report);
 	}
 
-	public function testCollidingClassNameDifferentNamespacesAllowed(): void
+	public function testCollidingClassNameDifferentNamespacesAllowed()
 	{
 		$report = self::checkFile(
 			__DIR__ . '/data/collidingClassNameDifferentNamespaces.php',
@@ -696,7 +696,7 @@ class ReferenceUsedNamesOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 		self::assertNoSniffErrorInFile($report);
 	}
 
-	public function testCollidingClassNameDifferentNamespacesDisallowed(): void
+	public function testCollidingClassNameDifferentNamespacesDisallowed()
 	{
 		$report = self::checkFile(
 			__DIR__ . '/data/collidingClassNameDifferentNamespaces.php',
@@ -709,7 +709,7 @@ class ReferenceUsedNamesOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 		self::assertSniffError($report, 16, ReferenceUsedNamesOnlySniff::CODE_REFERENCE_VIA_FULLY_QUALIFIED_NAME);
 	}
 
-	public function testCollidingClassNameDifferentNamespacesMoreClassesAllowed(): void
+	public function testCollidingClassNameDifferentNamespacesMoreClassesAllowed()
 	{
 		$report = self::checkFile(
 			__DIR__ . '/data/collidingClassNameDifferentNamespacesMoreClasses.php',
@@ -718,7 +718,7 @@ class ReferenceUsedNamesOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 		self::assertNoSniffErrorInFile($report);
 	}
 
-	public function testCollidingClassNameDifferentNamespacesMoreClassesDisallowed(): void
+	public function testCollidingClassNameDifferentNamespacesMoreClassesDisallowed()
 	{
 		$report = self::checkFile(
 			__DIR__ . '/data/collidingClassNameDifferentNamespacesMoreClasses.php',
@@ -733,7 +733,7 @@ class ReferenceUsedNamesOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 		self::assertSniffError($report, 14, ReferenceUsedNamesOnlySniff::CODE_REFERENCE_VIA_FULLY_QUALIFIED_NAME);
 	}
 
-	public function testCollidingClassNameExtendsAllowed(): void
+	public function testCollidingClassNameExtendsAllowed()
 	{
 		$report = self::checkFile(
 			__DIR__ . '/data/collidingClassNameExtends.php',
@@ -742,7 +742,7 @@ class ReferenceUsedNamesOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 		self::assertNoSniffErrorInFile($report);
 	}
 
-	public function testCollidingClassNameExtendsDisabled(): void
+	public function testCollidingClassNameExtendsDisabled()
 	{
 		$report = self::checkFile(
 			__DIR__ . '/data/collidingClassNameExtends.php',
@@ -752,7 +752,7 @@ class ReferenceUsedNamesOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 		self::assertSniffError($report, 5, ReferenceUsedNamesOnlySniff::CODE_REFERENCE_VIA_FULLY_QUALIFIED_NAME);
 	}
 
-	public function testCollidingFullyQualifiedFunctionNameAllowed(): void
+	public function testCollidingFullyQualifiedFunctionNameAllowed()
 	{
 		$report = self::checkFile(
 			__DIR__ . '/data/collidingFullyQualifiedFunctionNames.php',
@@ -761,7 +761,7 @@ class ReferenceUsedNamesOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 		self::assertNoSniffErrorInFile($report);
 	}
 
-	public function testCollidingFullyQualifiedFunctionNameDisallowed(): void
+	public function testCollidingFullyQualifiedFunctionNameDisallowed()
 	{
 		$report = self::checkFile(
 			__DIR__ . '/data/collidingFullyQualifiedFunctionNames.php',
@@ -772,7 +772,7 @@ class ReferenceUsedNamesOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 		self::assertSniffError($report, 15, ReferenceUsedNamesOnlySniff::CODE_REFERENCE_VIA_FULLY_QUALIFIED_NAME);
 	}
 
-	public function testCollidingFullyQualifiedConstantNameAllowed(): void
+	public function testCollidingFullyQualifiedConstantNameAllowed()
 	{
 		$report = self::checkFile(
 			__DIR__ . '/data/collidingFullyQualifiedConstantNames.php',
@@ -781,7 +781,7 @@ class ReferenceUsedNamesOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 		self::assertNoSniffErrorInFile($report);
 	}
 
-	public function testCollidingFullyQualifiedConstantNameDisallowed(): void
+	public function testCollidingFullyQualifiedConstantNameDisallowed()
 	{
 		$report = self::checkFile(
 			__DIR__ . '/data/collidingFullyQualifiedConstantNames.php',
@@ -792,7 +792,7 @@ class ReferenceUsedNamesOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 		self::assertSniffError($report, 12, ReferenceUsedNamesOnlySniff::CODE_REFERENCE_VIA_FULLY_QUALIFIED_NAME);
 	}
 
-	public function testReferencingGlobalFunctionViaFallbackErrorsWithMoreComplexSettings(): void
+	public function testReferencingGlobalFunctionViaFallbackErrorsWithMoreComplexSettings()
 	{
 		$report = self::checkFile(
 			__DIR__ . '/data/referencingGlobalFunctionViaFallbackErrorsWithMoreComplexSettings.php',
@@ -807,7 +807,7 @@ class ReferenceUsedNamesOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 		self::assertSniffError($report, 17, ReferenceUsedNamesOnlySniff::CODE_REFERENCE_VIA_FALLBACK_GLOBAL_NAME);
 	}
 
-	public function testReferencingGlobalFunctionViaFullyQualifiedWithMoreComplexSettings(): void
+	public function testReferencingGlobalFunctionViaFullyQualifiedWithMoreComplexSettings()
 	{
 		$report = self::checkFile(
 			__DIR__ . '/data/referencingGlobalFunctionViaFullyQualifiedWithMoreComplexSettings.php',
@@ -822,7 +822,7 @@ class ReferenceUsedNamesOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 		self::assertSniffError($report, 13, ReferenceUsedNamesOnlySniff::CODE_REFERENCE_VIA_FULLY_QUALIFIED_NAME);
 	}
 
-	public function testSearchingInAnnotationsDisabled(): void
+	public function testSearchingInAnnotationsDisabled()
 	{
 		$report = self::checkFile(
 			__DIR__ . '/data/shouldBeInUseStatementSearchingInAnnotations.php',
@@ -834,7 +834,7 @@ class ReferenceUsedNamesOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 		self::assertNoSniffErrorInFile($report);
 	}
 
-	public function testSearchingInAnnotations(): void
+	public function testSearchingInAnnotations()
 	{
 		$report = self::checkFile(
 			__DIR__ . '/data/shouldBeInUseStatementSearchingInAnnotations.php',
@@ -864,7 +864,7 @@ class ReferenceUsedNamesOnlySniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 		self::assertAllFixedInFile($report);
 	}
 
-	public function testReferencingGlobalTypesInGlobalNamespace(): void
+	public function testReferencingGlobalTypesInGlobalNamespace()
 	{
 		$report = self::checkFile(
 			__DIR__ . '/data/referencingGlobalTypesInGlobalNamespace.php',

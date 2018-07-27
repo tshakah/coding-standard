@@ -5,31 +5,31 @@ namespace SlevomatCodingStandard\Sniffs\Commenting;
 class DocCommentSpacingSniffTest extends \SlevomatCodingStandard\Sniffs\TestCase
 {
 
-	public function testEmptyDocComment(): void
+	public function testEmptyDocComment()
 	{
 		$report = self::checkFile(__DIR__ . '/data/docCommentSpacingEmptyDocComment.php');
 		self::assertNoSniffErrorInFile($report);
 	}
 
-	public function testInlineDocComment(): void
+	public function testInlineDocComment()
 	{
 		$report = self::checkFile(__DIR__ . '/data/docCommentSpacingInlineDocComment.php');
 		self::assertNoSniffErrorInFile($report);
 	}
 
-	public function testOneLineDocComment(): void
+	public function testOneLineDocComment()
 	{
 		$report = self::checkFile(__DIR__ . '/data/docCommentSpacingOneLineDocComment.php');
 		self::assertNoSniffErrorInFile($report);
 	}
 
-	public function testDefaultSettingsNoErrors(): void
+	public function testDefaultSettingsNoErrors()
 	{
 		$report = self::checkFile(__DIR__ . '/data/docCommentSpacingDefaultSettingsNoErrors.php');
 		self::assertNoSniffErrorInFile($report);
 	}
 
-	public function testDefaultSettingsErrors(): void
+	public function testDefaultSettingsErrors()
 	{
 		$report = self::checkFile(__DIR__ . '/data/docCommentSpacingDefaultSettingsErrors.php');
 
@@ -49,7 +49,7 @@ class DocCommentSpacingSniffTest extends \SlevomatCodingStandard\Sniffs\TestCase
 		self::assertAllFixedInFile($report);
 	}
 
-	public function testModifiedSettingsNoErrors(): void
+	public function testModifiedSettingsNoErrors()
 	{
 		$report = self::checkFile(__DIR__ . '/data/docCommentSpacingModifiedSettingsNoErrors.php', [
 			'linesCountBeforeFirstContent' => 1,
@@ -60,7 +60,7 @@ class DocCommentSpacingSniffTest extends \SlevomatCodingStandard\Sniffs\TestCase
 		self::assertNoSniffErrorInFile($report);
 	}
 
-	public function testModifiedSettingsErrors(): void
+	public function testModifiedSettingsErrors()
 	{
 		$report = self::checkFile(__DIR__ . '/data/docCommentSpacingModifiedSettingsErrors.php', [
 			'linesCountBeforeFirstContent' => 1,

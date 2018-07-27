@@ -7,10 +7,10 @@ use SlevomatCodingStandard\Helpers\TokenHelper;
 class TypeCastSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 {
 
-	public const CODE_FORBIDDEN_CAST_USED = 'ForbiddenCastUsed';
-	public const CODE_INVALID_CAST_USED = 'InvalidCastUsed';
+	const CODE_FORBIDDEN_CAST_USED = 'ForbiddenCastUsed';
+	const CODE_INVALID_CAST_USED = 'InvalidCastUsed';
 
-	private const INVALID_CASTS = [
+	const INVALID_CASTS = [
 		'binary' => null,
 		'boolean' => 'bool',
 		'double' => 'float',
@@ -38,7 +38,7 @@ class TypeCastSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
 	 * @param int $pointer
 	 */
-	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $pointer): void
+	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $pointer)
 	{
 		$tokens = $phpcsFile->getTokens();
 		$cast = $tokens[$pointer]['content'];

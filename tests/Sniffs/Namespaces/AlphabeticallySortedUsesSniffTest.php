@@ -5,7 +5,7 @@ namespace SlevomatCodingStandard\Sniffs\Namespaces;
 class AlphabeticallySortedUsesSniffTest extends \SlevomatCodingStandard\Sniffs\TestCase
 {
 
-	public function testIncorrectOrder(): void
+	public function testIncorrectOrder()
 	{
 		self::assertSniffError(
 			self::checkFile(__DIR__ . '/data/incorrectOrder.php'),
@@ -15,7 +15,7 @@ class AlphabeticallySortedUsesSniffTest extends \SlevomatCodingStandard\Sniffs\T
 		);
 	}
 
-	public function testIncorrectOrderIntertwinedWithClasses(): void
+	public function testIncorrectOrderIntertwinedWithClasses()
 	{
 		self::assertSniffError(
 			self::checkFile(__DIR__ . '/data/incorrectOrderIntertwinedWithClasses.php'),
@@ -25,21 +25,21 @@ class AlphabeticallySortedUsesSniffTest extends \SlevomatCodingStandard\Sniffs\T
 		);
 	}
 
-	public function testCorrectOrderIgnoresUsesAfterClassesTraitsAndInterfaces(): void
+	public function testCorrectOrderIgnoresUsesAfterClassesTraitsAndInterfaces()
 	{
 		self::assertNoSniffErrorInFile(
 			self::checkFile(__DIR__ . '/data/correctOrder.php')
 		);
 	}
 
-	public function testCorrectOrderOfSimilarNamespaces(): void
+	public function testCorrectOrderOfSimilarNamespaces()
 	{
 		self::assertNoSniffErrorInFile(
 			self::checkFile(__DIR__ . '/data/correctOrderSimilarNamespaces.php')
 		);
 	}
 
-	public function testCorrectOrderOfSimilarNamespacesCaseSensitive(): void
+	public function testCorrectOrderOfSimilarNamespacesCaseSensitive()
 	{
 		self::assertNoSniffErrorInFile(
 			self::checkFile(__DIR__ . '/data/correctOrderSimilarNamespacesCaseSensitive.php', [
@@ -48,7 +48,7 @@ class AlphabeticallySortedUsesSniffTest extends \SlevomatCodingStandard\Sniffs\T
 		);
 	}
 
-	public function testIncorrectOrderOfSimilarNamespaces(): void
+	public function testIncorrectOrderOfSimilarNamespaces()
 	{
 		self::assertSniffError(
 			self::checkFile(__DIR__ . '/data/incorrectOrderSimilarNamespaces.php'),
@@ -58,18 +58,18 @@ class AlphabeticallySortedUsesSniffTest extends \SlevomatCodingStandard\Sniffs\T
 		);
 	}
 
-	public function testPatrikOrder(): void
+	public function testPatrikOrder()
 	{
 		self::assertNoSniffErrorInFile(self::checkFile(__DIR__ . '/data/alphabeticalPatrik.php'));
 	}
 
-	public function testFixable(): void
+	public function testFixable()
 	{
 		$report = self::checkFile(__DIR__ . '/data/fixableAlphabeticalSortedUses.php', [], [AlphabeticallySortedUsesSniff::CODE_INCORRECT_ORDER]);
 		self::assertAllFixedInFile($report);
 	}
 
-	public function testFixablePsr12Compatible(): void
+	public function testFixablePsr12Compatible()
 	{
 		$report = self::checkFile(__DIR__ . '/data/fixableAlphabeticalSortedUsesPsr12Compatible.php', [
 			'psr12Compatible' => true,

@@ -7,7 +7,7 @@ use SlevomatCodingStandard\Helpers\TokenHelper;
 class RequireNullCoalesceOperatorSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 {
 
-	public const CODE_NULL_COALESCE_OPERATOR_NOT_USED = 'NullCoalesceOperatorNotUsed';
+	const CODE_NULL_COALESCE_OPERATOR_NOT_USED = 'NullCoalesceOperatorNotUsed';
 
 	/**
 	 * @return mixed[]
@@ -24,7 +24,7 @@ class RequireNullCoalesceOperatorSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
 	 * @param int $issetPointer
 	 */
-	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $issetPointer): void
+	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $issetPointer)
 	{
 		$tokens = $phpcsFile->getTokens();
 

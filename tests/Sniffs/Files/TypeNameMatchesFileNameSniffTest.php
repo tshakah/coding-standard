@@ -5,7 +5,7 @@ namespace SlevomatCodingStandard\Sniffs\Files;
 class TypeNameMatchesFileNameSniffTest extends \SlevomatCodingStandard\Sniffs\TestCase
 {
 
-	public function testError(): void
+	public function testError()
 	{
 		$report = self::checkFile(__DIR__ . '/data/rootNamespace/boo.php', [
 			'rootNamespaces' => ['tests/Sniffs/Files/data/rootNamespace' => 'RootNamespace'],
@@ -24,7 +24,7 @@ class TypeNameMatchesFileNameSniffTest extends \SlevomatCodingStandard\Sniffs\Te
 		self::assertSniffError($report, 5, TypeNameMatchesFileNameSniff::CODE_NO_MATCH_BETWEEN_TYPE_NAME_AND_FILE_NAME);
 	}
 
-	public function testNoError(): void
+	public function testNoError()
 	{
 		self::assertNoSniffErrorInFile(self::checkFile(__DIR__ . '/data/rootNamespace/Foo.php', [
 			'rootNamespaces' => ['tests/Sniffs/Files/data/rootNamespace' => 'RootNamespace'],
@@ -32,7 +32,7 @@ class TypeNameMatchesFileNameSniffTest extends \SlevomatCodingStandard\Sniffs\Te
 		]));
 	}
 
-	public function testSkippedDir(): void
+	public function testSkippedDir()
 	{
 		self::assertNoSniffErrorInFile(self::checkFile(__DIR__ . '/data/rootNamespace/skippedDir/Bar.php', [
 			'rootNamespaces' => ['tests/Sniffs/Files/data/rootNamespace' => 'RootNamespace'],
@@ -41,19 +41,19 @@ class TypeNameMatchesFileNameSniffTest extends \SlevomatCodingStandard\Sniffs\Te
 		]));
 	}
 
-	public function testIgnoredNamespace(): void
+	public function testIgnoredNamespace()
 	{
 		self::assertNoSniffErrorInFile(self::checkFile(__DIR__ . '/data/ignoredNamespace.php', [
 			'ignoredNamespaces' => ['IgnoredNamespace'],
 		]));
 	}
 
-	public function testNoNamespace(): void
+	public function testNoNamespace()
 	{
 		self::assertNoSniffErrorInFile(self::checkFile(__DIR__ . '/data/noNamespace.php'));
 	}
 
-	public function testRootNamespacesNormalization(): void
+	public function testRootNamespacesNormalization()
 	{
 		$sniffProperties1 = [
 			'rootNamespaces' => [

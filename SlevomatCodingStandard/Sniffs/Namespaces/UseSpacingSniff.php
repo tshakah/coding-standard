@@ -10,10 +10,10 @@ use SlevomatCodingStandard\Helpers\UseStatementHelper;
 class UseSpacingSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 {
 
-	public const CODE_INCORRECT_LINES_COUNT_BEFORE_FIRST_USE = 'IncorrectLinesCountBeforeFirstUse';
-	public const CODE_INCORRECT_LINES_COUNT_BETWEEN_SAME_TYPES_OF_USE = 'IncorrectLinesCountBetweenSameTypeOfUse';
-	public const CODE_INCORRECT_LINES_COUNT_BETWEEN_DIFFERENT_TYPES_OF_USE = 'IncorrectLinesCountBetweenDifferentTypeOfUse';
-	public const CODE_INCORRECT_LINES_COUNT_AFTER_LAST_USE = 'IncorrectLinesCountAfterLastUse';
+	const CODE_INCORRECT_LINES_COUNT_BEFORE_FIRST_USE = 'IncorrectLinesCountBeforeFirstUse';
+	const CODE_INCORRECT_LINES_COUNT_BETWEEN_SAME_TYPES_OF_USE = 'IncorrectLinesCountBetweenSameTypeOfUse';
+	const CODE_INCORRECT_LINES_COUNT_BETWEEN_DIFFERENT_TYPES_OF_USE = 'IncorrectLinesCountBetweenDifferentTypeOfUse';
+	const CODE_INCORRECT_LINES_COUNT_AFTER_LAST_USE = 'IncorrectLinesCountAfterLastUse';
 
 	/** @var int */
 	public $linesCountBeforeFirstUse = 1;
@@ -39,7 +39,7 @@ class UseSpacingSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
 	 * @param int $openTagPointer
 	 */
-	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $openTagPointer): void
+	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $openTagPointer)
 	{
 		$useStatements = array_values(UseStatementHelper::getUseStatements($phpcsFile, $openTagPointer));
 
@@ -53,7 +53,7 @@ class UseSpacingSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 		$this->checkLinesBetweenDifferentTypesOfUse($phpcsFile, $useStatements);
 	}
 
-	private function checkLinesBeforeFirstUse(\PHP_CodeSniffer\Files\File $phpcsFile, UseStatement $firstUse): void
+	private function checkLinesBeforeFirstUse(\PHP_CodeSniffer\Files\File $phpcsFile, UseStatement $firstUse)
 	{
 		$tokens = $phpcsFile->getTokens();
 
@@ -106,7 +106,7 @@ class UseSpacingSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 		$phpcsFile->fixer->endChangeset();
 	}
 
-	private function checkLinesAfterLastUse(\PHP_CodeSniffer\Files\File $phpcsFile, UseStatement $lastUse): void
+	private function checkLinesAfterLastUse(\PHP_CodeSniffer\Files\File $phpcsFile, UseStatement $lastUse)
 	{
 		/** @var int $lastUseSemicolonPointer */
 		$lastUseSemicolonPointer = TokenHelper::findNextLocal($phpcsFile, T_SEMICOLON, $lastUse->getPointer() + 1);
@@ -153,7 +153,7 @@ class UseSpacingSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
 	 * @param \SlevomatCodingStandard\Helpers\UseStatement[] $useStatements
 	 */
-	private function checkLinesBetweenSameTypesOfUse(\PHP_CodeSniffer\Files\File $phpcsFile, array $useStatements): void
+	private function checkLinesBetweenSameTypesOfUse(\PHP_CodeSniffer\Files\File $phpcsFile, array $useStatements)
 	{
 		if (count($useStatements) === 1) {
 			return;
@@ -215,7 +215,7 @@ class UseSpacingSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
 	 * @param \SlevomatCodingStandard\Helpers\UseStatement[] $useStatements
 	 */
-	private function checkLinesBetweenDifferentTypesOfUse(\PHP_CodeSniffer\Files\File $phpcsFile, array $useStatements): void
+	private function checkLinesBetweenDifferentTypesOfUse(\PHP_CodeSniffer\Files\File $phpcsFile, array $useStatements)
 	{
 		if (count($useStatements) === 1) {
 			return;

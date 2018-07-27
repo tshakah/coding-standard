@@ -5,9 +5,9 @@ namespace FooNamespace;
 abstract class FooClass
 {
 
-	abstract public function withNullableReturnTypeHint(): ?string;
+	abstract public function withNullableReturnTypeHint();
 
-	public function withNullableParameterTypeHint(?string $a)
+	public function withNullableParameterTypeHint($a)
 	{
 
 	}
@@ -25,7 +25,7 @@ abstract class FooClass
 	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.UselessDocComment
 	 * @param int|null $a
 	 */
-	public function withNullableParameterTypeHintAndSuppressedUselessDocComment(?int $a)
+	public function withNullableParameterTypeHintAndSuppressedUselessDocComment(int $a = null)
 	{
 	}
 
@@ -110,6 +110,6 @@ abstract class FooClass
 	 * @param \FooNamespace\FooClass|null $object
 	 * @return mixed
 	 */
-	abstract public function parametersWithWeirdDefinition(?string$string,int$int,?bool$bool=true,float$float,?callable$callable,array$array=[],?\FooNamespace\FooClass$object);
+	abstract public function parametersWithWeirdDefinition($string,int$int,?bool$bool=true,float$float,?callable$callable,array$array=[],?\FooNamespace\FooClass$object);
 
 }

@@ -10,7 +10,7 @@ class FullyQualifiedExceptionsSniffTest extends \SlevomatCodingStandard\Sniffs\T
 		return self::checkFile(__DIR__ . '/data/fullyQualifiedExceptionNames.php');
 	}
 
-	public function testNonFullyQualifiedExceptionInTypeHint(): void
+	public function testNonFullyQualifiedExceptionInTypeHint()
 	{
 		self::assertSniffError(
 			$this->getFileReport(),
@@ -20,7 +20,7 @@ class FullyQualifiedExceptionsSniffTest extends \SlevomatCodingStandard\Sniffs\T
 		);
 	}
 
-	public function testNonFullyQualifiedExceptionInThrow(): void
+	public function testNonFullyQualifiedExceptionInThrow()
 	{
 		self::assertSniffError(
 			$this->getFileReport(),
@@ -30,7 +30,7 @@ class FullyQualifiedExceptionsSniffTest extends \SlevomatCodingStandard\Sniffs\T
 		);
 	}
 
-	public function testNonFullyQualifiedExceptionInCatch(): void
+	public function testNonFullyQualifiedExceptionInCatch()
 	{
 		self::assertSniffError(
 			$this->getFileReport(),
@@ -52,17 +52,17 @@ class FullyQualifiedExceptionsSniffTest extends \SlevomatCodingStandard\Sniffs\T
 		);
 	}
 
-	public function testFullyQualifiedExceptionInTypeHint(): void
+	public function testFullyQualifiedExceptionInTypeHint()
 	{
 		self::assertNoSniffError($this->getFileReport(), 16);
 	}
 
-	public function testFullyQualifiedExceptionInThrow(): void
+	public function testFullyQualifiedExceptionInThrow()
 	{
 		self::assertNoSniffError($this->getFileReport(), 19);
 	}
 
-	public function testFullyQualifiedExceptionInCatch(): void
+	public function testFullyQualifiedExceptionInCatch()
 	{
 		self::assertNoSniffError($this->getFileReport(), 20);
 		self::assertNoSniffError($this->getFileReport(), 22);
@@ -71,14 +71,14 @@ class FullyQualifiedExceptionsSniffTest extends \SlevomatCodingStandard\Sniffs\T
 		self::assertNoSniffError($this->getFileReport(), 28);
 	}
 
-	public function testClassSuffixedErrorOrExceptionIsNotAnExceptionButReported(): void
+	public function testClassSuffixedErrorOrExceptionIsNotAnExceptionButReported()
 	{
 		$report = self::checkFile(__DIR__ . '/data/ignoredNames.php');
 		self::assertSniffError($report, 3, FullyQualifiedExceptionsSniff::CODE_NON_FULLY_QUALIFIED_EXCEPTION);
 		self::assertSniffError($report, 7, FullyQualifiedExceptionsSniff::CODE_NON_FULLY_QUALIFIED_EXCEPTION);
 	}
 
-	public function testIgnoredNames(): void
+	public function testIgnoredNames()
 	{
 		$report = self::checkFile(__DIR__ . '/data/ignoredNames.php', [
 			'ignoredNames' => [
@@ -89,7 +89,7 @@ class FullyQualifiedExceptionsSniffTest extends \SlevomatCodingStandard\Sniffs\T
 		self::assertNoSniffErrorInFile($report);
 	}
 
-	public function testClassSuffixedErrorOrExceptionIsNotAnExceptionButReportedInNamespace(): void
+	public function testClassSuffixedErrorOrExceptionIsNotAnExceptionButReportedInNamespace()
 	{
 		$report = self::checkFile(__DIR__ . '/data/ignoredNamesInNamespace.php');
 		self::assertNoSniffError($report, 5); // *Error names are reported only with a root namespace
@@ -98,7 +98,7 @@ class FullyQualifiedExceptionsSniffTest extends \SlevomatCodingStandard\Sniffs\T
 		self::assertNoSniffError($report, 17); // dtto
 	}
 
-	public function testIgnoredNamesInNamespace(): void
+	public function testIgnoredNamesInNamespace()
 	{
 		$report = self::checkFile(__DIR__ . '/data/ignoredNamesInNamespace.php', [
 			'ignoredNames' => [
@@ -108,7 +108,7 @@ class FullyQualifiedExceptionsSniffTest extends \SlevomatCodingStandard\Sniffs\T
 		self::assertNoSniffErrorInFile($report);
 	}
 
-	public function testFixableFullyQualified(): void
+	public function testFixableFullyQualified()
 	{
 		$report = self::checkFile(__DIR__ . '/data/fixableFullyQualifiedExceptions.php');
 		self::assertAllFixedInFile($report);

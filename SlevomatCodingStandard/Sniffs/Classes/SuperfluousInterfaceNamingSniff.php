@@ -7,8 +7,8 @@ use SlevomatCodingStandard\Helpers\ClassHelper;
 class SuperfluousInterfaceNamingSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 {
 
-	public const CODE_SUPERFLUOUS_PREFIX = 'SuperfluousPrefix';
-	public const CODE_SUPERFLUOUS_SUFFIX = 'SuperfluousSuffix';
+	const CODE_SUPERFLUOUS_PREFIX = 'SuperfluousPrefix';
+	const CODE_SUPERFLUOUS_SUFFIX = 'SuperfluousSuffix';
 
 	/**
 	 * @return mixed[]
@@ -25,7 +25,7 @@ class SuperfluousInterfaceNamingSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
 	 * @param int $interfacePointer
 	 */
-	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $interfacePointer): void
+	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $interfacePointer)
 	{
 		$interfaceName = ClassHelper::getName($phpcsFile, $interfacePointer);
 
@@ -33,7 +33,7 @@ class SuperfluousInterfaceNamingSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 		$this->checkSuffix($phpcsFile, $interfacePointer, $interfaceName);
 	}
 
-	private function checkPrefix(\PHP_CodeSniffer\Files\File $phpcsFile, int $interfacePointer, string $interfaceName): void
+	private function checkPrefix(\PHP_CodeSniffer\Files\File $phpcsFile, int $interfacePointer, string $interfaceName)
 	{
 		$prefix = substr($interfaceName, 0, 9);
 
@@ -44,7 +44,7 @@ class SuperfluousInterfaceNamingSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 		$phpcsFile->addError(sprintf('Superfluous prefix "%s".', $prefix), $interfacePointer, self::CODE_SUPERFLUOUS_PREFIX);
 	}
 
-	private function checkSuffix(\PHP_CodeSniffer\Files\File $phpcsFile, int $interfacePointer, string $interfaceName): void
+	private function checkSuffix(\PHP_CodeSniffer\Files\File $phpcsFile, int $interfacePointer, string $interfaceName)
 	{
 		$suffix = substr($interfaceName, -9);
 

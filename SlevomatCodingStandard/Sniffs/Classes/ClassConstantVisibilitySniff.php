@@ -8,7 +8,7 @@ use SlevomatCodingStandard\Helpers\TokenHelper;
 class ClassConstantVisibilitySniff implements \PHP_CodeSniffer\Sniffs\Sniff
 {
 
-	public const CODE_MISSING_CONSTANT_VISIBILITY = 'MissingConstantVisibility';
+	const CODE_MISSING_CONSTANT_VISIBILITY = 'MissingConstantVisibility';
 
 	/**
 	 * @deprecated
@@ -38,7 +38,7 @@ class ClassConstantVisibilitySniff implements \PHP_CodeSniffer\Sniffs\Sniff
 	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
 	 * @param int $constantPointer
 	 */
-	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $constantPointer): void
+	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $constantPointer)
 	{
 		$tokens = $phpcsFile->getTokens();
 

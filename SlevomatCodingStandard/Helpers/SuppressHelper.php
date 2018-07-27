@@ -5,7 +5,7 @@ namespace SlevomatCodingStandard\Helpers;
 class SuppressHelper
 {
 
-	public const ANNOTATION = '@phpcsSuppress';
+	const ANNOTATION = '@phpcsSuppress';
 
 	public static function isSniffSuppressed(\PHP_CodeSniffer\Files\File $codeSnifferFile, int $pointer, string $suppressName): bool
 	{

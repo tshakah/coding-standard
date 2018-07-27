@@ -7,7 +7,7 @@ use SlevomatCodingStandard\Helpers\TokenHelper;
 class LanguageConstructWithParenthesesSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 {
 
-	public const CODE_USED_WITH_PARENTHESES = 'UsedWithParentheses';
+	const CODE_USED_WITH_PARENTHESES = 'UsedWithParentheses';
 
 	/**
 	 * @return mixed[]
@@ -35,7 +35,7 @@ class LanguageConstructWithParenthesesSniff implements \PHP_CodeSniffer\Sniffs\S
 	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
 	 * @param int $languageConstructPointer
 	 */
-	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $languageConstructPointer): void
+	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $languageConstructPointer)
 	{
 		$tokens = $phpcsFile->getTokens();
 		/** @var int $openParenthesisPointer */

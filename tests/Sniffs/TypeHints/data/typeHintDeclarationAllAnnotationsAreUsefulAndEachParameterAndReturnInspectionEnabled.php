@@ -6,7 +6,7 @@ class Whatever
 	/**
 	 * @return void
 	 */
-	public function uselessDoccomment(): void
+	public function uselessDoccomment()
 	{
 
 	}
@@ -16,7 +16,7 @@ class Whatever
 	 * @param int $b
 	 * @return void
 	 */
-	public function uselessDoccommentWithParameters(int $a, int $b): void
+	public function uselessDoccommentWithParameters(int $a, int $b)
 	{
 
 	}
@@ -25,7 +25,7 @@ class Whatever
 	 * @whatever
 	 * @return void
 	 */
-	public function usefulDoccomment(): void
+	public function usefulDoccomment()
 	{
 
 	}
@@ -36,7 +36,7 @@ class Whatever
 	 * @return void
 	 * @whatever
 	 */
-	public function usefulDoccommentWithParameters(int $a, int $b): void
+	public function usefulDoccommentWithParameters(int $a, int $b)
 	{
 
 	}

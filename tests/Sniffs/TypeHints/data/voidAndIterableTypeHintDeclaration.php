@@ -16,7 +16,7 @@ abstract class VoidAndIterableClass
 	 * @param string[] $list
 	 * @return void
 	 */
-	public function doBar(iterable $list): void
+	public function doBar(iterable $list)
 	{
 		return;
 	}
@@ -32,11 +32,11 @@ abstract class VoidAndIterableClass
 	/**
 	 * @return void
 	 */
-	public function returnVoid(): void
+	public function returnVoid()
 	{
 		return;
 	}
 
-	abstract public function abstractReturnVoid(): void;
+	abstract public function abstractReturnVoid();
 
 }

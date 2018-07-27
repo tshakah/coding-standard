@@ -42,7 +42,7 @@ abstract class FooClass
 	/**
 	 * @param string $param1 Description
 	 */
-	public function withDescription(string $param1, int $param2): void
+	public function withDescription(string $param1, int $param2)
 	{
 	}
 
@@ -50,7 +50,7 @@ abstract class FooClass
 	 * @param string|null $param2 Has description
 	 * @param string|null $param3 Has description
 	 */
-	public function moreParametersWithDescription(string $param1 = '', string $param2 = null, string $param3 = null): void
+	public function moreParametersWithDescription(string $param1 = '', string $param2 = null, string $param3 = null)
 	{
 	}
 

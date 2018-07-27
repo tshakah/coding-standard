@@ -11,7 +11,7 @@ use SlevomatCodingStandard\Helpers\TokenHelper;
 class TypeNameMatchesFileNameSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 {
 
-	public const CODE_NO_MATCH_BETWEEN_TYPE_NAME_AND_FILE_NAME = 'NoMatchBetweenTypeNameAndFileName';
+	const CODE_NO_MATCH_BETWEEN_TYPE_NAME_AND_FILE_NAME = 'NoMatchBetweenTypeNameAndFileName';
 
 	/** @var string[] path(string) => namespace */
 	public $rootNamespaces = [];
@@ -134,7 +134,7 @@ class TypeNameMatchesFileNameSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
 	 * @param int $typePointer
 	 */
-	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $typePointer): void
+	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $typePointer)
 	{
 		$tokens = $phpcsFile->getTokens();
 

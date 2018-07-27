@@ -7,7 +7,7 @@ use SlevomatCodingStandard\Helpers\TokenHelper;
 class RequireOneNamespaceInFileSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 {
 
-	public const CODE_MORE_NAMESPACES_IN_FILE = 'MoreNamespacesInFile';
+	const CODE_MORE_NAMESPACES_IN_FILE = 'MoreNamespacesInFile';
 
 	/**
 	 * @return mixed[]
@@ -24,7 +24,7 @@ class RequireOneNamespaceInFileSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
 	 * @param int $namespacePointer
 	 */
-	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $namespacePointer): void
+	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $namespacePointer)
 	{
 		if (TokenHelper::findPrevious($phpcsFile, T_NAMESPACE, $namespacePointer - 1) === null) {
 			return;

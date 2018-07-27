@@ -11,7 +11,7 @@ use SlevomatCodingStandard\Helpers\UseStatementHelper;
 class ReferenceThrowableOnlySniff implements \PHP_CodeSniffer\Sniffs\Sniff
 {
 
-	public const CODE_REFERENCED_GENERAL_EXCEPTION = 'ReferencedGeneralException';
+	const CODE_REFERENCED_GENERAL_EXCEPTION = 'ReferencedGeneralException';
 
 	/**
 	 * @return mixed[]
@@ -28,7 +28,7 @@ class ReferenceThrowableOnlySniff implements \PHP_CodeSniffer\Sniffs\Sniff
 	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
 	 * @param int $openTagPointer
 	 */
-	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $openTagPointer): void
+	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $openTagPointer)
 	{
 		$tokens = $phpcsFile->getTokens();
 		$message = sprintf('Referencing general \%s; use \%s instead.', \Exception::class, \Throwable::class);

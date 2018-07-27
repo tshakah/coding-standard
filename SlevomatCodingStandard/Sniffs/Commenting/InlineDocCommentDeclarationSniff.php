@@ -7,8 +7,8 @@ use SlevomatCodingStandard\Helpers\TokenHelper;
 class InlineDocCommentDeclarationSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 {
 
-	public const CODE_INVALID_FORMAT = 'InvalidFormat';
-	public const CODE_INVALID_COMMENT_TYPE = 'InvalidCommentType';
+	const CODE_INVALID_FORMAT = 'InvalidFormat';
+	const CODE_INVALID_COMMENT_TYPE = 'InvalidCommentType';
 
 	/**
 	 * @return mixed[]
@@ -26,7 +26,7 @@ class InlineDocCommentDeclarationSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
 	 * @param int $commentOpenPointer
 	 */
-	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $commentOpenPointer): void
+	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $commentOpenPointer)
 	{
 		$tokens = $phpcsFile->getTokens();
 

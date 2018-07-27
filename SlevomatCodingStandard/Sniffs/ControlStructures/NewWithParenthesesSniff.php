@@ -7,7 +7,7 @@ use SlevomatCodingStandard\Helpers\TokenHelper;
 class NewWithParenthesesSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 {
 
-	public const CODE_MISSING_PARENTHESES = 'MissingParentheses';
+	const CODE_MISSING_PARENTHESES = 'MissingParentheses';
 
 	/**
 	 * @return mixed[]
@@ -24,7 +24,7 @@ class NewWithParenthesesSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
 	 * @param int $newPointer
 	 */
-	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $newPointer): void
+	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $newPointer)
 	{
 		$tokens = $phpcsFile->getTokens();
 		/** @var int $nextPointer */

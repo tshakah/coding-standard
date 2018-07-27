@@ -5,7 +5,7 @@ namespace SlevomatCodingStandard\Helpers;
 class TokenHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 {
 
-	public function testFindNextAll(): void
+	public function testFindNextAll()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(
 			__DIR__ . '/data/useStatements.php'
@@ -23,7 +23,7 @@ class TokenHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertSame(T_CLOSURE, $tokens[$pointers[3]]['code']);
 	}
 
-	public function testFindNextEffective(): void
+	public function testFindNextEffective()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(
 			__DIR__ . '/data/emptyPhpFile.php'
@@ -31,7 +31,7 @@ class TokenHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertTokenPointer(T_OPEN_TAG, 1, $codeSnifferFile, TokenHelper::findNextEffective($codeSnifferFile, 0));
 	}
 
-	public function testFindNextEffectiveAtEndOfFile(): void
+	public function testFindNextEffectiveAtEndOfFile()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(
 			__DIR__ . '/data/emptyPhpFile.php'
@@ -41,7 +41,7 @@ class TokenHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertNull(TokenHelper::findNextEffective($codeSnifferFile, $openTagPointer + 1));
 	}
 
-	public function testFindNextEffectiveWithComment(): void
+	public function testFindNextEffectiveWithComment()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(
 			__DIR__ . '/data/effectiveCodeWithComment.php'
@@ -49,7 +49,7 @@ class TokenHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertTokenPointer(T_CLASS, 5, $codeSnifferFile, TokenHelper::findNextEffective($codeSnifferFile, 1));
 	}
 
-	public function testFindNextEffectiveWithDocComment(): void
+	public function testFindNextEffectiveWithDocComment()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(
 			__DIR__ . '/data/effectiveCodeWithDocComment.php'
@@ -57,7 +57,7 @@ class TokenHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertTokenPointer(T_CLASS, 8, $codeSnifferFile, TokenHelper::findNextEffective($codeSnifferFile, 1));
 	}
 
-	public function testFindNothingNextExcluding(): void
+	public function testFindNothingNextExcluding()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(
 			__DIR__ . '/data/sampleOne.php'
@@ -74,7 +74,7 @@ class TokenHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		], 0));
 	}
 
-	public function testFindNextExcluding(): void
+	public function testFindNextExcluding()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(
 			__DIR__ . '/data/sampleOne.php'
@@ -85,7 +85,7 @@ class TokenHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		], 0));
 	}
 
-	public function testFindNextExcludingWithSpecifiedEndPointer(): void
+	public function testFindNextExcludingWithSpecifiedEndPointer()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(
 			__DIR__ . '/data/sampleOne.php'
@@ -98,7 +98,7 @@ class TokenHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		], 0, $variableTokenPointer));
 	}
 
-	public function testFindNextAnyToken(): void
+	public function testFindNextAnyToken()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(
 			__DIR__ . '/data/sampleOne.php'
@@ -108,7 +108,7 @@ class TokenHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertTokenPointer(T_VARIABLE, 3, $codeSnifferFile, TokenHelper::findNextAnyToken($codeSnifferFile, $variableTokenPointer));
 	}
 
-	public function testFindPreviousEffective(): void
+	public function testFindPreviousEffective()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(
 			__DIR__ . '/data/sampleOne.php'
@@ -118,7 +118,7 @@ class TokenHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertTokenPointer(T_EQUAL, 3, $codeSnifferFile, $assignmentTokenPointer);
 	}
 
-	public function testFindPreviousEffectiveWithComment(): void
+	public function testFindPreviousEffectiveWithComment()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(
 			__DIR__ . '/data/effectiveCodeWithComment.php'
@@ -126,7 +126,7 @@ class TokenHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertTokenPointer(T_OPEN_TAG, 1, $codeSnifferFile, TokenHelper::findPreviousEffective($codeSnifferFile, TokenHelper::findNext($codeSnifferFile, T_CLASS, 0) - 1));
 	}
 
-	public function testFindPreviousEffectiveWithDocComment(): void
+	public function testFindPreviousEffectiveWithDocComment()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(
 			__DIR__ . '/data/effectiveCodeWithDocComment.php'
@@ -134,7 +134,7 @@ class TokenHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertTokenPointer(T_OPEN_TAG, 1, $codeSnifferFile, TokenHelper::findPreviousEffective($codeSnifferFile, TokenHelper::findNext($codeSnifferFile, T_CLASS, 0) - 1));
 	}
 
-	public function testFindNothingPreviousExcluding(): void
+	public function testFindNothingPreviousExcluding()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(
 			__DIR__ . '/data/sampleOne.php'
@@ -151,7 +151,7 @@ class TokenHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		], TokenHelper::getLastTokenPointer($codeSnifferFile)));
 	}
 
-	public function testFindPreviousExcluding(): void
+	public function testFindPreviousExcluding()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(
 			__DIR__ . '/data/sampleOne.php'
@@ -163,7 +163,7 @@ class TokenHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		], TokenHelper::getLastTokenPointer($codeSnifferFile)));
 	}
 
-	public function testFindPreviousExcludingWithSpecifiedEndPointer(): void
+	public function testFindPreviousExcludingWithSpecifiedEndPointer()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(
 			__DIR__ . '/data/sampleOne.php'
@@ -180,7 +180,7 @@ class TokenHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		], $lastTokenPointer, $stringTokenPointer));
 	}
 
-	public function testFindNothingPreviousExcludingWithSpecifiedEndPointer(): void
+	public function testFindNothingPreviousExcludingWithSpecifiedEndPointer()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(
 			__DIR__ . '/data/sampleOne.php'
@@ -197,7 +197,7 @@ class TokenHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		], $lastTokenPointer, $openParenthesisTokenPointer));
 	}
 
-	public function testFindFirstTokenOnNextLine(): void
+	public function testFindFirstTokenOnNextLine()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(
 			__DIR__ . '/data/sampleTwo.php'
@@ -207,7 +207,7 @@ class TokenHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertTokenPointer(T_STRING, 4, $codeSnifferFile, TokenHelper::findFirstTokenOnNextLine($codeSnifferFile, $variableTokenPointer));
 	}
 
-	public function testFindFirstTokenOnNextLineInDocComment(): void
+	public function testFindFirstTokenOnNextLineInDocComment()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(
 			__DIR__ . '/data/sampleThree.php'
@@ -217,7 +217,7 @@ class TokenHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertTokenPointer(T_DOC_COMMENT_WHITESPACE, 4, $codeSnifferFile, TokenHelper::findFirstTokenOnNextLine($codeSnifferFile, $docBlockTokenPointer));
 	}
 
-	public function testFindFirstTokenOnIndentedNextLine(): void
+	public function testFindFirstTokenOnIndentedNextLine()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(
 			__DIR__ . '/data/forLoop.php'
@@ -232,7 +232,7 @@ class TokenHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertSame('foo', $tokens[$fooTokenPointer]['content']);
 	}
 
-	public function testFindFirstTokenOnNonExistentNextLine(): void
+	public function testFindFirstTokenOnNonExistentNextLine()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(
 			__DIR__ . '/data/sampleTwo.php'
@@ -240,7 +240,7 @@ class TokenHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertNull(TokenHelper::findFirstTokenOnNextLine($codeSnifferFile, TokenHelper::getLastTokenPointer($codeSnifferFile)));
 	}
 
-	public function testFindFirstTokenOnNonExistentNextLineAfterLastTokenInFile(): void
+	public function testFindFirstTokenOnNonExistentNextLineAfterLastTokenInFile()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(
 			__DIR__ . '/data/sampleTwo.php'
@@ -248,7 +248,7 @@ class TokenHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertNull(TokenHelper::findFirstTokenOnNextLine($codeSnifferFile, TokenHelper::getLastTokenPointer($codeSnifferFile) + 1));
 	}
 
-	public function testGetContent(): void
+	public function testGetContent()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(
 			__DIR__ . '/data/sampleTwo.php'
@@ -261,7 +261,7 @@ class TokenHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertSame(sprintf('$i++;%sfoo(', $codeSnifferFile->eolChar), $content);
 	}
 
-	public function testGetLastTokenPointer(): void
+	public function testGetLastTokenPointer()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(
 			__DIR__ . '/data/sampleOne.php'
@@ -273,7 +273,7 @@ class TokenHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertSame($lastWhitespaceTokenPointer, TokenHelper::getLastTokenPointer($codeSnifferFile));
 	}
 
-	public function testGetLastTokenPointerInEmptyFile(): void
+	public function testGetLastTokenPointerInEmptyFile()
 	{
 		try {
 			$codeSnifferFile = $this->getCodeSnifferFile(

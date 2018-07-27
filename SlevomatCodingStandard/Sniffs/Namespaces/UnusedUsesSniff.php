@@ -14,8 +14,8 @@ use SlevomatCodingStandard\Helpers\UseStatementHelper;
 class UnusedUsesSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 {
 
-	public const CODE_UNUSED_USE = 'UnusedUse';
-	public const CODE_MISMATCHING_CASE = 'MismatchingCaseSensitivity';
+	const CODE_UNUSED_USE = 'UnusedUse';
+	const CODE_MISMATCHING_CASE = 'MismatchingCaseSensitivity';
 
 	/** @var bool */
 	public $searchAnnotations = false;
@@ -79,7 +79,7 @@ class UnusedUsesSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
 	 * @param int $openTagPointer
 	 */
-	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $openTagPointer): void
+	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $openTagPointer)
 	{
 		$unusedNames = UseStatementHelper::getUseStatements($phpcsFile, $openTagPointer);
 		$referencedNames = ReferencedNameHelper::getAllReferencedNames($phpcsFile, $openTagPointer);

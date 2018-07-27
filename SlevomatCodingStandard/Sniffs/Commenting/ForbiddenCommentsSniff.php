@@ -8,7 +8,7 @@ use SlevomatCodingStandard\Helpers\SniffSettingsHelper;
 class ForbiddenCommentsSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 {
 
-	public const CODE_COMMENT_FORBIDDEN = 'CommentForbidden';
+	const CODE_COMMENT_FORBIDDEN = 'CommentForbidden';
 
 	/** @var string[] */
 	public $forbiddenCommentPatterns = [];
@@ -28,7 +28,7 @@ class ForbiddenCommentsSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
 	 * @param int $docCommentOpenPointer
 	 */
-	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $docCommentOpenPointer): void
+	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $docCommentOpenPointer)
 	{
 		$tokens = $phpcsFile->getTokens();
 

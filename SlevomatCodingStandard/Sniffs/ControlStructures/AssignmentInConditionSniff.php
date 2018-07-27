@@ -7,7 +7,7 @@ use SlevomatCodingStandard\Helpers\TokenHelper;
 class AssignmentInConditionSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 {
 
-	public const CODE_ASSIGNMENT_IN_CONDITION = 'AssignmentInCondition';
+	const CODE_ASSIGNMENT_IN_CONDITION = 'AssignmentInCondition';
 
 	/**
 	 * @return mixed[]
@@ -26,7 +26,7 @@ class AssignmentInConditionSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
 	 * @param int $conditionStartPointer
 	 */
-	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $conditionStartPointer): void
+	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $conditionStartPointer)
 	{
 		$tokens = $phpcsFile->getTokens();
 		$token = $tokens[$conditionStartPointer];
@@ -49,7 +49,7 @@ class AssignmentInConditionSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 		int $parenthesisOpener,
 		int $parenthesisCloser,
 		string $conditionType
-	): void
+	)
 	{
 		$equalsTokenPointer = TokenHelper::findNext($phpcsFile, T_EQUAL, $parenthesisOpener + 1, $parenthesisCloser);
 		if ($equalsTokenPointer === null) {

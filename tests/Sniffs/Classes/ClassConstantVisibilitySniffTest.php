@@ -5,7 +5,7 @@ namespace SlevomatCodingStandard\Sniffs\Classes;
 class ClassConstantVisibilitySniffTest extends \SlevomatCodingStandard\Sniffs\TestCase
 {
 
-	public function testErrors(): void
+	public function testErrors()
 	{
 		$report = self::checkFile(__DIR__ . '/data/classWithConstants.php', [
 			'enabled' => true,
@@ -25,7 +25,7 @@ class ClassConstantVisibilitySniffTest extends \SlevomatCodingStandard\Sniffs\Te
 		);
 	}
 
-	public function testNoClassConstants(): void
+	public function testNoClassConstants()
 	{
 		$report = self::checkFile(__DIR__ . '/data/noClassConstants.php', [
 			'enabled' => true,
@@ -33,7 +33,7 @@ class ClassConstantVisibilitySniffTest extends \SlevomatCodingStandard\Sniffs\Te
 		self::assertNoSniffErrorInFile($report);
 	}
 
-	public function testNoClassConstantsWithNamespace(): void
+	public function testNoClassConstantsWithNamespace()
 	{
 		$report = self::checkFile(__DIR__ . '/data/noClassConstantsWithNamespace.php', [
 			'enabled' => true,
@@ -41,7 +41,7 @@ class ClassConstantVisibilitySniffTest extends \SlevomatCodingStandard\Sniffs\Te
 		self::assertNoSniffErrorInFile($report);
 	}
 
-	public function testDisabledSniff(): void
+	public function testDisabledSniff()
 	{
 		$report = self::checkFile(__DIR__ . '/data/classWithConstants.php', [
 			'enabled' => false,
@@ -49,7 +49,7 @@ class ClassConstantVisibilitySniffTest extends \SlevomatCodingStandard\Sniffs\Te
 		self::assertNoSniffErrorInFile($report);
 	}
 
-	public function testFixableEnabled(): void
+	public function testFixableEnabled()
 	{
 		$report = self::checkFile(
 			__DIR__ . '/data/fixableMissingClassConstantVisibility.php',
@@ -59,7 +59,7 @@ class ClassConstantVisibilitySniffTest extends \SlevomatCodingStandard\Sniffs\Te
 		self::assertAllFixedInFile($report);
 	}
 
-	public function testFixableDisabled(): void
+	public function testFixableDisabled()
 	{
 		$report = self::checkFile(
 			__DIR__ . '/data/fixableMissingClassConstantVisibilityFixableDisabled.php',

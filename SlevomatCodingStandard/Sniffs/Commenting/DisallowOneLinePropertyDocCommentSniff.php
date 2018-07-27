@@ -9,7 +9,7 @@ use SlevomatCodingStandard\Helpers\TokenHelper;
 class DisallowOneLinePropertyDocCommentSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 {
 
-	public const CODE_ONE_LINE_PROPERTY_COMMENT = 'OneLinePropertyComment';
+	const CODE_ONE_LINE_PROPERTY_COMMENT = 'OneLinePropertyComment';
 
 	/**
 	 * @return int[]
@@ -24,7 +24,7 @@ class DisallowOneLinePropertyDocCommentSniff implements \PHP_CodeSniffer\Sniffs\
 	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
 	 * @param int $propertyPointer
 	 */
-	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $propertyPointer): void
+	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $propertyPointer)
 	{
 		$tokens = $phpcsFile->getTokens();
 

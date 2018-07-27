@@ -97,7 +97,7 @@ final class SomeClass
 
 class OpenSsl
 {
-    public const LENGTH = [
+    const LENGTH = [
         OPENSSL_ALGO_SHA256 => 64,
         OPENSSL_ALGO_SHA512 => 132,
     ];

@@ -5,14 +5,14 @@ namespace SlevomatCodingStandard\Helpers;
 class SniffSettingsHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 {
 
-	public function testNormalizeInteger(): void
+	public function testNormalizeInteger()
 	{
 		self::assertSame(2, SniffSettingsHelper::normalizeInteger(2));
 		self::assertSame(2, SniffSettingsHelper::normalizeInteger('2'));
 		self::assertSame(2, SniffSettingsHelper::normalizeInteger('  2  '));
 	}
 
-	public function testNormalizeArray(): void
+	public function testNormalizeArray()
 	{
 		self::assertSame([
 			'Foo\Bar\BarException',
@@ -27,7 +27,7 @@ class SniffSettingsHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		]));
 	}
 
-	public function testNormalizeAssociativeArray(): void
+	public function testNormalizeAssociativeArray()
 	{
 		self::assertSame([
 			'app/ui' => 'Slevomat\UI',
@@ -50,7 +50,7 @@ class SniffSettingsHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		]));
 	}
 
-	public function testNormalizeAssociativeArrayWithIntegerKeys(): void
+	public function testNormalizeAssociativeArrayWithIntegerKeys()
 	{
 		self::assertSame([
 			'app/ui' => 'Slevomat\UI',
@@ -68,7 +68,7 @@ class SniffSettingsHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 	 * @param string $expression
 	 * @param bool $valid
 	 */
-	public function testIsValidRegularExpression(string $expression, bool $valid): void
+	public function testIsValidRegularExpression(string $expression, bool $valid)
 	{
 		self::assertSame($valid, SniffSettingsHelper::isValidRegularExpression($expression));
 	}

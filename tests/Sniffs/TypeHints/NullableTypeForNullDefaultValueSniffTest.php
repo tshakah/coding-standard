@@ -5,14 +5,14 @@ namespace SlevomatCodingStandard\Sniffs\TypeHints;
 class NullableTypeForNullDefaultValueSniffTest extends \SlevomatCodingStandard\Sniffs\TestCase
 {
 
-	public function testNoErrors(): void
+	public function testNoErrors()
 	{
 		$this->assertNoSniffErrorInFile(self::checkFile(__DIR__ . '/data/nullableTypeForNullDefaultValueNoErrors.php', [
 			'enabled' => true,
 		]));
 	}
 
-	public function testErrors(): void
+	public function testErrors()
 	{
 		$report = self::checkFile(__DIR__ . '/data/nullableTypeForNullDefaultValueErrors.php', [
 			'enabled' => true,
@@ -35,7 +35,7 @@ class NullableTypeForNullDefaultValueSniffTest extends \SlevomatCodingStandard\S
 		$this->assertSniffError($report, 62, $code);
 	}
 
-	public function testFixable(): void
+	public function testFixable()
 	{
 		$codes = [NullableTypeForNullDefaultValueSniff::CODE_NULLABILITY_SYMBOL_REQUIRED];
 		$report = self::checkFile(__DIR__ . '/data/fixableNullableTypeForNullDefaultValue.php', [
@@ -44,7 +44,7 @@ class NullableTypeForNullDefaultValueSniffTest extends \SlevomatCodingStandard\S
 		$this->assertAllFixedInFile($report);
 	}
 
-	public function testDisabledSniff(): void
+	public function testDisabledSniff()
 	{
 		$report = self::checkFile(__DIR__ . '/data/nullableTypeForNullDefaultValueErrors.php', [
 			'enabled' => false,

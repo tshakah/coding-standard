@@ -8,7 +8,7 @@ use SlevomatCodingStandard\Helpers\TokenHelper;
 class SuperfluousExceptionNamingSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 {
 
-	public const CODE_SUPERFLUOUS_SUFFIX = 'SuperfluousSuffix';
+	const CODE_SUPERFLUOUS_SUFFIX = 'SuperfluousSuffix';
 
 	/**
 	 * @return mixed[]
@@ -25,7 +25,7 @@ class SuperfluousExceptionNamingSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
 	 * @param int $classPointer
 	 */
-	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $classPointer): void
+	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $classPointer)
 	{
 		$className = ClassHelper::getName($phpcsFile, $classPointer);
 

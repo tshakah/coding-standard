@@ -5,7 +5,7 @@ namespace SlevomatCodingStandard\Sniffs\Arrays;
 class TrailingArrayCommaSniffTest extends \SlevomatCodingStandard\Sniffs\TestCase
 {
 
-	public function testCheckFile(): void
+	public function testCheckFile()
 	{
 		$report = self::checkFile(__DIR__ . '/data/trailingCommas.php');
 
@@ -15,7 +15,7 @@ class TrailingArrayCommaSniffTest extends \SlevomatCodingStandard\Sniffs\TestCas
 		self::assertSniffError($report, 26, TrailingArrayCommaSniff::CODE_MISSING_TRAILING_COMMA);
 	}
 
-	public function testFixable(): void
+	public function testFixable()
 	{
 		$report = self::checkFile(__DIR__ . '/data/fixableTrailingCommas.php', [], [TrailingArrayCommaSniff::CODE_MISSING_TRAILING_COMMA]);
 		self::assertAllFixedInFile($report);

@@ -58,13 +58,13 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
 		return $file;
 	}
 
-	protected static function assertNoSniffErrorInFile(\PHP_CodeSniffer\Files\File $file): void
+	protected static function assertNoSniffErrorInFile(\PHP_CodeSniffer\Files\File $file)
 	{
 		$errors = $file->getErrors();
 		self::assertEmpty($errors, sprintf('No errors expected, but %d errors found.', count($errors)));
 	}
 
-	protected static function assertSniffError(\PHP_CodeSniffer\Files\File $codeSnifferFile, int $line, string $code, ?string $message = null): void
+	protected static function assertSniffError(\PHP_CodeSniffer\Files\File $codeSnifferFile, int $line, string $code, string $message = null)
 	{
 		$errors = $codeSnifferFile->getErrors();
 		self::assertTrue(isset($errors[$line]), sprintf('Expected error on line %s, but none found.', $line));
@@ -87,7 +87,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
 		);
 	}
 
-	protected static function assertNoSniffError(\PHP_CodeSniffer\Files\File $codeSnifferFile, int $line): void
+	protected static function assertNoSniffError(\PHP_CodeSniffer\Files\File $codeSnifferFile, int $line)
 	{
 		$errors = $codeSnifferFile->getErrors();
 		self::assertFalse(
@@ -102,7 +102,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
 		);
 	}
 
-	protected static function assertAllFixedInFile(\PHP_CodeSniffer\Files\File $codeSnifferFile): void
+	protected static function assertAllFixedInFile(\PHP_CodeSniffer\Files\File $codeSnifferFile)
 	{
 		$codeSnifferFile->disableCaching();
 		$codeSnifferFile->fixer->fixFile();
@@ -115,7 +115,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
 	 * @param string|null $message
 	 * @return bool
 	 */
-	private static function hasError(array $errorsOnLine, string $sniffCode, ?string $message = null): bool
+	private static function hasError(array $errorsOnLine, string $sniffCode, string $message = null): bool
 	{
 		foreach ($errorsOnLine as $errorsOnPosition) {
 			foreach ($errorsOnPosition as $error) {

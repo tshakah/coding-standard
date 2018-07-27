@@ -2,19 +2,19 @@
 
 namespace FooNamespace;
 
-function returnsVoid(): void
+function returnsVoid()
 {
 	return;
 }
 
-function returnsNothing(): void
+function returnsNothing()
 {
 }
 
 /**
  * @return void
  */
-function voidAnnotation(): void
+function voidAnnotation()
 {
 
 }
@@ -38,34 +38,34 @@ abstract class Foo
 
 	}
 
-	public function returnsVoid(): void
+	public function returnsVoid()
 	{
 		return;
 	}
 
-	protected function returnsNothing(): void
+	protected function returnsNothing()
 	{
 	}
 
 	/**
 	 * @return void
 	 */
-	public abstract function voidAnnotation(): void;
+	public abstract function voidAnnotation();
 
 }
 
-function (): void {
+function () {
 
 };
 
-function (): void {
+function () {
 	return;
 };
 
-function (): void {
+function () {
 
 };
 
-function () use (& $foo): void {
+function () use (& $foo) {
 
 };

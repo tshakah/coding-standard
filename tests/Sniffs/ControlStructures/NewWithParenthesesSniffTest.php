@@ -5,13 +5,13 @@ namespace SlevomatCodingStandard\Sniffs\ControlStructures;
 class NewWithParenthesesSniffTest extends \SlevomatCodingStandard\Sniffs\TestCase
 {
 
-	public function testNoErrors(): void
+	public function testNoErrors()
 	{
 		$report = self::checkFile(__DIR__ . '/data/newWithParenthesesNoErrors.php');
 		self::assertNoSniffErrorInFile($report);
 	}
 
-	public function testErrors(): void
+	public function testErrors()
 	{
 		$report = self::checkFile(__DIR__ . '/data/newWithParenthesesErrors.php', [], [NewWithParenthesesSniff::CODE_MISSING_PARENTHESES]);
 

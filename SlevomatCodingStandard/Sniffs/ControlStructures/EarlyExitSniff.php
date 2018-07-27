@@ -7,9 +7,9 @@ use SlevomatCodingStandard\Helpers\TokenHelper;
 class EarlyExitSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 {
 
-	public const CODE_EARLY_EXIT_NOT_USED = 'EarlyExitNotUsed';
-	public const CODE_USELESS_ELSEIF = 'UselessElseIf';
-	public const CODE_USELESS_ELSE = 'UselessElse';
+	const CODE_EARLY_EXIT_NOT_USED = 'EarlyExitNotUsed';
+	const CODE_USELESS_ELSEIF = 'UselessElseIf';
+	const CODE_USELESS_ELSE = 'UselessElse';
 
 	private const TAB_INDENT = "\t";
 	private const SPACES_INDENT = '    ';
@@ -31,7 +31,7 @@ class EarlyExitSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
 	 * @param int $pointer
 	 */
-	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $pointer): void
+	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $pointer)
 	{
 		$tokens = $phpcsFile->getTokens();
 
@@ -44,7 +44,7 @@ class EarlyExitSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 		}
 	}
 
-	private function processElse(\PHP_CodeSniffer\Files\File $phpcsFile, int $elsePointer): void
+	private function processElse(\PHP_CodeSniffer\Files\File $phpcsFile, int $elsePointer)
 	{
 		$tokens = $phpcsFile->getTokens();
 
@@ -142,7 +142,7 @@ class EarlyExitSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 		}
 	}
 
-	private function processElseIf(\PHP_CodeSniffer\Files\File $phpcsFile, int $elseIfPointer): void
+	private function processElseIf(\PHP_CodeSniffer\Files\File $phpcsFile, int $elseIfPointer)
 	{
 		$tokens = $phpcsFile->getTokens();
 
@@ -188,7 +188,7 @@ class EarlyExitSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 		$phpcsFile->fixer->endChangeset();
 	}
 
-	private function processIf(\PHP_CodeSniffer\Files\File $phpcsFile, int $ifPointer): void
+	private function processIf(\PHP_CodeSniffer\Files\File $phpcsFile, int $ifPointer)
 	{
 		$tokens = $phpcsFile->getTokens();
 

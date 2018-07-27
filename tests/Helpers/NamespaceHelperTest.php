@@ -22,7 +22,7 @@ class NamespaceHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 	 * @dataProvider dataIsFullyQualifiedName
 	 * @param string $typeName
 	 */
-	public function testIsFullyQualifiedName(string $typeName): void
+	public function testIsFullyQualifiedName(string $typeName)
 	{
 		self::assertTrue(NamespaceHelper::isFullyQualifiedName($typeName));
 	}
@@ -44,7 +44,7 @@ class NamespaceHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 	 * @dataProvider dataIsNotFullyQualifiedName
 	 * @param string $typeName
 	 */
-	public function testIsNotFullyQualifiedName(string $typeName): void
+	public function testIsNotFullyQualifiedName(string $typeName)
 	{
 		self::assertFalse(NamespaceHelper::isFullyQualifiedName($typeName));
 	}
@@ -66,7 +66,7 @@ class NamespaceHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 	 * @dataProvider dataHasNamespace
 	 * @param string $typeName
 	 */
-	public function testHasNamespace(string $typeName): void
+	public function testHasNamespace(string $typeName)
 	{
 		self::assertTrue(NamespaceHelper::hasNamespace($typeName));
 	}
@@ -88,7 +88,7 @@ class NamespaceHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 	 * @dataProvider dataDoesNotHaveNamespace
 	 * @param string $typeName
 	 */
-	public function testDoesNotHaveNamespace(string $typeName): void
+	public function testDoesNotHaveNamespace(string $typeName)
 	{
 		self::assertFalse(NamespaceHelper::hasNamespace($typeName));
 	}
@@ -123,12 +123,12 @@ class NamespaceHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 	 * @param string $namespace
 	 * @param string[] $parts
 	 */
-	public function testGetNameParts(string $namespace, array $parts): void
+	public function testGetNameParts(string $namespace, array $parts)
 	{
 		self::assertSame($parts, NamespaceHelper::getNameParts($namespace));
 	}
 
-	public function testFindCurrentNamespaceName(): void
+	public function testFindCurrentNamespaceName()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(
 			__DIR__ . '/data/namespacedFile.php'
@@ -140,7 +140,7 @@ class NamespaceHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertSame('Foo\Bar', $namespace);
 	}
 
-	public function testFindCurrentNamespaceNameInFileWithoutNamespace(): void
+	public function testFindCurrentNamespaceNameInFileWithoutNamespace()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(
 			__DIR__ . '/data/fileWithoutNamespace.php'
@@ -153,7 +153,7 @@ class NamespaceHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		);
 	}
 
-	public function testClosestNamespaceNameWithMultipleNamespacesInFile(): void
+	public function testClosestNamespaceNameWithMultipleNamespacesInFile()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(
 			__DIR__ . '/data/multipleNamespaces.php'
@@ -195,7 +195,7 @@ class NamespaceHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 	 * @param string $unqualifiedName
 	 * @param string $fullyQualifiedName
 	 */
-	public function testGetUnqualifiedNameFromFullyQualifiedName(string $unqualifiedName, string $fullyQualifiedName): void
+	public function testGetUnqualifiedNameFromFullyQualifiedName(string $unqualifiedName, string $fullyQualifiedName)
 	{
 		self::assertSame($unqualifiedName, NamespaceHelper::getUnqualifiedNameFromFullyQualifiedName($fullyQualifiedName));
 	}
@@ -216,7 +216,7 @@ class NamespaceHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 	 * @dataProvider dataIsQualifiedName
 	 * @param string $name
 	 */
-	public function testIsQualifiedName(string $name): void
+	public function testIsQualifiedName(string $name)
 	{
 		self::assertTrue(NamespaceHelper::isQualifiedName($name));
 	}
@@ -235,7 +235,7 @@ class NamespaceHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 	 * @dataProvider dataIsNotQualifiedName
 	 * @param string $name
 	 */
-	public function testIsNotQualifiedName(string $name): void
+	public function testIsNotQualifiedName(string $name)
 	{
 		self::assertFalse(NamespaceHelper::isQualifiedName($name));
 	}
@@ -270,7 +270,7 @@ class NamespaceHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 	 * @param string $normalizedName
 	 * @param string $originalName
 	 */
-	public function testNormalizeToCanonicalName(string $normalizedName, string $originalName): void
+	public function testNormalizeToCanonicalName(string $normalizedName, string $originalName)
 	{
 		self::assertSame($normalizedName, NamespaceHelper::normalizeToCanonicalName($originalName));
 	}
@@ -305,7 +305,7 @@ class NamespaceHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 	 * @param string $typeName
 	 * @param string $namespace
 	 */
-	public function testTypeIsInNamespace(string $typeName, string $namespace): void
+	public function testTypeIsInNamespace(string $typeName, string $namespace)
 	{
 		self::assertTrue(NamespaceHelper::isTypeInNamespace($typeName, $namespace));
 	}
@@ -348,7 +348,7 @@ class NamespaceHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 	 * @param string $typeName
 	 * @param string $namespace
 	 */
-	public function testTypeIsNotInNamespace(string $typeName, string $namespace): void
+	public function testTypeIsNotInNamespace(string $typeName, string $namespace)
 	{
 		self::assertFalse(NamespaceHelper::isTypeInNamespace($typeName, $namespace));
 	}

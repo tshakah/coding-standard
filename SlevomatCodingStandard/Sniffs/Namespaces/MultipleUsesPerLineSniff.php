@@ -8,7 +8,7 @@ use SlevomatCodingStandard\Helpers\UseStatementHelper;
 class MultipleUsesPerLineSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 {
 
-	public const CODE_MULTIPLE_USES_PER_LINE = 'MultipleUsesPerLine';
+	const CODE_MULTIPLE_USES_PER_LINE = 'MultipleUsesPerLine';
 
 	/**
 	 * @return mixed[]
@@ -25,7 +25,7 @@ class MultipleUsesPerLineSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
 	 * @param int $usePointer
 	 */
-	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $usePointer): void
+	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $usePointer)
 	{
 		if (
 			UseStatementHelper::isAnonymousFunctionUse($phpcsFile, $usePointer)

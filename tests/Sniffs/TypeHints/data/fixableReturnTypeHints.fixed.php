@@ -40,7 +40,7 @@ function unofficialTypeHint()
 /**
  * @return int|null
  */
-function nullableSimpleTypeHint(): ?int
+function nullableSimpleTypeHint()
 {
 	return 0;
 }
@@ -48,7 +48,7 @@ function nullableSimpleTypeHint(): ?int
 /**
  * @return null|int
  */
-function nullableSimpleTypeHintFirst(): ?int
+function nullableSimpleTypeHintFirst()
 {
 	return 0;
 }
@@ -187,7 +187,7 @@ abstract class Foo
 	/**
 	 * @return int|null
 	 */
-	private function nullableSimpleTypeHint(): ?int
+	private function nullableSimpleTypeHint()
 	{
 		return 0;
 	}
@@ -195,7 +195,7 @@ abstract class Foo
 	/**
 	 * @return null|int
 	 */
-	private function nullableSimpleTypeHintFirst(): ?int
+	private function nullableSimpleTypeHintFirst()
 	{
 		return 0;
 	}

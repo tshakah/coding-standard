@@ -75,7 +75,7 @@ class Foo
 	/**
 	 * @internal
 	 */
-	public const FOO = 1;
+	const FOO = 1;
 
 	/**
 	 * @internal

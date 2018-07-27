@@ -9,7 +9,7 @@ use SlevomatCodingStandard\Helpers\TokenHelper;
 class ForbiddenAnnotationsSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 {
 
-	public const CODE_ANNOTATION_FORBIDDEN = 'AnnotationForbidden';
+	const CODE_ANNOTATION_FORBIDDEN = 'AnnotationForbidden';
 
 	/** @var string[] */
 	public $forbiddenAnnotations = [];
@@ -32,7 +32,7 @@ class ForbiddenAnnotationsSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
 	 * @param int $docCommentOpenPointer
 	 */
-	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $docCommentOpenPointer): void
+	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $docCommentOpenPointer)
 	{
 		$tokens = $phpcsFile->getTokens();
 

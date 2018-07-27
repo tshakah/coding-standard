@@ -29,7 +29,7 @@ class TypeHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 	 * @dataProvider dataValidTypeNames
 	 * @param string $typeName
 	 */
-	public function testValidTypeName(string $typeName): void
+	public function testValidTypeName(string $typeName)
 	{
 		self::assertTrue(TypeHelper::isTypeName($typeName));
 	}
@@ -53,7 +53,7 @@ class TypeHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 	 * @dataProvider dataNotValidTypeNames
 	 * @param string $typeName
 	 */
-	public function testNotValidTypeName(string $typeName): void
+	public function testNotValidTypeName(string $typeName)
 	{
 		self::assertFalse(TypeHelper::isTypeName($typeName));
 	}

@@ -5,7 +5,7 @@ namespace SlevomatCodingStandard\Sniffs\Commenting;
 class ForbiddenCommentsSniffTest extends \SlevomatCodingStandard\Sniffs\TestCase
 {
 
-	public function testThrowExceptionForInvalidPattern(): void
+	public function testThrowExceptionForInvalidPattern()
 	{
 		$this->expectException(\Throwable::class);
 
@@ -15,7 +15,7 @@ class ForbiddenCommentsSniffTest extends \SlevomatCodingStandard\Sniffs\TestCase
 		);
 	}
 
-	public function testNoForbiddenComments(): void
+	public function testNoForbiddenComments()
 	{
 		$report = self::checkFile(__DIR__ . '/data/noForbiddenComments.php', [
 			'forbiddenCommentPatterns' => ['~Foo\d+~', '~Not comment\.~'],
@@ -23,7 +23,7 @@ class ForbiddenCommentsSniffTest extends \SlevomatCodingStandard\Sniffs\TestCase
 		self::assertNoSniffErrorInFile($report);
 	}
 
-	public function testForbiddenComments(): void
+	public function testForbiddenComments()
 	{
 		$report = self::checkFile(__DIR__ . '/data/forbiddenComments.php', [
 			'forbiddenCommentPatterns' => ['~Created by PhpStorm\.~', '~(\S+\s+)?Constructor\.~', '~(blah){3}~'],

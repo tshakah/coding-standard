@@ -3,20 +3,12 @@
 class Whatever
 {
 
-	public function uselessDoccomment(): void
+	public function uselessDoccomment()
 	{
 
 	}
 
-	public function uselessDoccommentWithParameters(int $a, int $b): void
-	{
-
-	}
-
-	/**
-	 * @whatever
-	 */
-	public function usefulDoccomment(): void
+	public function uselessDoccommentWithParameters(int $a, int $b)
 	{
 
 	}
@@ -24,7 +16,15 @@ class Whatever
 	/**
 	 * @whatever
 	 */
-	public function usefulDoccommentWithParameters(int $a, int $b): void
+	public function usefulDoccomment()
+	{
+
+	}
+
+	/**
+	 * @whatever
+	 */
+	public function usefulDoccommentWithParameters(int $a, int $b)
 	{
 
 	}

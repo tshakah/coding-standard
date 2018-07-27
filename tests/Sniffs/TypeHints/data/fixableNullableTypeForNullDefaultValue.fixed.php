@@ -5,7 +5,7 @@ class FooBar
 
 	public function foo(?\DateTimeImmutable & $dateTime = null)
 	{
-		function (?string $string = null) {
+		function (string $string = null) {
 
 		};
 	}

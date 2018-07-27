@@ -5,12 +5,12 @@ namespace SlevomatCodingStandard\Sniffs\Namespaces;
 class FullyQualifiedClassNameInAnnotationSniffTest extends \SlevomatCodingStandard\Sniffs\TestCase
 {
 
-	public function testNoErrors(): void
+	public function testNoErrors()
 	{
 		self::assertNoSniffErrorInFile(self::checkFile(__DIR__ . '/data/fullyQualifiedClassNameInAnnotationNoErrors.php'));
 	}
 
-	public function testErrors(): void
+	public function testErrors()
 	{
 		$report = self::checkFile(__DIR__ . '/data/fullyQualifiedClassNameInAnnotationErrors.php');
 
@@ -30,7 +30,7 @@ class FullyQualifiedClassNameInAnnotationSniffTest extends \SlevomatCodingStanda
 		self::assertSniffError($report, 61, FullyQualifiedClassNameInAnnotationSniff::CODE_NON_FULLY_QUALIFIED_CLASS_NAME);
 	}
 
-	public function testFixableFullyQualified(): void
+	public function testFixableFullyQualified()
 	{
 		$report = self::checkFile(__DIR__ . '/data/fixableFullyQualifiedClassNameInAnnotation.php');
 		self::assertAllFixedInFile($report);

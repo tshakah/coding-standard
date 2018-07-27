@@ -5,14 +5,14 @@ function foo(?\DateTimeImmutable & $dateTime = null)
 
 }
 
-$callback = function (?string $string = null) {
+$callback = function (string $string = null) {
 
 };
 
 trait Foo
 {
 
-	public function doFoo(?int $int = null)
+	public function doFoo(int $int = null)
 	{
 
 	}
@@ -22,7 +22,7 @@ trait Foo
 class FooBar extends \stdClass
 {
 
-	public function valid(?bool $bool = null, $noTypehint = null, ?int $int, string $a = 'default', ?string $b = 'null')
+	public function valid(bool $bool = null, $noTypehint = null, int $int = null, string $a = 'default', string $b = 'null')
 	{
 
 	}

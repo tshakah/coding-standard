@@ -5,12 +5,12 @@ namespace SlevomatCodingStandard\Sniffs\Namespaces;
 class DisallowGroupUseSniffTest extends \SlevomatCodingStandard\Sniffs\TestCase
 {
 
-	public function testNoErrors(): void
+	public function testNoErrors()
 	{
 		self::assertNoSniffErrorInFile(self::checkFile(__DIR__ . '/data/disallowGroupUseNoErrors.php'));
 	}
 
-	public function testErrors(): void
+	public function testErrors()
 	{
 		$codeSnifferFile = self::checkFile(__DIR__ . '/data/disallowGroupUseErrors.php');
 

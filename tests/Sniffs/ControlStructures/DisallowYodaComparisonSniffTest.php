@@ -5,13 +5,13 @@ namespace SlevomatCodingStandard\Sniffs\ControlStructures;
 class DisallowYodaComparisonSniffTest extends \SlevomatCodingStandard\Sniffs\TestCase
 {
 
-	public function testNoErrors(): void
+	public function testNoErrors()
 	{
 		$report = self::checkFile(__DIR__ . '/data/disallowYodaComparisonNoErrors.php');
 		self::assertNoSniffErrorInFile($report);
 	}
 
-	public function testErrors(): void
+	public function testErrors()
 	{
 		$report = self::checkFile(__DIR__ . '/data/disallowYodaComparisonErrors.php');
 		foreach (range(3, 37) as $lineNumber) {
@@ -19,7 +19,7 @@ class DisallowYodaComparisonSniffTest extends \SlevomatCodingStandard\Sniffs\Tes
 		}
 	}
 
-	public function testFixable(): void
+	public function testFixable()
 	{
 		$report = self::checkFile(__DIR__ . '/data/fixableDisallowYodaComparisons.php', [], [DisallowYodaComparisonSniff::CODE_DISALLOWED_YODA_COMPARISON]);
 		self::assertAllFixedInFile($report);

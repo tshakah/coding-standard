@@ -5,7 +5,7 @@ namespace SlevomatCodingStandard\Helpers;
 class FunctionHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 {
 
-	public function testNameWithNamespace(): void
+	public function testNameWithNamespace()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(__DIR__ . '/data/functionWithNamespace.php');
 		self::assertSame('\FooNamespace\fooFunction', FunctionHelper::getFullyQualifiedName($codeSnifferFile, $this->findFunctionPointerByName($codeSnifferFile, 'fooFunction')));
@@ -14,7 +14,7 @@ class FunctionHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertSame('fooMethod', FunctionHelper::getName($codeSnifferFile, $this->findFunctionPointerByName($codeSnifferFile, 'fooMethod')));
 	}
 
-	public function testNameWithoutNamespace(): void
+	public function testNameWithoutNamespace()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(__DIR__ . '/data/functionWithoutNamespace.php');
 		self::assertSame('fooFunction', FunctionHelper::getFullyQualifiedName($codeSnifferFile, $this->findFunctionPointerByName($codeSnifferFile, 'fooFunction')));
@@ -23,14 +23,14 @@ class FunctionHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertSame('fooMethod', FunctionHelper::getName($codeSnifferFile, $this->findFunctionPointerByName($codeSnifferFile, 'fooMethod')));
 	}
 
-	public function testNameInAnonymousClass(): void
+	public function testNameInAnonymousClass()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(__DIR__ . '/data/functionInAnonymousClass.php');
 		self::assertSame('class@anonymous::fooMethod', FunctionHelper::getFullyQualifiedName($codeSnifferFile, $this->findFunctionPointerByName($codeSnifferFile, 'fooMethod')));
 		self::assertSame('fooMethod', FunctionHelper::getName($codeSnifferFile, $this->findFunctionPointerByName($codeSnifferFile, 'fooMethod')));
 	}
 
-	public function testAbstractOrNot(): void
+	public function testAbstractOrNot()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(__DIR__ . '/data/functionAbstractOrNot.php');
 		self::assertFalse(FunctionHelper::isAbstract($codeSnifferFile, $this->findFunctionPointerByName($codeSnifferFile, 'fooMethod')));
@@ -38,7 +38,7 @@ class FunctionHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertTrue(FunctionHelper::isAbstract($codeSnifferFile, $this->findFunctionPointerByName($codeSnifferFile, 'fooInterfaceMethod')));
 	}
 
-	public function testFunctionOrMethod(): void
+	public function testFunctionOrMethod()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(__DIR__ . '/data/functionOrMethod.php');
 		self::assertTrue(FunctionHelper::isMethod($codeSnifferFile, $this->findFunctionPointerByName($codeSnifferFile, 'fooMethod')));
@@ -87,7 +87,7 @@ class FunctionHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 	public function testParametersNames(
 		string $functionName,
 		array $expectedParametersNames
-	): void
+	)
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(__DIR__ . '/data/functionParametersNames.php');
 
@@ -227,7 +227,7 @@ class FunctionHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		string $functionName,
 		array $expectedParametersTypeHints,
 		array $expectedParametersWithoutTypeHints
-	): void
+	)
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(__DIR__ . '/data/functionParametersTypeHints.php');
 
@@ -256,7 +256,7 @@ class FunctionHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 	public function testParametersNullableTypeHints(
 		string $functionName,
 		array $expectedParametersTypeHints
-	): void
+	)
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(__DIR__ . '/data/functionParametersNullableTypeHints.php');
 
@@ -300,13 +300,13 @@ class FunctionHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 	public function testReturnsValueOrNot(
 		string $functionName,
 		bool $returnsValue
-	): void
+	)
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(__DIR__ . '/data/functionReturnsValueOrNot.php');
 		self::assertSame($returnsValue, FunctionHelper::returnsValue($codeSnifferFile, $this->findFunctionPointerByName($codeSnifferFile, $functionName)));
 	}
 
-	public function testReturnTypeHint(): void
+	public function testReturnTypeHint()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(__DIR__ . '/data/functionReturnTypeHint.php');
 
@@ -331,7 +331,7 @@ class FunctionHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertNull(FunctionHelper::findReturnTypeHint($codeSnifferFile, $functionPointer));
 	}
 
-	public function testReturnNullableTypeHint(): void
+	public function testReturnNullableTypeHint()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(__DIR__ . '/data/functionReturnsNullableTypeHint.php');
 
@@ -348,7 +348,7 @@ class FunctionHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertTrue($returnTypeHint->isNullable());
 	}
 
-	public function testAnnotations(): void
+	public function testAnnotations()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(__DIR__ . '/data/functionAnnotations.php');
 
@@ -368,7 +368,7 @@ class FunctionHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertNull(FunctionHelper::findReturnAnnotation($codeSnifferFile, $functionPointer));
 	}
 
-	public function testGetAllFunctionNames(): void
+	public function testGetAllFunctionNames()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(__DIR__ . '/data/functionNames.php');
 		self::assertSame(['foo', 'boo'], FunctionHelper::getAllFunctionNames($codeSnifferFile));

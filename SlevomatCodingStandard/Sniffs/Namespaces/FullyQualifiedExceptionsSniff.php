@@ -12,7 +12,7 @@ use SlevomatCodingStandard\Helpers\UseStatementHelper;
 class FullyQualifiedExceptionsSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 {
 
-	public const CODE_NON_FULLY_QUALIFIED_EXCEPTION = 'NonFullyQualifiedException';
+	const CODE_NON_FULLY_QUALIFIED_EXCEPTION = 'NonFullyQualifiedException';
 
 	/** @var string[] */
 	public $specialExceptionNames = [];
@@ -65,7 +65,7 @@ class FullyQualifiedExceptionsSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
 	 * @param int $openTagPointer
 	 */
-	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $openTagPointer): void
+	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $openTagPointer)
 	{
 		$referencedNames = ReferencedNameHelper::getAllReferencedNames($phpcsFile, $openTagPointer);
 		$useStatements = UseStatementHelper::getUseStatements($phpcsFile, $openTagPointer);

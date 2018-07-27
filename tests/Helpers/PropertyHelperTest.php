@@ -42,7 +42,7 @@ class PropertyHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 	 * @param string $variableName
 	 * @param bool $isProperty
 	 */
-	public function testIsProperty(string $variableName, bool $isProperty): void
+	public function testIsProperty(string $variableName, bool $isProperty)
 	{
 		$codeSnifferFile = $this->getTestedCodeSnifferFile();
 
@@ -50,19 +50,19 @@ class PropertyHelperTest extends \SlevomatCodingStandard\Helpers\TestCase
 		self::assertSame($isProperty, PropertyHelper::isProperty($codeSnifferFile, $variablePointer));
 	}
 
-	public function testNameWithNamespace(): void
+	public function testNameWithNamespace()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(__DIR__ . '/data/propertyWithNamespace.php');
 		self::assertSame('\FooNamespace\FooClass::$fooProperty', PropertyHelper::getFullyQualifiedName($codeSnifferFile, $this->findPropertyPointerByName($codeSnifferFile, 'fooProperty')));
 	}
 
-	public function testNameWithoutsNamespace(): void
+	public function testNameWithoutsNamespace()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(__DIR__ . '/data/propertyWithoutNamespace.php');
 		self::assertSame('\FooClass::$fooProperty', PropertyHelper::getFullyQualifiedName($codeSnifferFile, $this->findPropertyPointerByName($codeSnifferFile, 'fooProperty')));
 	}
 
-	public function testNameInAnonymousClass(): void
+	public function testNameInAnonymousClass()
 	{
 		$codeSnifferFile = $this->getCodeSnifferFile(__DIR__ . '/data/propertyInAnonymousClass.php');
 		self::assertSame('class@anonymous::$fooProperty', PropertyHelper::getFullyQualifiedName($codeSnifferFile, $this->findPropertyPointerByName($codeSnifferFile, 'fooProperty')));

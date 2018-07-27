@@ -17,13 +17,13 @@ abstract class FooClass
 
 	abstract public function someParametersWithoutTypeHints(string $string, $int, bool $bool = true, $float, callable $callable, $array = [], \FooNamespace\FooClass $object);
 
-	public function allParametersWithNullableTypeHints(?string $string, ?int $int = 10, ?bool $bool, ?float $float = 0.0, ?callable $callable, ?array $array, ?\FooNamespace\FooClass $object = null)
+	public function allParametersWithNullableTypeHints($string, int $int = 10, ?bool $bool, ?float $float = 0.0, ?callable $callable, ?array $array, ?\FooNamespace\FooClass $object = null)
 	{
 
 	}
 
-	abstract public function someParametersWithNullableTypeHints(?string $string, int $int, ?bool $bool = true, float $float, ?callable $callable, array $array = [], ?\FooNamespace\FooClass $object);
+	abstract public function someParametersWithNullableTypeHints($string, int $int, ?bool $bool = true, float $float, ?callable $callable, array $array = [], ?\FooNamespace\FooClass $object);
 
-	abstract public function parametersWithWeirdDefinition(?string$string,int$int,?bool$bool=true,float$float,?callable$callable,array$array=[],?\FooNamespace\FooClass$object);
+	abstract public function parametersWithWeirdDefinition($string,int$int,?bool$bool=true,float$float,?callable$callable,array$array=[],?\FooNamespace\FooClass$object);
 
 }

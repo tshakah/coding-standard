@@ -21,7 +21,7 @@ abstract class VoidClass
 	/**
 	 * @return void
 	 */
-	public function bothReturnTypeAndAnnotation(): void
+	public function bothReturnTypeAndAnnotation()
 	{
 		return;
 	}

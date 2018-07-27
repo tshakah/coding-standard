@@ -12,7 +12,7 @@ use SlevomatCodingStandard\Helpers\UseStatementHelper;
 abstract class AbstractFullyQualifiedGlobalReference implements \PHP_CodeSniffer\Sniffs\Sniff
 {
 
-	public const CODE_NON_FULLY_QUALIFIED = 'NonFullyQualified';
+	const CODE_NON_FULLY_QUALIFIED = 'NonFullyQualified';
 
 	/** @var string[] */
 	public $exclude = [];
@@ -35,7 +35,7 @@ abstract class AbstractFullyQualifiedGlobalReference implements \PHP_CodeSniffer
 	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
 	 * @param int $openTagPointer
 	 */
-	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $openTagPointer): void
+	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $openTagPointer)
 	{
 		$tokens = $phpcsFile->getTokens();
 

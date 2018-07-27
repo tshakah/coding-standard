@@ -36,14 +36,14 @@ function unofficialTypeHint($a)
 /**
  * @param int|null $a
  */
-function nullableSimpleTypeHint(?int $a)
+function nullableSimpleTypeHint(int $a = null)
 {
 }
 
 /**
  * @param null|int $a
  */
-function nullableFirstSimpleTypeHint(?int $a)
+function nullableFirstSimpleTypeHint(int $a = null)
 {
 }
 
@@ -216,14 +216,14 @@ abstract class Foo
 	/**
 	 * @param int|null $a
 	 */
-	private function nullableSimpleTypeHint(?int $a)
+	private function nullableSimpleTypeHint(int $a = null)
 	{
 	}
 
 	/**
 	 * @param null|int $a
 	 */
-	private function nullableFirstSimpleTypeHint(?int $a)
+	private function nullableFirstSimpleTypeHint(int $a = null)
 	{
 	}
 

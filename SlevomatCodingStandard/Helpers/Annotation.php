@@ -24,8 +24,8 @@ class Annotation
 		string $name,
 		int $startPointer,
 		int $endPointer,
-		?string $parameters,
-		?string $content
+		$parameters,
+		$content
 	)
 	{
 		$this->name = $name;
@@ -50,12 +50,12 @@ class Annotation
 		return $this->endPointer;
 	}
 
-	public function getParameters(): ?string
+	public function getParameters()
 	{
 		return $this->parameters;
 	}
 
-	public function getContent(): ?string
+	public function getContent()
 	{
 		return $this->content;
 	}

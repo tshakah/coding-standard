@@ -11,7 +11,7 @@ use SlevomatCodingStandard\Helpers\TokenHelper;
 class LongTypeHintsSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 {
 
-	public const CODE_USED_LONG_TYPE_HINT = 'UsedLongTypeHint';
+	const CODE_USED_LONG_TYPE_HINT = 'UsedLongTypeHint';
 
 	/**
 	 * @return mixed[]
@@ -29,7 +29,7 @@ class LongTypeHintsSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
 	 * @param int $pointer
 	 */
-	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $pointer): void
+	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $pointer)
 	{
 		$tokens = $phpcsFile->getTokens();
 

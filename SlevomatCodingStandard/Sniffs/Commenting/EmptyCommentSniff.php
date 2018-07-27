@@ -7,7 +7,7 @@ use SlevomatCodingStandard\Helpers\TokenHelper;
 class EmptyCommentSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 {
 
-	public const CODE_EMPTY_COMMENT = 'EmptyComment';
+	const CODE_EMPTY_COMMENT = 'EmptyComment';
 
 	/**
 	 * @return mixed[]
@@ -25,7 +25,7 @@ class EmptyCommentSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
 	 * @param int $commentStartPointer
 	 */
-	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $commentStartPointer): void
+	public function process(\PHP_CodeSniffer\Files\File $phpcsFile, $commentStartPointer)
 	{
 		$commentEndPointer = $this->getCommentEndPointer($phpcsFile, $commentStartPointer);
 
@@ -106,7 +106,7 @@ class EmptyCommentSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 			: (bool) preg_match('~^[\\s\*]*$~', $comment);
 	}
 
-	private function getCommentEndPointer(\PHP_CodeSniffer\Files\File $phpcsFile, int $commentStartPointer): ?int
+	private function getCommentEndPointer(\PHP_CodeSniffer\Files\File $phpcsFile, int $commentStartPointer)
 	{
 		$tokens = $phpcsFile->getTokens();
 
